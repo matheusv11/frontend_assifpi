@@ -44,9 +44,6 @@ const ListaSocios=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message)//Atualizar o json do botao //Ex: todo list
-            // setData([...socio_data])
-            // setDepedente(dependente_data.filter(dependentes=> dependentes.id !==id))
-            // setTasks([...tasks, { title, completed: false }]);
 
         }).catch((err)=>{
             alert(err.message)
@@ -55,13 +52,17 @@ const ListaSocios=()=>{
     }
 
         
-    const ConfirmarDependente= (id)=>{
+    const ConfirmarDependente= (id,index)=>{
         connection.post(`/confirm_dependente/${id}`,'', { //Update to put
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
             alert(dados.data.message)
+            const altera = [...dependente_data];
+            altera[index].confirmado = 1;
+            setDependentes(altera);
+
         }).catch((err)=>{
             alert(err)
         })
@@ -78,7 +79,7 @@ const ListaSocios=()=>{
                     
                 <div class="list-group">
                 <h5 class="card-title">Lista de Sócios</h5>
-                    {socio_data.map(dados=>(
+                    {socio_data.map((dados,index)=>(
 
                     <div>
                         
@@ -130,7 +131,7 @@ const ListaSocios=()=>{
                     
                     <div class="list-group">
                         <h5 class="card-title">Lista de Dependentes</h5>
-                        {dependente_data.map(dados=>(
+                        {dependente_data.map((dados,index)=>(
 
                             <div>
                                 
@@ -161,7 +162,7 @@ const ListaSocios=()=>{
                                         <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                         
                                         
-                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id)} class="btn btn-danger">Autenticar Usuario</button>}
+                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-danger">Autenticar Usuario</button>}
                                         <button class="btn btn-danger">Deletar Usuario</button>
                                     </div>
                                 </div>
