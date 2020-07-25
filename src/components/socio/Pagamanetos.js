@@ -10,9 +10,10 @@ const Pagamentos=()=>{
     const dateOne = new Date(data); //Year, Month, Date    
 
     const {token}=useAuth();
-    
+
     const[pagamentos,setPagamentos]=useState([]);
 
+    
     
     useEffect(()=>{ 
 
@@ -29,8 +30,6 @@ const Pagamentos=()=>{
 
     const Pagar= (id)=>{
         
-        //window.location.href = "http://pt.stackoverflow.com";
-        //window.location.replace("http://pt.stackoverflow.com");
         connection.post(`/faturas/${id}`, '', {
             headers:{
                 authorization: `Bearer ${token}`
