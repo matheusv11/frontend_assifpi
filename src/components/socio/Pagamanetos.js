@@ -6,12 +6,16 @@ import connection from '../../services/connection';
 
 const Pagamentos=()=>{
     const now = new Date();
-    const data= `${now.getDate()}${now.getMonth()+1}${now.getFullYear()}`;
+    const data= `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`;
+    const dateOne = new Date(data); //Year, Month, Date    
 
     const {token}=useAuth();
+    
     const[pagamentos,setPagamentos]=useState([]);
 
+    
     useEffect(()=>{ 
+
         connection.get('/index_socio_fatura', {
             headers:{
                 authorization: `Bearer ${token}`
@@ -57,7 +61,7 @@ const Pagamentos=()=>{
                                 <p><b>Status pagamento:</b> {dados.status}</p>
                                 <p><b>Data de criação:</b> {dados.data_criacao}</p>
                                 <p><b>Data de vencimento:</b> {dados.data_vencimento}</p>
-                                {data>= dados.data_vencimento.split('/') && dados.status=="pending" ? <button class="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>: "Nao precisa pagar"}
+                                {dateOne>=new Date(`${dados.data_vencimento.split('/')[2]},${dados.data_vencimento.split('/')[1]},${dados.data_vencimento.split('/')[0]}`) && dados.status=="pending" ? <button class="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>: "Nao precisa pagar"}
                             </li>
                         </ul>
                         
