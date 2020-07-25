@@ -44,6 +44,10 @@ const ListaSocios=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message)//Atualizar o json do botao //Ex: todo list
+            // setData([...socio_data])
+            // setDepedente(dependente_data.filter(dependentes=> dependentes.id !==id))
+            // setTasks([...tasks, { title, completed: false }]);
+
         }).catch((err)=>{
             alert(err.message)
             // alert(err.response.data.message) //Nao pode atualizar mesmo socios duas vezes pra nao gerar mais faturas
@@ -52,7 +56,7 @@ const ListaSocios=()=>{
 
         
     const ConfirmarDependente= (id)=>{
-        connection.post(`/confirm_dependente/${id}`,'', {
+        connection.post(`/confirm_dependente/${id}`,'', { //Update to put
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -64,12 +68,13 @@ const ListaSocios=()=>{
     }
 
     return( 
-        <div id='componente-lista-socios' style={{margin:"0 auto",width:"100%"}}>
+        <div id='componente-lista-socios' style={{margin:"0 auto",width:"90%"}}>
             <h2>Lista de sócios e dependentes</h2>
             
-            <div id="lista">
+            <div id="lista" class="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
+            
             <input type="number" onChange={e=> setCpf(e.target.value)} class="form-control" id=""  placeholder='Pesquisar por cpf' />
-                <div id="lista-socios" style={{width:"50%",float:"left",borderColor:"green"}}>
+                <div id="lista-socios" class="col" style={{borderColor:"green"}}>
                     
                 <div class="list-group">
                 <h5 class="card-title">Lista de Sócios</h5>
@@ -121,7 +126,7 @@ const ListaSocios=()=>{
 
                 </div>
 
-                <div id="lista-dependentes" style={{marginLeft:"50%",borderColor:"red"}}>
+                <div id="lista-dependentes" class="col" style={{borderColor:"red"}}>
                     
                     <div class="list-group">
                         <h5 class="card-title">Lista de Dependentes</h5>

@@ -50,31 +50,31 @@ const ListaSolicitantes=()=>{
     }
 
     return (
-    <div id='componente-lista-solicitantes' style={{margin:"0 auto"}}>
+    <div id='componente-lista-solicitantes' style={{width:"90%",margin:"0 auto"}}>
         <h2>Lista de solicitantes</h2>
-        <div id="lista" style={{width:'100%'}}>
+        <div id="lista" class="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
         <input type="number" class="form-control" id=""  placeholder='Pesquisar por cpf' />
-            <div id="lista-socios" style={{width:"50%",float:"left",borderColor:"green"}}>
+            <div id="lista-socios" class="col" >
                 {socio_data.map(dados=>(
-                    <div key={dados.id} style={{borderStyle:"solid",borderColor:"gray"}}>
+                    <div key={dados.id} >
                     <p><b>Nome: </b> {dados.nome} <span class="badge badge-pill badge-success">Sócio</span></p> 
                     <p><b>Email: </b>{dados.email}</p>
                     <p><b>CPF: </b>{dados.cpf}</p>
                     <p><b>RG: </b>{dados.rg}</p>
-                    <button onClick={()=> ConfirmarCarteiraSocio(dados.id)} type="button" class="btn btn-warning">Confirmar que a carteira foi confeccionada</button>
+                    <p><button onClick={()=> ConfirmarCarteiraSocio(dados.id)} type="button" class="btn btn-warning">Confirmar confeccionamento</button></p>
                     </div>
                 ))}
 
             </div>
 
-            <div id="lista-dependentes" style={{marginLeft:"50%",borderColor:"red"}}>
+            <div id="lista-dependentes" class="col" >
                     {dependente_data.map(dados=>(
-                        <div key={dados.id} style={{borderStyle:"solid",borderColor:"gray"}}>
+                        <div key={dados.id} >
                         <p><b>Nome: </b> {dados.nome} <span class="badge badge-info">Dependente</span></p> 
                         <p><b>Email: </b>{dados.email}</p>
                         <p><b>CPF: </b>{dados.cpf}</p>
                         <p><b>RG: </b>{dados.rg}</p>
-                        <button onClick={()=> ConfirmarCarteiraDependente(dados.id)} type="button" class="btn btn-warning">Confirmar que a carteira foi confeccionada</button>
+                        <button onClick={()=> ConfirmarCarteiraDependente(dados.id)} type="button" class="btn btn-warning">Confirmar confeccionamento</button>
                         </div>
                     ))}
                     

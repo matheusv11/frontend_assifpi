@@ -5,15 +5,9 @@ import connection from '../../services/connection';
 //colocar faturas pendentes co links de pagamento e colocar historioco de faturas ja pagas
 
 const Pagamentos=()=>{
-    const now = new Date();
-    const data= `${now.getFullYear()},${now.getMonth()+1},${now.getDate()}`;
-    const dateOne = new Date(data); //Year, Month, Date    
 
     const {token}=useAuth();
-
     const[pagamentos,setPagamentos]=useState([]);
-
-    
     
     useEffect(()=>{ 
 
@@ -41,9 +35,6 @@ const Pagamentos=()=>{
             alert(err)
         })
     }
-        // let vencimento= dados.data_vencimento//Data de vencimento
-        // let parts = vencimento.split('/');
-        // let data = new Date(parts[2], parts[1] - 1, parts[0]);
     
     return(
     <div id="componente-pagamentos" style={{margin:"0 auto",width:"80%"}}>
@@ -56,11 +47,11 @@ const Pagamentos=()=>{
                     <div key={dados.id}>
                         
                         <ul class="list-group">
-                            <li class={`list-group-item list-group-item-${dados.status=="pending" ? 'warning' : 'sucess'}`}>
+                            <li class={`list-group-item list-group-item-${dados.status=="pending" ? 'warning' : 'success'}`}>
                                 <p><b>Status pagamento:</b> {dados.status}</p>
                                 <p><b>Data de criação:</b> {dados.data_criacao}</p>
                                 <p><b>Data de vencimento:</b> {dados.data_vencimento}</p>
-                                {dateOne>=new Date(`${dados.data_vencimento.split('/')[2]},${dados.data_vencimento.split('/')[1]},${dados.data_vencimento.split('/')[0]}`) && dados.status=="pending" ? <button class="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>: "Nao precisa pagar"}
+                                {dados.renovada==1 && dados.status=="pending" ? <button class="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>: "Nao precisa pagar"}
                             </li>
                         </ul>
                         
