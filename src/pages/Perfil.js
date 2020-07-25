@@ -8,6 +8,7 @@ import CadastrarDependentes from '../components/socio/CadastrarDependentes';
 import EditarSocio from '../components/socio/EditarSocio';
 import Feed from './Feed';
 import Convenios from './Convenios'
+import Pagamentos from '../components/socio/Pagamanetos'
 
 
 const Perfil=()=>{
@@ -49,7 +50,7 @@ const Perfil=()=>{
         </li>
 
         <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis()}>Pagamentos</label>
+                <label class="nav-link text-white" onClick={()=> setWhatis('pagamentos')}>Pagamentos</label>
         </li>
 
         <li class="nav-item">
@@ -80,6 +81,7 @@ const Perfil=()=>{
         {whatis==='ei' && <EditarSocio/>}
         {whatis==='feed' && <Feed/>}
         {whatis==='convenios' && <Convenios/>}
+        {whatis==='pagamentos' && <Pagamentos/>}
         
     </div>
     )
