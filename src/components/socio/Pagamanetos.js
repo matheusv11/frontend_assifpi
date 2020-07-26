@@ -29,7 +29,6 @@ const Pagamentos=()=>{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            // alert(dados.data.body.external_reference)
             window.location.replace(dados.data.body.init_point);
         }).catch((err)=>{
             alert(err)

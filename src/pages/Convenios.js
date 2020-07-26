@@ -31,7 +31,7 @@ const Convenios=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message);
-            // setConvenios([...convenios, {titulo,descricao}])
+            // setConvenios([...convenios, {titulo,descricao}]) //Resolver problema de url de imagem
 
         }).catch((err)=>{
             alert(err.message)

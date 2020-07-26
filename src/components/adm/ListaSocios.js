@@ -37,14 +37,16 @@ const ListaSocios=()=>{
         });
     },[cpf]);
     
-    const ConfirmarSocio= (id)=>{
+    const ConfirmarSocio= (id,index)=>{
         connection.put(`/confirm_socio/${id}`,'', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
             alert(dados.data.message)//Atualizar o json do botao //Ex: todo list
-
+            const altera = [...socio_data];
+            altera[index].confirmado = 1;
+            setData(altera)
         }).catch((err)=>{
             alert(err.message)
             // alert(err.response.data.message) //Nao pode atualizar mesmo socios duas vezes pra nao gerar mais faturas
@@ -110,7 +112,7 @@ const ListaSocios=()=>{
                                 <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                 
                                 
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id)} class="btn btn-danger">Autenticar Usuario</button>}
+                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-danger">Autenticar Usuario</button>}
 
                                 <button class="btn btn-danger">Deletar Usuario</button>
                             

@@ -11,8 +11,12 @@ const CadastrarPostagem = () => {
 
     const Cadastrar= (e)=>{
         e.preventDefault();
-        const {...rest}= formData;
-        connection.post('/evento', rest, {
+        const {titulo,descricao,local, data, hora}= formData;
+        // const {...rest}= formData;
+        const format_data= data.split('-')
+        const dados= {titulo,descricao,local,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`,hora}
+
+        connection.post('/evento', dados, {
             headers:{
                 authorization:`Bearer ${admToken}`
             }
@@ -21,7 +25,6 @@ const CadastrarPostagem = () => {
         }).catch((err)=>{
             alert(err.message);
         })
-        console.log(rest);
     }
 
     return (
@@ -51,7 +54,7 @@ const CadastrarPostagem = () => {
 
                         <div class="form-group col-sm-4 col-xs-12">
                             <label>Data:</label>
-                            <input onChange={e=> setData({...formData, data: e.target.value})} type="date" class="form-control" id="" />
+                            <input type="date" onChange={e=> setData({...formData, data: e.target.value})} type="date" class="form-control" id="" />
                         </div>
 
                         <div class="form-group col-sm-4 col-xs-12">

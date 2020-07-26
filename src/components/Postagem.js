@@ -51,7 +51,7 @@ const Postagem=({evento})=>{
             setParticipa(false);
             console.log(evento.id)
         }).catch((err)=>{
-            alert(err)
+            alert(err.response.data.message)
         })
     }
 
@@ -78,14 +78,14 @@ const Postagem=({evento})=>{
                         
                         <p>{evento.descricao}</p>
 
-                        <p><b>Data: </b>{evento.data}</p>
+                        <p><b>Data: </b>{evento.data==='undefined' && <></>}</p>
 
                         <p><b>Hora: </b>{evento.hora}</p>
 
                         <p><b>Local: </b>{evento.local}</p>
                         
-                        {token && <>{!participa ? (<button onClick={Participar} type="button" class="btn btn-outline-success">Confirmar presença</button>):
-                        (<button onClick={Remover} type="button" class="btn btn-outline-danger">Tirar presença</button>)}</>}
+                        {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" class="btn btn-outline-success">Confirmar presença</button>):
+                        (<button onClick={Remover} type="button" class="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
                         
                         {admToken && <button onClick={Visualizar} type="button"  class="btn btn-success" data-toggle="collapse" data-target={`#collapseExample${evento.id}`} 
                         aria-expanded="false" aria-controls="collapseExample">Vizualizar Confirmados</button>}
