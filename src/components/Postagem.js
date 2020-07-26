@@ -67,6 +67,22 @@ const Postagem=({evento})=>{
             alert(err);
         })
     }
+
+
+    const Deletar= (id)=>{
+        connection.delete(`/evento/${id}`, {
+            headers:{
+                authorization: `Bearer ${admToken}`
+            }
+        }).then((dados)=>{
+            alert(dados.data.message)
+            //Resolve exclude
+            // setConvenios(convenios.filter(convenios=> convenios.id !==id))
+
+        }).catch((err)=>{
+            alert(err)
+        })
+    }
     return (
     <div id='componente-postagem'>
 
@@ -87,8 +103,8 @@ const Postagem=({evento})=>{
                         {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" class="btn btn-outline-success">Confirmar presença</button>):
                         (<button onClick={Remover} type="button" class="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
                         
-                        {admToken && <button onClick={Visualizar} type="button"  class="btn btn-success" data-toggle="collapse" data-target={`#collapseExample${evento.id}`} 
-                        aria-expanded="false" aria-controls="collapseExample">Vizualizar Confirmados</button>}
+                        {admToken && <div><button onClick={Visualizar} type="button"  class="btn btn-success" data-toggle="collapse" data-target={`#collapseExample${evento.id}`} 
+                        aria-expanded="false" aria-controls="collapseExample">Vizualizar Confirmados</button> <button onClick={()=> Deletar(evento.id)} type="button" class="btn btn-danger">Deletar</button></div>}
 
                     
 

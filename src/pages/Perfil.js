@@ -25,7 +25,10 @@ const Perfil=()=>{
     <div id="page-perfil">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-        <a class="navbar-brand text-white" href="#">Uma imagem</a>
+        <Link to="/" className="navbar-brand text-white">
+                <img src="assets/sobre/img/logocolor.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"/>
+                        ASSIFPI
+        </Link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

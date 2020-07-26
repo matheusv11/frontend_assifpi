@@ -15,9 +15,8 @@ const Feed=()=>{
             console.log(dados.data)
             setEventos(dados.data)
         }).catch((err)=>{
-            console.log(err)
+            alert(err)
         })
-        console.log(admToken);
     },[]);
 
     

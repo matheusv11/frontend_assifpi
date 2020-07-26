@@ -13,6 +13,7 @@ import Perfil from '../pages/Perfil';
 import Adm from '../pages/Adm';
 import Feed from '../pages/Feed'
 import Convenios from '../pages/Convenios'
+import Sobre from '../pages/Sobre'
 
 const Routes= ()=>{
     const {loading}= useAuth();
@@ -36,6 +37,7 @@ const Routes= ()=>{
                     <PublicRoute path="/acesso" component={Acesso}/>
                     <Route path="/feed" component={Feed} />
                     <Route path="/convenios" component={Convenios}/>
+                    <Route path="/sobre" component={Sobre}/>
                 </Switch>
         </BrowserRouter>
     )

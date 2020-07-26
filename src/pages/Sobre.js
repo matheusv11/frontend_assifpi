@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {Link} from 'react-router-dom';
 
-const Home= ()=>{
+const Sobre=()=>{
 
     return(
-        <div id="home">
-            <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+    <div id="page-sobre">
+        
+        <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
                 <div className="container">
                 <a className="navbar-brand" href="/">
                 <img src="assets/sobre/img/logocolor.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"/>
@@ -54,82 +55,55 @@ const Home= ()=>{
             </nav>
             <header
                 className="masthead"
-                style={{
-                backgroundImage: 'url("assets/index/img/imagem-visao-aeria-assifpi.jpg")'
-                }}
+                style={{ backgroundImage: 'url("assets/sobre/img/logocolor.png")' }}
             >
                 <div className="overlay" />
                 <div className="container">
                 <div className="row">
                     <div className="col-md-10 col-lg-8 mx-auto">
                     <div className="site-heading">
-                        <h1>Venha para associação dos servidores do IFPI!</h1>
+                        <h1>Quem somos?</h1>
                         <span className="subheading">
-                        Junte-se a outros servidores e faça parte da família!
+                        Veja nossa história, missão e mais
                         </span>
                     </div>
                     </div>
                 </div>
                 </div>
             </header>
-            
-            
-            
-            
-            <div className="team-grid">
-                <div className="container">
-                <div className="intro">
-                    <h2 className="text-center">Diretoria</h2>
+            <div className="container">
+                <div className="row">
+                <div className="col-md-10 col-lg-8 mx-auto">
+                    <h1 className="text-center">História</h1>
+                    <p>
+                    Associação dos Servidores do Instituto Federal de Educação, Ciência e
+                    Tecnologia do Piauí, sucessora da ASCEFET, fundada em 20 de setembro
+                    de 1979, pelos servidores da antiga Escola Técnica Federal do Piauí. A
+                    ASSIFPI tem por finalidade.
+                    </p>
                 </div>
-                <div className="row people">
-                    <div className="col-md-4 col-lg-3 item">
-                    <div
-                        className="box"
-                        style={{
-                        backgroundImage: "url(assets/index/img/foto-perfil-padrao.png)"
-                        }}
-                    >
-                        <div className="cover">
-                        <div className="social" />
-                        </div>
-                    </div>
-                    </div>
-                    <div className="col-md-4 col-lg-3 item">
-                    <h1>Nome</h1>
-                    <h2>Presidente</h2>
-                    </div>
-                    <div className="col-md-4 col-lg-3 item">
-                    <div
-                        className="box"
-                        style={{
-                        backgroundImage: "url(assets/index/img/vice-presidente.jpg)"
-                        }}
-                    >
-                        <div className="cover" />
-                    </div>
-                    </div>
-                    <div className="col-md-4 col-lg-3 item">
-                    <h1>Eduilson Carneiro</h1>
-                    <h2>Vice-Presidente</h2>
-                    </div>
                 </div>
                 <div className="row">
-                    <div className="col text-center">
-                    <button
-                        className="btn btn-primary bg-success"
-                        type="button"
-                        style={{
-                        marginTop: "1%",
-                        marginBottom: "1%",
-                        backgroundColor: "rgb(30, 126, 52)"
-                        }}
-                    >
-                        Conheça a direção executiva
-                    </button>
-                    </div>
+                <div className="col-md-10 col-lg-8 mx-auto">
+                    <h1 className="text-center">Missão</h1>
+                    <p>
+                    Difundir a prática de desportos e culturas entre sócios e a
+                    comunidade.
+                    </p>
+                    <p>
+                    Filiar-se as federações desportivas e culturais e representativas da
+                    classe.
+                    </p>
+                    <p>
+                    firmar, sem ônus para a Associação, contratos de prestação de serviços
+                    com entidades médicos hospitalares, de seguros, fornecedores de
+                    gêneros alimentícios ou de medicamentos ou outros que visem ao
+                    favorecimento dos associados.
+                    </p>
                 </div>
                 </div>
             </div>
+            <hr />
             <div className="text-center footer-basic">
                 <footer>
                 <div className="social">
@@ -170,10 +144,11 @@ const Home= ()=>{
                 <p className="copyright">ASSIFPI © 2020</p>
                 </footer>
             </div>
-</div>
+            
 
-    
-    );
+    </div>
+    )
 }
 
-export default Home;
+
+export default Sobre;

@@ -70,6 +70,22 @@ const ListaSocios=()=>{
         })
     }
 
+
+    const DeletarSocio= (id)=>{
+        connection.delete(`/socio/${id}`, {
+            headers:{
+                authorization:  `Bearer ${admToken}`
+            }
+        }).then((dados)=>{
+            alert(dados.data.message)
+            setData(socio_data.filter(socios=> socios.socio_id !==id))
+
+        }).catch((err)=>{
+            alert(err.message)
+        })
+
+    }
+
     return( 
         <div id='componente-lista-socios' style={{margin:"0 auto",width:"90%"}}>
             <h2>Lista de sócios e dependentes</h2>
@@ -80,7 +96,7 @@ const ListaSocios=()=>{
                 <div id="lista-socios" class="col" style={{borderColor:"green"}}>
                     
                 <div class="list-group">
-                <h5 class="card-title">Lista de Sócios</h5>
+                <h6 class="card-title">Lista de Sócios</h6>
                     {socio_data.map((dados,index)=>(
 
                     <div>
@@ -112,9 +128,9 @@ const ListaSocios=()=>{
                                 <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                 
                                 
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-danger">Autenticar Usuario</button>}
+                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar Usuario</button>}
 
-                                <button class="btn btn-danger">Deletar Usuario</button>
+                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar Usuario</button>
                             
                             </div>
                         </div>
@@ -132,7 +148,7 @@ const ListaSocios=()=>{
                 <div id="lista-dependentes" class="col" style={{borderColor:"red"}}>
                     
                     <div class="list-group">
-                        <h5 class="card-title">Lista de Dependentes</h5>
+                        <h6 class="card-title">Lista de Dependentes</h6>
                         {dependente_data.map((dados,index)=>(
 
                             <div>
@@ -164,7 +180,7 @@ const ListaSocios=()=>{
                                         <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                         
                                         
-                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-danger">Autenticar Usuario</button>}
+                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-success">Autenticar Usuario</button>}
                                         <button class="btn btn-danger">Deletar Usuario</button>
                                     </div>
                                 </div>
