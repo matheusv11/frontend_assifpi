@@ -1,23 +1,36 @@
 import React,{useEffect,useState} from 'react';
 import connection from '../services/connection'
-import {useAuth} from '../components/auth';
+// import {useAuth} from '../components/auth';
 import Postagem from '../components/Postagem'
+import createPagination from '../helpers/createPagination';
 
 const Feed=()=>{
 
-    const {token,admToken}= useAuth();
+    // const {token,admToken}= useAuth();
+    // const [participa,setParticipa]=useState(false);
+    // Talvez usar query na url //Ex site de rotas com hooks
     const [eventos,setEventos]=useState([]);
+    const [page, setPage]=useState(1);
+    const [total,setTotal]=useState('');
 
-    const [participa,setParticipa]=useState(false);
+    const { pagination } = createPagination({
+        numberOfArticles: total,
+        articlesPerPage: 5, //Ou eventos.length
+        numberOfButtons: 5,
+        currentPage: page
+      });
+
 
     useEffect(()=>{
-        connection.get('/evento').then((dados)=>{
-            console.log(dados.data)
+        connection.get(`/evento?page=${page}`).then((dados)=>{
             setEventos(dados.data)
+            setTotal(dados.headers['total-count']);
+            // alert(dados.data.length)
+            
         }).catch((err)=>{
             alert(err)
         })
-    },[]);
+    },[page]);
 
     
 
@@ -30,14 +43,28 @@ const Feed=()=>{
                     <Postagem evento={evento}/>        
             ))}
 
-    <nav style={{width: '80%', margin: '0 auto'}}>
-        <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="/">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="/">1</a></li>
-        <li class="page-item"><a class="page-link" href="/">2</a></li>
-        <li class="page-item"><a class="page-link" href="/">3</a></li>
-        <li class="page-item"><a class="page-link" href="/">Next</a></li>
-        </ul>
+        <nav style={{width: '80%', margin: '10px auto', justifyContent:'center', display: 'flex'}} aria-label="...">
+    <ul class="pagination">
+
+        <li className={`page-item ${pagination[0]=== page && "disabled"}`} >
+        <button onClick={()=> setPage(page-1)} class="page-link"> {"<"} </button>
+        </li>
+
+        {pagination.map(pagina => (
+          <li
+            className={`page-item ${page === pagina && "active"}`}
+            onClick={()=> setPage(pagina)}
+
+          >
+              <button class="page-link">{pagina}</button>
+          </li>
+        ))}
+        <li className={`page-item ${pagination.reverse()[0]=== page && "disabled"}`} >
+
+        <button onClick={()=> setPage(page+1)} class="page-link" >{">"}</button>
+
+        </li>
+    </ul>
     </nav>
     </div>
         );
