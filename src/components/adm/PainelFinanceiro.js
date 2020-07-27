@@ -32,7 +32,7 @@ const PainelFinanceiro=()=>{
                 <div class="collapse" id="collapseExample">
                     <ul class="list-group">
                         {pendentes.map(dados=>(
-                            <li class="list-group-item list-group-item-danger"><p>Nome:{dados.nome}  CPF:{dados.cpf}</p></li>   
+                            <li class="list-group-item list-group-item-danger">Nome:{dados.nome}  CPF:{dados.cpf}</li>   
                         ))}
                     </ul>              
                 </div>
