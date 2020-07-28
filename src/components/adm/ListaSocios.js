@@ -86,6 +86,22 @@ const ListaSocios=()=>{
 
     }
 
+    const DeletarDependente= (id)=>{
+
+        connection.delete(`/delete_dependente/${id}`, {
+            headers:{
+                authorization: `Bearer ${admToken}`
+            }
+        }).then((dados)=>{
+            alert(dados.data.message);
+            setDependentes(dependente_data.filter(dependentes=> dependentes.dependente_id !==id))
+
+        }).catch((err)=>{
+            alert(err.message)
+        })
+
+    }
+
     return( 
         <div id='componente-lista-socios' style={{margin:"0 auto",width:"90%"}}>
             <h2>Lista de sócios e dependentes</h2>
@@ -128,9 +144,9 @@ const ListaSocios=()=>{
                                 <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                 
                                 
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar Usuario</button>}
+                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar socio_data</button>}
 
-                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar Usuario</button>
+                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar socio_data</button>
                             
                             </div>
                         </div>
@@ -180,8 +196,8 @@ const ListaSocios=()=>{
                                         <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                         
                                         
-                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-success">Autenticar Usuario</button>}
-                                        <button class="btn btn-danger">Deletar Usuario</button>
+                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-success">Autenticar Dependente</button>}
+                                        <button onClick={()=> DeletarDependente(dados.dependente_id)} class="btn btn-danger">Deletar Dependente</button>
                                     </div>
                                 </div>
 

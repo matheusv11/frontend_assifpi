@@ -3,9 +3,8 @@ import {useAuth} from '../auth';
 import connection from '../../services/connection';
 import { Line,Doughnut } from 'react-chartjs-2';
 
-
 const PainelFinanceiro=()=>{
-    
+
     const {admToken}= useAuth();
     const[pendentes,setPendente]=useState([]);
 
