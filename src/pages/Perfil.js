@@ -36,28 +36,20 @@ const Perfil=()=>{
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('perfil')}>Meu Perfil</label>
-        </li>
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('dependentes')}>Perfil de Dependentes</label>
-        </li>
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('cd')}>Cadastrar Dependentes</label>
-        </li>
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('ei')}>Editar informações</label>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pessoal
+        </a>
+        <div class="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
+        <label class="nav-link text-white" onClick={()=> setWhatis('perfil')}>Meu Perfil</label>
+        <label class="nav-link text-white" onClick={()=> setWhatis('dependentes')}>Perfil de Dependentes</label>
+        <label class="nav-link text-white" onClick={()=> setWhatis('cd')}>Cadastrar Dependentes</label>
+        <label class="nav-link text-white" onClick={()=> setWhatis('ei')}>Editar informações</label>
+        </div>
         </li>
 
         <li class="nav-item">
                 <label class="nav-link text-white" onClick={()=> setWhatis('pagamentos')}>Pagamentos</label>
-        </li>
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis()}>Solicitar Carteira</label>
         </li>
 
         <li class="nav-item">

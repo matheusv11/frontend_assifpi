@@ -48,7 +48,7 @@ const ListaDependentes=()=>{
     }
  
     return(
-        <div id='componente-lista-dependentes'>
+        <div id='componente-lista-dependentes'  style={{width:"90%",margin:"0 auto"}}>
             <h2>Página de Dependenetes</h2>
             
             {dependente_data.map((dados)=>(

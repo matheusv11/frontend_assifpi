@@ -60,10 +60,10 @@ const PerfilSocio=()=>{
     // index_carteira_socio
     
     return(
-        <div id='componente-perfil-socio'>
+        <div id='componente-perfil-socio' style={{width:"90%",margin:"0 auto"}}>
             <h2>Página de Perfil </h2>
             
-            <div className="card"  style={{ borderWidth: '15px'}}>
+            <div className="card" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
                 <div className="card-body">
             
                 <h5 className="card-title">Sócio</h5>
@@ -84,14 +84,6 @@ const PerfilSocio=()=>{
                 {!statusCarteira && <button onClick={Solicitar} type="button" className="btn btn-dark" style={{marginLeft: '80px'}}>Solicitar Carteira</button>} 
                 {statusCarteira==='solicitada' && <b style={{marginLeft: '80px'}}>Carteira Solicitada</b>}
                 {statusCarteira==='confeccionada' && <b style={{marginLeft: '80px'}}>Carteira Confeccionada</b>}
-                </div>
-
-                <div className="card-body">
-                
-                <h5 className="card-title">Pagamentos</h5>
-
-                --vamos colocar algo aqui--
-
                 </div>
             </div>
         </div>

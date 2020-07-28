@@ -55,7 +55,7 @@ const Convenios=()=>{
     }
 
     return (
-    <div id="page-convenios" style={{margin:"0 auto",width:"90%"}}>
+    <div id="page-convenios" style={{margin:"0 auto",width:"95%"}}>
         <h2>Convenios para os assóciados!</h2>
 
         {admToken && 

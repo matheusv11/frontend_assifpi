@@ -46,15 +46,17 @@ const CadastrarAdm=()=>{
                             <label>Nome Completo:</label>
                             <input onChange={e=> setNome(e.target.value)} type="text" class="form-control" id="" required/>
                         </div>
-                
-                        <div class="form-group">
-                        <label>Senha:</label>
-                        <input onChange={e=> setSenha(e.target.value)} type="password" class="form-control" id="" required/>
-                        </div>
-                
-                        <div class="form-group">
-                            <label>Confirmar Senha:</label>
-                            <input onChange={e=> setRepeat(e.target.value)} type="password" class="form-control" id="" required/>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                            <label>Senha:</label>
+                            <input onChange={e=> setSenha(e.target.value)} type="password" class="form-control" id="" required/>
+                            </div>
+                    
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label>Confirmar Senha:</label>
+                                <input onChange={e=> setRepeat(e.target.value)} type="password" class="form-control" id="" required/>
+                            </div>
                         </div>
                         
                         {senha===repeat && <span>Senhas iguais</span>}
