@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import { Line,Doughnut } from 'react-chartjs-2';
+
 
 const PainelFinanceiro=()=>{
     
@@ -38,7 +40,40 @@ const PainelFinanceiro=()=>{
                 </div>
 
                 <div>
-                    mais informações
+                    <Line  data= {{
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Arrecadamentos',
+                        backgroundColor: 'transparent',
+                        borderColor: 'green',
+                        data: [5, 20, 5, 2, 20, 30, 45]
+                    },
+                    {
+                        label: 'Gastos',
+                        backgroundColor: 'transparent',
+                        borderColor: 'red',
+                        data: [5, 10, 3, 1, 21, 20, 20]}]
+                        }} options={{title:{
+                            display:true,
+                            fontSize:30,
+                            text: "Arrecadamentos e dispesas"}}}/>
+
+                     <Doughnut data={{
+                        datasets:[{
+                            backgroundColor: ['green','red','black','yellow','blue'],
+                            data:[38,7,40,9,10]
+                        }],
+                        labels: [
+                            'Em dia',
+                            'Pendentes',
+                            'Usuarios totais',
+                            'Usuarios esperando validação',
+                            'Usuarios esperando confeccionamento'
+                        ],}} options={{title:{
+                            display:true,
+                            fontSize:30,
+                            text: "Dados Gerais"
+                        }}}/>   
                 </div>
             
             </div>
