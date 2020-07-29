@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PrivateSocioRoute from './privateSocioRoutes';
 import PrivateAdmRoute from './privateAdmRoutes';
 
 import PublicRoute from './publicRoutes';
-import {useAuth} from '../components/auth';
+// import {useAuth} from '../components/auth';
 //Paginas
 
 import Home from '../pages/Home';
@@ -14,20 +14,20 @@ import Adm from '../pages/Adm';
 import Feed from '../pages/Feed'
 import Convenios from '../pages/Convenios'
 import Sobre from '../pages/Sobre'
+// const Home= lazy(()=> import('../pages/Home'))
+// const Acesso= lazy(()=> import('../pages/Acesso'))
 
 const Routes= ()=>{
-    const {loading}= useAuth();
-
-    if(loading){
-        return (
-          <div class="spinner-border" role="status">
-           <span class="sr-only">Loading...</span>
-          </div>
-        )
-
-    }
+    // const {loading}= useAuth();
+    
+    // if(loading){
+    //     return (
+    //         <h2>Is loading...</h2>
+    //     )
+    // }
     
     return(
+
         <BrowserRouter>
                 <Switch>
                     <Route path="/" exact component={Home}/>
@@ -40,6 +40,8 @@ const Routes= ()=>{
                     <Route path="/sobre" component={Sobre}/>
                 </Switch>
         </BrowserRouter>
+
+
     )
 }
 

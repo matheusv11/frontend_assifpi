@@ -6,7 +6,7 @@ export const AuthProvider= ({children})=>{
 
     const [token,setToken]=useState(null);
     const [admToken,setAdm]=useState(null);
-    const [loading,setLoading]=useState(true);
+    // const [loading,setLoading]=useState(true);
 
     useEffect(()=>{
         const token= localStorage.getItem('token');
@@ -18,14 +18,15 @@ export const AuthProvider= ({children})=>{
         if(admToken){
             setAdm(admToken);
         }
-        setLoading(false);
+        // setLoading(false);
 
     },[]);
 
     
 
     return(
-        <AuthContext.Provider value={{token, setToken, admToken, setAdm, loading}}>
+        <AuthContext.Provider value={{token, setToken, admToken, setAdm}}>
+        {/* <AuthContext.Provider value={{token, setToken, admToken, setAdm, loading}}> */}
             {children}
         </AuthContext.Provider>
     )
