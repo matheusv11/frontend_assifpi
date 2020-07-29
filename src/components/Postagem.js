@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import {useAuth} from '../components/auth';
 import connection from '../services/connection';
-import Modal from '../components/Modal';
+// import Modal from '../components/Modal';
 
 const Postagem=({evento})=>{
 
     const [participa,setParticipa]=useState(false);
     const [show,setShow]=useState(false);
     const [participantes,setParticipante]=useState([]);
-    const {token,admToken}= useAuth();
+    const {token,admToken,setLoading}= useAuth();
 
     useEffect(()=>{
         //If token pega dados 
@@ -29,33 +29,41 @@ const Postagem=({evento})=>{
 
 
     const Participar= ()=>{
+        setLoading(true)
+
         connection.post(`/socio_evento/${evento.id}`, '', {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message);
             setParticipa(true)
         }).catch((err)=>{
+            setLoading(false)
             alert(err.response.data.message)
         })
     }
 
     const Remover= ()=>{
+        setLoading(true)
         connection.delete(`/socio_evento/${evento.id}`, {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message)
             setParticipa(false);
             console.log(evento.id)
         }).catch((err)=>{
+            setLoading(false)
             alert(err.response.data.message)
         })
     }
 
     const Visualizar= ()=>{
+        setLoading(true)
         connection.get(`/socio_evento/${evento.id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -63,23 +71,28 @@ const Postagem=({evento})=>{
         }).then((dados)=>{
             setParticipante(dados.data);
             setShow(true);
+            setLoading(false)
         }).catch((err)=>{
+            setLoading(false)
             alert(err);
         })
     }
 
 
     const Deletar= (id)=>{
+        setLoading(true);
         connection.delete(`/evento/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message)
             //Resolve exclude
             // setConvenios(convenios.filter(convenios=> convenios.id !==id))
 
         }).catch((err)=>{
+            setLoading(false)
             alert(err)
         })
     }

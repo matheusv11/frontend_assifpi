@@ -4,17 +4,21 @@ import {useAuth} from '../components/auth';
 
 const Convenios=()=>{
     
-    const {admToken}=useAuth();
+    const {admToken,setLoading}=useAuth();
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
     const[convenios,setConvenios]=useState([]);
 
     useEffect(()=>{
+        setLoading(true)
         connection.get('/convenios').then((dados)=>{
             setConvenios(dados.data);
+            setLoading(false)
         }).catch((err)=>{
             alert(err.message);
+            setLoading(false)
+
         })
     },[]);
 
@@ -24,29 +28,35 @@ const Convenios=()=>{
         format.append('file', imagem);
         format.append('titulo', titulo);
         format.append('descricao', descricao);
-
+        setLoading(true);
+        
         connection.post('/convenios',format, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false);
             alert(dados.data.message);
             setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem}]) 
             //Resolver problema de url de imagem //Melhorar isso //ConvenioController
         }).catch((err)=>{
+            setLoading(false);
             alert(err.message)
         })
     }
 
     const Deletar= (id)=>{
+        setLoading(true);
         connection.delete(`/convenios/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message);
             setConvenios(convenios.filter(convenios=> convenios.id !==id))
         }).catch((err)=>{
+            setLoading(false);
             alert(err.message)
         })
         

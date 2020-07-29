@@ -4,34 +4,39 @@ import {useAuth} from '../auth';
 
 const PerfilSocio=()=>{
 
-    const {token, setToken}= useAuth();
+    const {token, setToken, setLoading}= useAuth();
 
     const[socio_data, setSocio]=useState('');
 
     const [statusCarteira,setStatusCarteira]=useState('')
 
     const Solicitar= ()=>{
+      setLoading(true);
       connection.post('/carteira', '',{
         headers:{
           authorization: `Bearer ${token}`
         }
       }).then((dados)=>{
+        setLoading(false)
         alert(dados.data.message)
         setStatusCarteira('solicitada');
       }).catch((err)=>{
+        setLoading(false)
         alert(err.response.data.message);
       })
     }
 
     useEffect(()=>{
-      
+        setLoading(true);
         connection.get('/socio', {
           headers:{
             authorization: `Bearer ${token}`
           }
         }).then((dados)=>{
+          setLoading(false)
           setSocio(dados.data);
         }).catch((err)=>{
+          setLoading(false)
           setToken(null)
           localStorage.removeItem('token');
           alert(err.message)
@@ -56,9 +61,7 @@ const PerfilSocio=()=>{
       });
 
   },[token,setToken]);
-  
-    // index_carteira_socio
-    
+      
     return(
         <div id='componente-perfil-socio' style={{width:"90%",margin:"0 auto"}}>
             <h2>Página de Perfil </h2>

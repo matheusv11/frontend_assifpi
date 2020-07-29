@@ -4,17 +4,20 @@ import connection from '../../services/connection';
 
 const LoginAdm = ()=>{
     //Tentar children pra talvez otimizar o uso desse componente
-    const {setAdm}= useAuth();
+    const {setAdm, setLoading}= useAuth();
     const[email,setEmail]=useState('');
     const[senha,setSenha]=useState('');
 
     const Login= (e)=>{
         e.preventDefault();
         const data= {email,senha}
+        setLoading(true);
         connection.post('/auth_adm', data).then((dados)=>{
+            setLoading(false);
             setAdm(dados.data.token);
             localStorage.setItem('admToken', dados.data.token);
         }).catch((err)=>{
+            setLoading(false);
             alert(err.response.data.message)
         })
     }

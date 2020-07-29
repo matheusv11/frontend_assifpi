@@ -6,7 +6,7 @@ export const AuthProvider= ({children})=>{
 
     const [token,setToken]=useState(null);
     const [admToken,setAdm]=useState(null);
-    // const [loading,setLoading]=useState(true);
+    const [loading,setLoading]=useState(false);
 
     useEffect(()=>{
         const token= localStorage.getItem('token');
@@ -18,14 +18,14 @@ export const AuthProvider= ({children})=>{
         if(admToken){
             setAdm(admToken);
         }
-        // setLoading(false);
+        // setLoading(false); //Por esta sendo montado direto no render ele ja carrega isso direto, nao precisando fazer loading
 
     },[]);
 
     
 
     return(
-        <AuthContext.Provider value={{token, setToken, admToken, setAdm}}>
+        <AuthContext.Provider value={{token, setToken, admToken, setAdm, setLoading, loading}}>
         {/* <AuthContext.Provider value={{token, setToken, admToken, setAdm, loading}}> */}
             {children}
         </AuthContext.Provider>

@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import connection from '../services/connection'
-// import {useAuth} from '../components/auth';
+import {useAuth} from '../components/auth';
 import Postagem from '../components/Postagem'
 import createPagination from '../helpers/createPagination';
 
@@ -9,6 +9,7 @@ const Feed=()=>{
     // const {token,admToken}= useAuth();
     // const [participa,setParticipa]=useState(false);
     // Talvez usar query na url //Ex site de rotas com hooks
+    const {setLoading}= useAuth();
     const [eventos,setEventos]=useState([]);
     const [page, setPage]=useState(1);
     const [total,setTotal]=useState('');
@@ -22,13 +23,16 @@ const Feed=()=>{
 
 
     useEffect(()=>{
+        setLoading(true)
         connection.get(`/evento?page=${page}`).then((dados)=>{
             setEventos(dados.data)
             setTotal(dados.headers['total-count']);
+            setLoading(false)
             // alert(dados.data.length)
             
         }).catch((err)=>{
             alert(err)
+            setLoading(false)
         })
     },[page]);
 
@@ -38,9 +42,9 @@ const Feed=()=>{
     return(
     <div id="page-feed" >
         <h2 style={{ width: '80%', margin: '0 auto'}}>Eventos e Avisos </h2>
-        
             {eventos.map(evento=>(
                     <Postagem evento={evento}/>        
+                
             ))}
 
         <nav style={{width: '80%', margin: '10px auto', justifyContent:'center', display: 'flex'}} aria-label="...">
