@@ -3,7 +3,7 @@ import connection from '../../services/connection';
 import {useAuth} from '../auth';
 
 const CadastrarPostagem = () => {
-    const {admToken}= useAuth();
+    const {admToken,setLoading}= useAuth();
 
     const [formData, setData]= useState({
         titulo:'', descricao:'', local:'', data:'', hora:''
@@ -15,14 +15,16 @@ const CadastrarPostagem = () => {
         // const {...rest}= formData;
         const format_data= data.split('-')
         const dados= {titulo,descricao,local,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`,hora}
-
+        setLoading(true);
         connection.post('/evento', dados, {
             headers:{
                 authorization:`Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message);  
         }).catch((err)=>{
+            setLoading(false)
             alert(err.message);
         })
     }

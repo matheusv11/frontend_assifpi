@@ -4,17 +4,20 @@ import connection from '../../services/connection';
 
 const ListaAdms=()=>{
     
-    const {admToken}=useAuth();
+    const {admToken,setLoading}=useAuth();
     const[adm_data,setAdm]=useState([]);
 
     useEffect(()=>{
+        setLoading(true)
         connection.get('/adm', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             setAdm(dados.data)
         }).catch((err)=>{
+            setLoading(false)
             alert(err.message)
         })
     },[])

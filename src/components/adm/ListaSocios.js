@@ -4,19 +4,22 @@ import connection from '../../services/connection';
 
 const ListaSocios=()=>{
 
-    const {admToken, setAdm}= useAuth();
+    const {admToken, setAdm, setLoading}= useAuth();
     const[cpf,setCpf]=useState('');
     const[socio_data,setData]=useState([]);
     const[dependente_data,setDependentes]=useState([]);
 
     useEffect(()=>{
+        setLoading(true);
         connection.get(`/index_socios?cpf=${cpf}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             setData(dados.data);
         }).catch((err)=>{
+            setLoading(false)
             setAdm(null);
             localStorage.removeItem('admToken');
             alert(err.message);
@@ -38,16 +41,19 @@ const ListaSocios=()=>{
     },[cpf]);
     
     const ConfirmarSocio= (id,index)=>{
+        setLoading(true)
         connection.put(`/confirm_socio/${id}`,'', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message)//Atualizar o json do botao //Ex: todo list
             const altera = [...socio_data];
             altera[index].confirmado = 1;
             setData(altera)
         }).catch((err)=>{
+            setLoading(false)
             alert(err.message)
             // alert(err.response.data.message) //Nao pode atualizar mesmo socios duas vezes pra nao gerar mais faturas
         })
@@ -55,48 +61,56 @@ const ListaSocios=()=>{
 
         
     const ConfirmarDependente= (id,index)=>{
+        setLoading(true)
         connection.post(`/confirm_dependente/${id}`,'', { //Update to put
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message)
             const altera = [...dependente_data];
             altera[index].confirmado = 1;
             setDependentes(altera);
 
         }).catch((err)=>{
+            setLoading(false);
             alert(err)
         })
     }
 
 
     const DeletarSocio= (id)=>{
+        setLoading(true)
         connection.delete(`/socio/${id}`, {
             headers:{
                 authorization:  `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false);
             alert(dados.data.message)
             setData(socio_data.filter(socios=> socios.socio_id !==id))
 
         }).catch((err)=>{
+            setLoading(false);
             alert(err.message)
         })
 
     }
 
     const DeletarDependente= (id)=>{
-
+        setLoading(true);
         connection.delete(`/delete_dependente/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
+            setLoading(false)
             alert(dados.data.message);
             setDependentes(dependente_data.filter(dependentes=> dependentes.dependente_id !==id))
 
         }).catch((err)=>{
+            setLoading(false)
             alert(err.message)
         })
 
