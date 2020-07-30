@@ -1,4 +1,4 @@
-import React, {Suspense, lazy} from 'react';
+import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PrivateSocioRoute from './privateSocioRoutes';
 import PrivateAdmRoute from './privateAdmRoutes';
@@ -34,6 +34,7 @@ const Routes= ()=>{
                     <Route path="/convenios" component={Convenios}/>
                     <Route path="/sobre" component={Sobre}/>
                     <Route path="/termosdeuso" component={Termos}/>
+
                     </Spinner>  
 
                 </Switch>

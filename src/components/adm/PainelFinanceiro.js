@@ -19,7 +19,7 @@ const PainelFinanceiro=()=>{
             alert(err)
         })
     },[]);
-
+// index_pagamentos
     return (
     <div id='componente-painel-financeiro' style={{margin:"0 auto",width:"80%"}}>
         <h2>Painel Financeiro</h2>
@@ -60,7 +60,7 @@ const PainelFinanceiro=()=>{
                      <Doughnut data={{
                         datasets:[{
                             backgroundColor: ['green','red','black','yellow','blue'],
-                            data:[38,7,40,9,10]
+                            data:[38,7,40,9,10],
                         }],
                         labels: [
                             'Em dia',
