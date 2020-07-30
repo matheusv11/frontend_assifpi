@@ -158,9 +158,9 @@ const ListaSocios=()=>{
                                 <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
                                 
                                 
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar socio_data</button>}
+                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar Sócio</button>}
 
-                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar socio_data</button>
+                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar Sócio</button>
                             
                             </div>
                         </div>

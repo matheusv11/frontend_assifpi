@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom'
 import connection from '../../services/connection';
 import {useAuth} from '../auth';
 
 const CadastroSocio= ()=>{
+
+    const [accept,setAccept]=useState();
+
+    
 
     const {setLoading}= useAuth();
 
@@ -127,7 +132,13 @@ const CadastroSocio= ()=>{
                         </div>
                     </div>
                     
-                    <button onClick={Registrar} type="submit" class="btn btn-success">Cadastrar</button>
+                    <div class="form-group form-check">
+                        <input type="radio" class="form-check-input" onChange={e=>setAccept(e.target.value)} />
+                        <label class="form-check-label" for="exampleCheck1">Ao me cadastrar eu concordo com os <Link to="/termosdeuso" style={{color:"blue"}}>Termos e Condições de uso</Link></label>
+                    </div>
+
+                    {!accept && <button onClick={Registrar} type="submit" class="btn btn-success" disabled>Cadastrar</button>}
+                    {accept=='on' && <button onClick={Registrar} type="submit" class="btn btn-success">Cadastrar</button>}
                 </form>
             </div>
         </div>
