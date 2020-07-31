@@ -5,27 +5,46 @@ import { Line,Doughnut } from 'react-chartjs-2';
 
 const PainelFinanceiro=()=>{
 
-    const {admToken}= useAuth();
+    const {admToken, setLoading}= useAuth();
+    // const[dados,setDados]=useState({})
     const[pendentes,setPendente]=useState([]);
+    const[anos,setAnos]=useState([])
+    const[meses_anos,setMeses]=useState([])
+    const[selected_date,setDate]=useState('2020');
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
-    const dados=['02/2020', '08/2020', '10/2020']
-  
-    const factory= dados.map((dados, index)=>{
-        const ok= dados.split('/')
+    
+
+    useEffect(()=>{
+        setLoading(true)
+        connection.get(`index_pagamentos?ano=${selected_date}`, {
+            headers:{
+                authorization: `Bearer ${admToken}`
+            }
+        }).then((dados)=>{
+            setLoading(false)
+            setAnos(dados.data.anos);
+            setMeses(dados.data.meses_anos)
+            // setDados(dados.data)//Ou setar
+
+        }).catch((err)=>{
+            setLoading(false)
+            alert(err.message)
+        })
+    },[])
+
+    const factory= meses_anos.map((dados, index)=>{ //Talvez o index serva depois
+        const [object_name]= Object.getOwnPropertyNames(dados)
+
+        const ok= object_name.split('/') //Talvez o index serveria se nao fosse pela quebra do array
         const labels= meses[ok[0]-1]
-        console.log(parseInt(ok[0]))
-        console.log(labels)
-        // To float pode funcionar no back 
-        //Retornar labels da posicao do mes
-        // return ok[index] Pegar ano e mes
+        return labels
+        // To float pode funcionar no back //Retornar labels da posicao do mes
+        // return ok[index] Pegar ano e mes // console.log(parseInt(ok[0])) 
+        
     })
 
+//Loading
 
-    // alert(factory[1])
-    //As labels vao retornar na posicao dos dados
-    //Selecionar os meses e dados por aqui
-
-    const valores= [10,20,30,40]
 
     useEffect(()=>{
         connection.get('/faturas', {
@@ -38,7 +57,7 @@ const PainelFinanceiro=()=>{
             alert(err)
         })
     },[]);
-// index_pagamentos
+
     return (
     <div id='componente-painel-financeiro' style={{margin:"0 auto",width:"80%"}}>
         <h2>Painel Financeiro</h2>
@@ -59,12 +78,16 @@ const PainelFinanceiro=()=>{
 
                 <div>
                     <Line  data= {{
-                    labels: meses,
+                    labels: factory,
                     datasets: [{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: [12,20],
+                        data: meses_anos.map((meses,index)=>{
+                            let [retorno]= Object.values(meses);
+                            return retorno
+                            // return meses[index]
+                        }),
                         // data: valores.reverse() //So dar um reverse //Reverse na label 
                     },
 
