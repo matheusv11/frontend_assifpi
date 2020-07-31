@@ -8,12 +8,20 @@ const PainelFinanceiro=()=>{
     const {admToken}= useAuth();
     const[pendentes,setPendente]=useState([]);
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
-    const dados=['02/2020', '08/2020']
-    const factory= dados.map((dados)=>{
+    const dados=['02/2020', '08/2020', '10/2020']
+  
+    const factory= dados.map((dados, index)=>{
         const ok= dados.split('/')
-        return ok
+        const labels= meses[ok[0]-1]
+        console.log(parseInt(ok[0]))
+        console.log(labels)
+        // To float pode funcionar no back 
+        //Retornar labels da posicao do mes
+        // return ok[index] Pegar ano e mes
     })
-    // alert(factory[0][0])
+
+
+    // alert(factory[1])
     //As labels vao retornar na posicao dos dados
     //Selecionar os meses e dados por aqui
 
