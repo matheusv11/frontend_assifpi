@@ -30,11 +30,10 @@ const PainelFinanceiro=()=>{
             setLoading(false)
             alert(err.message)
         })
-    },[])
+    },[selected_date])
 
     const factory= meses_anos.map((dados, index)=>{ //Talvez o index serva depois
         const [object_name]= Object.getOwnPropertyNames(dados)
-
         const ok= object_name.split('/') //Talvez o index serveria se nao fosse pela quebra do array
         const labels= meses[ok[0]-1]
         return labels
@@ -44,7 +43,6 @@ const PainelFinanceiro=()=>{
     })
 
 //Loading
-
 
     useEffect(()=>{
         connection.get('/faturas', {
@@ -67,6 +65,13 @@ const PainelFinanceiro=()=>{
                 <button type="button"  class="btn btn-success" 
                 data-toggle="collapse" data-target="#collapseExample" 
                 aria-expanded="false" aria-controls="collapseExample">VIZUALIZAR PENDENTES</button>
+                
+
+                <select onChange={e=> setDate(e.target.value)} style={{marginLeft: '20px', borderRadius: '6px'}} class="btn btn-primary dropdown-toggle">
+                  {anos.map(anos=>(
+                        <option>{anos.ano}</option>
+                  ))}
+                </select>
 
                 <div class="collapse" id="collapseExample">
                     <ul class="list-group">
@@ -77,8 +82,9 @@ const PainelFinanceiro=()=>{
                 </div>
 
                 <div>
+
                     <Line  data= {{
-                    labels: factory,
+                    labels: factory, //Ou indexOf para condicao ficar dentro da labels
                     datasets: [{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
