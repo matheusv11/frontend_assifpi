@@ -7,6 +7,17 @@ const PainelFinanceiro=()=>{
 
     const {admToken}= useAuth();
     const[pendentes,setPendente]=useState([]);
+    const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
+    const dados=['02/2020', '08/2020']
+    const factory= dados.map((dados)=>{
+        const ok= dados.split('/')
+        return ok
+    })
+    // alert(factory[0][0])
+    //As labels vao retornar na posicao dos dados
+    //Selecionar os meses e dados por aqui
+
+    const valores= [10,20,30,40]
 
     useEffect(()=>{
         connection.get('/faturas', {
@@ -40,13 +51,15 @@ const PainelFinanceiro=()=>{
 
                 <div>
                     <Line  data= {{
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: meses,
                     datasets: [{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: [5, 20, 5, 2, 20, 30, 45]
+                        data: [12,20],
+                        // data: valores.reverse() //So dar um reverse //Reverse na label 
                     },
+
                     {
                         label: 'Gastos',
                         backgroundColor: 'transparent',
