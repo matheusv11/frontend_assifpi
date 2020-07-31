@@ -7,13 +7,13 @@ const PainelFinanceiro=()=>{
 
     const {admToken, setLoading}= useAuth();
     // const[dados,setDados]=useState({})
+    const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
     const[pendentes,setPendente]=useState([]);
     const[anos,setAnos]=useState([])
     const[meses_anos,setMeses]=useState([])
     const[selected_date,setDate]=useState('2020');
-    const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
+    const[doughnut,setDougdata]=useState('');
     
-
     useEffect(()=>{
         setLoading(true)
         connection.get(`index_pagamentos?ano=${selected_date}`, {
@@ -24,6 +24,7 @@ const PainelFinanceiro=()=>{
             setLoading(false)
             setAnos(dados.data.anos);
             setMeses(dados.data.meses_anos)
+            setDougdata(dados.data.doughnut)
             // setDados(dados.data)//Ou setar
 
         }).catch((err)=>{
@@ -109,15 +110,13 @@ const PainelFinanceiro=()=>{
 
                      <Doughnut data={{
                         datasets:[{
-                            backgroundColor: ['green','red','black','yellow','blue'],
-                            data:[38,7,40,9,10],
+                            backgroundColor: ['green','yellow','blue'],
+                            data: doughnut,
                         }],
                         labels: [
                             'Em dia',
                             'Pendentes',
                             'Usuarios totais',
-                            'Usuarios esperando validação',
-                            'Usuarios esperando confeccionamento'
                         ],}} options={{title:{
                             display:true,
                             fontSize:30,
