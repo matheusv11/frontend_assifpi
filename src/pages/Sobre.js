@@ -11,14 +11,16 @@ const Sobre=()=>{
             
             <header
                 className="masthead"
-                style={{ backgroundImage: 'url("assets/sobre/img/logocolor.png")' }}
+                style={{ backgroundImage: 'url("assets/sobre/img/logocolor.png")',
+                width:"90%",
+                margin:"0 auto" }}
             >
                 <div className="overlay" />
                 <div className="container">
                 <div className="row">
                     <div className="col-md-10 col-lg-8 mx-auto">
                     <div className="site-heading">
-                        <h1>Quem somos?</h1>
+                        <h2>Quem somos?</h2>
                         <span className="subheading">
                         Veja nossa história, missão e mais
                         </span>

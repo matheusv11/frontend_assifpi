@@ -23,7 +23,7 @@ const LoginAdm = ()=>{
     }
 
     return(
-        <div id='componente-login-adm' style={{margin:"0 auto",width:"80%"}}>
+        <div id='componente-login-adm' class="col-sm-6 col-xs-12" style={{margin:"0 auto"}}>
 
         <h2>Login de administrador</h2>
     

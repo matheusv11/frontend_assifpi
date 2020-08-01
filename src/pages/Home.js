@@ -4,12 +4,16 @@ import NavBar from '../components/NavBar';
 const Home= ()=>{
 
     return(
-        <div id="home">
+        <div id="home" 
+        //style={{width:"90%",margin:"0 auto"}}
+        >
             <NavBar/>            
             <header
                 className="masthead"
                 style={{
-                backgroundImage: 'url("assets/index/img/imagem-visao-aeria-assifpi.jpg")'
+                backgroundImage: 'url("assets/index/img/imagem-visao-aeria-assifpi.jpg")',
+                width:"90%",
+                margin:"0 auto"
                 }}
             >
                 <div className="overlay" />
@@ -17,7 +21,7 @@ const Home= ()=>{
                 <div className="row">
                     <div className="col-md-10 col-lg-8 mx-auto">
                     <div className="site-heading">
-                        <h1>Venha para associação dos servidores do IFPI!</h1>
+                        <h3>Venha para associação dos servidores do IFPI!</h3>
                         <span className="subheading">
                         Junte-se a outros servidores e faça parte da família!
                         </span>
@@ -100,24 +104,6 @@ const Home= ()=>{
                     <i className="icon ion-social-facebook" />
                     </a>
                 </div>
-                <ul className="list-inline">
-                    <li className="list-inline-item">
-                    <a href="index.html">Home</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="noticias.html">Notícias</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="convenios.html">Convênios</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="sobre.html">Sobre</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="contato.html">Contato</a>
-                    </li>
-                    <li className="list-inline-item" />
-                </ul>
                 <h1 style={{ fontSize: 20, color: "rgb(170,170,170)" }}>
                     Rua Elizeu Martins, 1673, 64002-370, Teresina
                 </h1>

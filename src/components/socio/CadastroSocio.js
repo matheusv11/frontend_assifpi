@@ -52,21 +52,23 @@ const CadastroSocio= ()=>{
     }
 
     return (
-        <div id='componente-cadastro-socio' style={{margin:"0 auto",width:"80%"}}>
+        <div id='componente-cadastro-socio' class="col-sm-10 col-xs-12" style={{margin:"0 auto"}}>
         
         <h2>Cadastre-se como Sócio</h2>
     
         <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
             <div class="card-body">
                 <form onSubmit={Registrar}>
-                    <div class="form-group">
-                    <label>Email:</label>
-                    <input onChange={e=> setData({...formData, email: e.target.value})} type="email" class="form-control" id="" required/>
-                    </div>
-            
-                    <div class="form-group">
-                        <label>Nome Completo:</label>
-                        <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" class="form-control" id="" required/>
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label>Nome Completo:</label>
+                            <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" class="form-control" id="" required/>
+                        </div>
+                        
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label>Email:</label>
+                            <input onChange={e=> setData({...formData, email: e.target.value})} type="email" class="form-control" id="" required/>
+                        </div>
                     </div>
 
                     <div class="row">
