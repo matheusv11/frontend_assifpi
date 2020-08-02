@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react';
 import connection from '../services/connection';
 import {useAuth} from '../components/auth';
+import Navbar from '../components/NavBar';
+
 
 const Convenios=()=>{
     
-    const {admToken,setLoading}=useAuth();
+    const {token,admToken,setLoading}=useAuth();
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
@@ -18,7 +20,6 @@ const Convenios=()=>{
         }).catch((err)=>{
             alert(err.message);
             setLoading(false)
-
         })
     },[]);
 
@@ -65,7 +66,10 @@ const Convenios=()=>{
     }
 
     return (
-    <div id="page-convenios" style={{margin:"0 auto",width:"95%"}}>
+    <div id="page-convenios">
+        
+        {!token && !admToken && <Navbar/>}
+        
         <h2>Convenios para os assóciados!</h2>
 
         {admToken && 

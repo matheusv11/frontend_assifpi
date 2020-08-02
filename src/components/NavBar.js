@@ -4,53 +4,56 @@ import {Link} from 'react-router-dom';
 const NavBar= ()=>{
     
     return(
-        <nav className="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-                <div className="container">
-                <Link to="/" className="navbar-brand" >
-                <img src="assets/sobre/img/logocolor.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"/>
-                    ASSIFPI
+        
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <Link to="/" className="navbar-brand text-white">
+                        <img src="assets/sobre/img/logocolor.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"/>
+                                ASSIFPI
                 </Link>
-                <button
-                    data-toggle="collapse"
-                    data-target="#navbarResponsive"
-                    className="navbar-toggler"
-                    aria-controls="navbarResponsive"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <i className="fa fa-bars" />
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarResponsive">
-                    <ul className="nav navbar-nav ml-auto">
-                    <li className="nav-item" role="presentation">
-                        <Link to="/" className="nav-link">
-                        Home
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                        <Link to="/" className="nav-link text-white">
+                            Home
                         </Link>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <Link to="/feed" class="nav-item">
+                </li>
+
+                <li class="nav-item">
+                        <Link to="/feed" class="nav-link text-white">
                             Notícias
                         </Link>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <Link to="/convenios" class="nav-item">
+                </li>
+
+                <li class="nav-item">
+                        <Link to="/convenios" class="nav-link text-white">
                             Convênios
                         </Link>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <Link to="/sobre" class="nav-item">
+                </li>
+
+                <li class="nav-item">
+                        <Link to="/sobre" class="nav-link text-white">
                             Sobre
                         </Link>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                        <Link to="/acesso" class="nav-item">
-                        Área do associado
+                </li>
+
+                <li class="nav-item">
+                        <Link to="/acesso" class="nav-link text-white">
+                            Área do associado
                         </Link>
-                    </li>
-                    </ul>
+                </li>
+
+
+
+                </ul>
+                
                 </div>
-                </div>
-            </nav>
+        </nav>
     )
 }
 
