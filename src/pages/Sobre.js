@@ -12,7 +12,7 @@ const Sobre=()=>{
             <header
                 className="masthead"
                 style={{ backgroundImage: 'url("assets/sobre/img/logocolor.png")',
-                width:"90%",
+                // width:"90%",
                 margin:"0 auto" }}
             >
                 <div className="overlay" />

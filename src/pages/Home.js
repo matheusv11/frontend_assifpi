@@ -12,7 +12,7 @@ const Home= ()=>{
                 className="masthead"
                 style={{
                 backgroundImage: 'url("assets/index/img/imagem-visao-aeria-assifpi.jpg")',
-                width:"90%",
+                // width:"90%",
                 margin:"0 auto"
                 }}
             >
