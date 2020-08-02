@@ -16,7 +16,7 @@ const CadastrarAdm=()=>{
         const data= {nome,email,senha}
         
         if(senha!==repeat){
-           return alert('Senhas diferentes')
+           return alert('Senhas diferentes') //Pode ser pelo back ou pelo html mesmo
         }
         setLoading(true);
         connection.post('/adm', data, {

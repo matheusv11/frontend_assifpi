@@ -13,7 +13,7 @@ const CadastrarPostagem = () => {
         e.preventDefault();
         const {titulo,descricao,local, data, hora}= formData;
         // const {...rest}= formData;
-        const format_data= data.split('-')
+        const format_data= data.split('-') //No back tava com o date now
         const dados= {titulo,descricao,local,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`,hora}
         setLoading(true);
         connection.post('/evento', dados, {
