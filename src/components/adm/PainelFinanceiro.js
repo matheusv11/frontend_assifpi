@@ -5,16 +5,17 @@ import { Line,Doughnut } from 'react-chartjs-2';
 
 const PainelFinanceiro=()=>{
 
-    const {admToken, setLoading}= useAuth();
+    const {admToken,setLoading}= useAuth();
     // const[dados,setDados]=useState({})
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
     const[pendentes,setPendente]=useState([]);
-    const[anos,setAnos]=useState([])
-    const[meses_anos,setMeses]=useState([])
+    const[anos,setAnos]=useState([]);
+    const[soma_ganhos,setGanhos]=useState([]);
+    const[soma_gastos,setGastos]=useState([]);
     const[selected_date,setDate]=useState('2020');
     const[doughnut,setDougdata]=useState('');
-    
-    useEffect(()=>{
+
+    useEffect(()=>{ 
         setLoading(true)
         connection.get(`index_pagamentos?ano=${selected_date}`, {
             headers:{
@@ -23,27 +24,15 @@ const PainelFinanceiro=()=>{
         }).then((dados)=>{
             setLoading(false)
             setAnos(dados.data.anos);
-            setMeses(dados.data.meses_anos)
+            setGanhos(dados.data.soma_ganhos)
+            setGastos(dados.data.soma_gastos)
             setDougdata(dados.data.doughnut)
-            // setDados(dados.data)//Ou setar
 
         }).catch((err)=>{
             setLoading(false)
             alert(err.message)
         })
     },[selected_date])
-
-    const factory= meses_anos.map((dados, index)=>{ //Talvez o index serva depois
-        const [object_name]= Object.getOwnPropertyNames(dados)
-        const ok= object_name.split('/') //Talvez o index serveria se nao fosse pela quebra do array
-        const labels= meses[ok[0]-1]
-        return labels
-        // To float pode funcionar no back //Retornar labels da posicao do mes
-        // return ok[index] Pegar ano e mes // console.log(parseInt(ok[0])) 
-        
-    })
-
-//Loading
 
     useEffect(()=>{
         connection.get('/faturas', {
@@ -57,6 +46,29 @@ const PainelFinanceiro=()=>{
         })
     },[]);
 
+
+
+    const intersection= soma_ganhos.concat(soma_gastos);
+        
+    const array= intersection.map((item)=>{
+        const [object_name]= Object.getOwnPropertyNames(item)
+        return object_name
+    })
+
+    const filter_array = array.filter((item, pos, self)=> {
+        return self.indexOf(item) == pos;
+    })
+
+    const labels= filter_array.map((dados, index)=>{ //Talvez o index serva depois
+        // const [object_name]= Object.getOwnPropertyNames(dados)
+        const ok= dados.split('/') //Talvez o index serveria se nao fosse pela quebra do array
+        const labels= meses[ok[0]-1]
+        // return setLabel(labels); //Bom testar
+        return labels
+        
+    })
+
+        
     return (
     <div id='componente-painel-financeiro' style={{margin:"0 auto",width:"80%"}}>
         <h2>Painel Financeiro</h2>
@@ -85,12 +97,12 @@ const PainelFinanceiro=()=>{
                 <div>
 
                     <Line  data= {{
-                    labels: factory, //Ou indexOf para condicao ficar dentro da labels
+                    labels: labels, //Ou indexOf para condicao ficar dentro da labels
                     datasets: [{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: meses_anos.map((meses,index)=>{
+                        data: soma_ganhos.map((meses,index)=>{
                             let [retorno]= Object.values(meses);
                             return retorno
                             // return meses[index]
@@ -102,7 +114,18 @@ const PainelFinanceiro=()=>{
                         label: 'Gastos',
                         backgroundColor: 'transparent',
                         borderColor: 'red',
-                        data: [5, 10, 3, 1, 21, 20, 20]}]
+                        data: filter_array.map(((meses,index)=>{
+
+                            // let split= meses.split('/')
+                            // let Objeto= Object.getOwnPropertyNames(soma_gastos[index])
+                            // console.log(Objeto[index].split('/'));
+                            // if(split[0]!== ok[0]){
+                            //     return 0
+                            // }
+                            let [retorno]= Object.values(meses)
+                            return retorno
+                        }))
+                    }]
                         }} options={{title:{
                             display:true,
                             fontSize:30,
