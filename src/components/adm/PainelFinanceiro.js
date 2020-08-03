@@ -5,7 +5,7 @@ import { Line,Doughnut } from 'react-chartjs-2';
 
 const PainelFinanceiro=()=>{
 
-    const {admToken,setLoading}= useAuth();
+    const {admToken,setLoading, loading}= useAuth();
     // const[dados,setDados]=useState({})
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
     const[pendentes,setPendente]=useState([]);
@@ -32,6 +32,7 @@ const PainelFinanceiro=()=>{
             setLoading(false)
             alert(err.message)
         })
+
     },[selected_date])
 
     useEffect(()=>{
@@ -47,9 +48,9 @@ const PainelFinanceiro=()=>{
     },[]);
 
 
-
+    
     const intersection= soma_ganhos.concat(soma_gastos);
-        
+    
     const array= intersection.map((item)=>{
         const [object_name]= Object.getOwnPropertyNames(item)
         return object_name
@@ -68,7 +69,6 @@ const PainelFinanceiro=()=>{
         
     })
 
-        
     return (
     <div id='componente-painel-financeiro' style={{margin:"0 auto",width:"80%"}}>
         <h2>Painel Financeiro</h2>
@@ -115,8 +115,7 @@ const PainelFinanceiro=()=>{
                         backgroundColor: 'transparent',
                         borderColor: 'red',
                         data: filter_array.map(((meses,index)=>{
-
-                            // let split= meses.split('/')
+                            let split= meses.split('/')
                             // let Objeto= Object.getOwnPropertyNames(soma_gastos[index])
                             // console.log(Objeto[index].split('/'));
                             // if(split[0]!== ok[0]){
