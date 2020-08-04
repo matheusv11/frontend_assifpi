@@ -5,15 +5,11 @@ import { Line,Doughnut } from 'react-chartjs-2';
 
 const PainelFinanceiro=()=>{
 
-    const {admToken,setLoading, loading}= useAuth();
-    // const[dados,setDados]=useState({})
+    const {admToken,setLoading}= useAuth();
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
     const[pendentes,setPendente]=useState([]);
-    const[anos,setAnos]=useState([]);
-    const[soma_ganhos,setGanhos]=useState([]);
-    const[soma_gastos,setGastos]=useState([]);
-    const[selected_date,setDate]=useState('2020');
-    const[doughnut,setDougdata]=useState('');
+    const[selected_date,setDate]=useState('2019');
+    const[dados,setDados]=useState({anos: [], ganhos:[], gastos:[], doughnut:[]})
 
     useEffect(()=>{ 
         setLoading(true)
@@ -23,11 +19,10 @@ const PainelFinanceiro=()=>{
             }
         }).then((dados)=>{
             setLoading(false)
-            setAnos(dados.data.anos);
-            setGanhos(dados.data.soma_ganhos)
-            setGastos(dados.data.soma_gastos)
-            setDougdata(dados.data.doughnut)
-
+            setDados({
+                anos: dados.data.anos, ganhos: dados.data.soma_ganhos,
+                gastos: dados.data.soma_gastos, doughnut: dados.data.doughnut
+            })
         }).catch((err)=>{
             setLoading(false)
             alert(err.message)
@@ -46,25 +41,29 @@ const PainelFinanceiro=()=>{
             alert(err)
         })
     },[]);
-
-
-    
-    const intersection= soma_ganhos.concat(soma_gastos);
+    const intersection= dados.ganhos.concat(dados.gastos);
     
     const array= intersection.map((item)=>{
         const [object_name]= Object.getOwnPropertyNames(item)
         return object_name
     })
-
+    const object_gastos= dados.gastos.map((item)=>{
+        const [object_name]= Object.getOwnPropertyNames(item)
+        // const [valor]=Object.values(item);
+        return object_name
+    })
+    const object_ganhos= dados.ganhos.map((item)=>{
+        const [object_name]= Object.getOwnPropertyNames(item)
+        // const [valor]=Object.values(item);
+        return object_name
+    })
     const filter_array = array.filter((item, pos, self)=> {
         return self.indexOf(item) == pos;
     })
 
     const labels= filter_array.map((dados, index)=>{ //Talvez o index serva depois
-        // const [object_name]= Object.getOwnPropertyNames(dados)
         const ok= dados.split('/') //Talvez o index serveria se nao fosse pela quebra do array
         const labels= meses[ok[0]-1]
-        // return setLabel(labels); //Bom testar
         return labels
         
     })
@@ -79,9 +78,8 @@ const PainelFinanceiro=()=>{
                 data-toggle="collapse" data-target="#collapseExample" 
                 aria-expanded="false" aria-controls="collapseExample">VIZUALIZAR PENDENTES</button>
                 
-
                 <select onChange={e=> setDate(e.target.value)} style={{marginLeft: '20px', borderRadius: '6px'}} class="btn btn-primary dropdown-toggle">
-                  {anos.map(anos=>(
+                  {dados.anos.map(anos=>(
                         <option>{anos.ano}</option>
                   ))}
                 </select>
@@ -102,12 +100,24 @@ const PainelFinanceiro=()=>{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: soma_ganhos.map((meses,index)=>{
-                            let [retorno]= Object.values(meses);
-                            return retorno
-                            // return meses[index]
+                        data: filter_array.map((meses,index)=>{
+                            let increment= 0;
+                            let element= object_ganhos.indexOf(meses);
+                            let filtered= null;
+                            if(element>-1){
+                                [filtered]= Object.values(dados.ganhos[element])
+                            }
+                            
+                            while(increment<filter_array.length){
+                                let pos= filter_array.indexOf(object_ganhos[increment])
+                                
+                                if(index==pos){
+                                    // console.log(`Igual na posicao ${index} + ${increment}`)
+                                    return filtered
+                                }
+                                increment++
+                            }
                         }),
-                        // data: valores.reverse() //So dar um reverse //Reverse na label 
                     },
 
                     {
@@ -115,14 +125,22 @@ const PainelFinanceiro=()=>{
                         backgroundColor: 'transparent',
                         borderColor: 'red',
                         data: filter_array.map(((meses,index)=>{
-                            let split= meses.split('/')
-                            // let Objeto= Object.getOwnPropertyNames(soma_gastos[index])
-                            // console.log(Objeto[index].split('/'));
-                            // if(split[0]!== ok[0]){
-                            //     return 0
-                            // }
-                            let [retorno]= Object.values(meses)
-                            return retorno
+                            let increment= 0;
+                            let element= object_gastos.indexOf(meses);
+                            let filtered= null;
+                            if(element>-1){
+                                [filtered]= Object.values(dados.gastos[element])
+                            }
+                            
+                            while(increment<filter_array.length){
+                                let pos= filter_array.indexOf(object_gastos[increment])
+                                
+                                if(index==pos){
+                                    // console.log(`Igual na posicao ${index} + ${increment}`)
+                                    return filtered
+                                }
+                                increment++
+                            }
                         }))
                     }]
                         }} options={{title:{
@@ -133,7 +151,7 @@ const PainelFinanceiro=()=>{
                      <Doughnut data={{
                         datasets:[{
                             backgroundColor: ['green','yellow','blue'],
-                            data: doughnut,
+                            data: dados.doughnut,
                         }],
                         labels: [
                             'Em dia',
