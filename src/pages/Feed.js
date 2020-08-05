@@ -8,7 +8,7 @@ import Navbar from '../components/NavBar'
 
 const Feed=()=>{
 
-     const {token,admToken}= useAuth();
+    const {token,admToken}= useAuth();
     // const [participa,setParticipa]=useState(false);
     // Talvez usar query na url //Ex site de rotas com hooks
     const {setLoading}= useAuth();
@@ -37,9 +37,6 @@ const Feed=()=>{
             setLoading(false)
         })
     },[page]);
-
-    
-
 
     return(
     <div id="page-feed" >

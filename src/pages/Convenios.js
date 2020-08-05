@@ -10,6 +10,7 @@ const Convenios=()=>{
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
+    const[anexo,setAnexo]=useState('');
     const[convenios,setConvenios]=useState([]);
 
     useEffect(()=>{
@@ -27,6 +28,7 @@ const Convenios=()=>{
         e.preventDefault();
         const format= new FormData();
         format.append('file', imagem);
+        format.append('file', anexo);
         format.append('titulo', titulo);
         format.append('descricao', descricao);
         setLoading(true);
@@ -38,11 +40,11 @@ const Convenios=()=>{
         }).then((dados)=>{
             setLoading(false);
             alert(dados.data.message);
-            setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem}]) 
+            setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem, anexo: dados.data.anexo}]) 
             //Resolver problema de url de imagem //Melhorar isso //ConvenioController
         }).catch((err)=>{
             setLoading(false);
-            alert(err.message)
+            alert(err.response.data.message)
         })
     }
 
@@ -91,9 +93,16 @@ const Convenios=()=>{
                             <label >Descrição:</label>
                             <textarea onChange={e=> setDescricao(e.target.value)} class="form-control" />
                         </div>
-                        <div class="form-group form-check">
-                            <label>Imagem (opcional):</label><br/>
-                            <input onChange={e=> setImagem(e.target.files[0])} type="file"/>
+                        <div class="row">
+                            <div class="form-group form-check col-sm-6 col-xs-12">
+                                <label>Imagem:</label><br/>
+                                <input onChange={e=> setImagem(e.target.files[0])} type="file"/>
+                            </div>
+
+                            <div class="form-group form-check col-sm-6 col-xs-12">
+                                <label>Anexo:</label><br/>
+                                <input type="file" onChange={e=> setAnexo(e.target.files[0])}/>
+                            </div>
                         </div>
                         <button onClick={Criar} type="submit" class="btn btn-success">Publicar</button>
                     </form>
@@ -105,12 +114,14 @@ const Convenios=()=>{
  
         <div style={{borderColor:"black",width:"100%"}}>
             {convenios.map(dados=>(
-                <div class="card" style={{width: '16rem',height:"25rem",float:"left",borderColor:"green" ,margin:"4%"}}>
+                <div class="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%"}}>
                 {dados.imagem && <img src={`http://localhost:3030/files/${dados.imagem}`} style={{height:"50%"}} class="card-img-top" />}
                 <div class="card-body">
                     <h5 class="card-title">{dados.titulo}</h5>
-                    <p class="card-text">{dados.descricao}</p>
+                    <p class="card-text">{dados.descricao}</p> 
+                    <p><b>Anexo:<a target="_blank" href={`http://localhost:3030/files/${dados.anexo}`}>Documento</a></b></p> 
                         {admToken && <button onClick={()=> Deletar(dados.id)} type="button" class="btn btn-danger">Deletar este convenio</button>}
+                        
                 </div>
                 </div>
             ))}

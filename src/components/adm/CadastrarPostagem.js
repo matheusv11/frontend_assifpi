@@ -6,17 +6,25 @@ const CadastrarPostagem = () => {
     const {admToken,setLoading}= useAuth();
 
     const [formData, setData]= useState({
-        titulo:'', descricao:'', local:'', data:'', hora:''
+        titulo:'', descricao:'', local:'', data:'', hora:'', anexo:''
     });
 
     const Cadastrar= (e)=>{
         e.preventDefault();
-        const {titulo,descricao,local, data, hora}= formData;
+        const {titulo,descricao,local, data, hora,anexo}= formData;
         // const {...rest}= formData;
+        const format= new FormData();
         const format_data= data.split('-') //No back tava com o date now
-        const dados= {titulo,descricao,local,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`,hora}
+        format.append('file', anexo)
+        format.append('titulo', titulo)
+        format.append('descricao',descricao)
+        format.append('local',local)
+        format.append('data', `${format_data[2]}/${format_data[1]}/${format_data[0]}`)
+        format.append('hora', hora)
+
         setLoading(true);
-        connection.post('/evento', dados, {
+
+        connection.post('/evento', format, {
             headers:{
                 authorization:`Bearer ${admToken}`
             }
@@ -36,7 +44,7 @@ const CadastrarPostagem = () => {
         <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
             <div class="card-body">
                 <form onSubmit={Cadastrar}>
-
+                
                     <div class="form-group">
                     <label>Título:</label>
                     <input onChange={e=> setData({...formData, titulo: e.target.value})} type="text" class="form-control" id="" required/>
@@ -64,6 +72,12 @@ const CadastrarPostagem = () => {
                             <input onChange={e=> setData({...formData, hora: e.target.value})} type="time" class="form-control" id="" />
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label>Anexo(OPCIONAL):</label><br/>
+                        <input type="file" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
+                    </div>
+                
             
                     
                     <button onClick={Cadastrar} type="submit" class="btn btn-success">Publicar</button>

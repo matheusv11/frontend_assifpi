@@ -112,6 +112,8 @@ const Postagem=({evento})=>{
                         <p><b>Hora: </b>{evento.hora}</p>
 
                         <p><b>Local: </b>{evento.local}</p>
+
+                        { evento.anexo && <p><b>Anexo: </b><a target="_blank" href={`http://localhost:3030/files/${evento.anexo}`}>Documento</a></p>}
                         
                         {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" class="btn btn-outline-success">Confirmar presença</button>):
                         (<button onClick={Remover} type="button" class="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
