@@ -118,23 +118,27 @@ const CadastroSocio= ()=>{
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-sm-4 col-xs-12">
-                            <label>IMAGEM RG:</label>
-                            <input onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})} type="file" id=""  required/>
+                        <div class="custom-file col-sm-4 col-xs-12">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
+                            <label class="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG' : formData.imagem_rg.name }</label>
                         </div>
 
-                        <div class="form-group col-sm-4 col-xs-12">
-                            <label>IMAGEM CPF:</label>
-                            <input onChange={e=> setData({...formData, imagem_cpf: e.target.files[0]})} type="file" id=""  required/>
+
+                        <div class="custom-file col-sm-4 col-xs-12">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon01" 
+                            onChange={e=> setData({...formData, imagem_cpf: e.target.files[0]})} required/>
+                            <label class="custom-file-label" for="inputGroupFile02">{!formData.imagem_cpf ? 'Imagem CPF' : formData.imagem_cpf.name }</label>
                         </div>
 
-                        <div class="form-group col-sm-4 col-xs-12">
-                            <label>IMAGEM COMPROVANTE DE ENDEREÇO:</label>
-                            <input onChange={e=> setData({...formData, comprovante: e.target.files[0]})} type="file" id=""  required/>
+                        <div class="custom-file col-sm-4 col-xs-12">
+                            <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon01" 
+                            onChange={e=> setData({...formData, comprovante: e.target.files[0]})} required/>
+                            <label class="custom-file-label" for="inputGroupFile03">{!formData.comprovante ? 'Compovante Residencia' : formData.comprovante.name }</label>
                         </div>
                     </div>
                     
-                    <div class="form-group form-check">
+                    <div class="form-group form-check" style={{marginTop:"2%"}} >
                         <input type="radio" class="form-check-input" onChange={e=>setAccept(e.target.value)} />
                         <label class="form-check-label" for="exampleCheck1">Ao me cadastrar eu concordo com os <Link to="/termosdeuso" style={{color:"blue"}}>Termos e Condições de uso</Link></label>
                     </div>

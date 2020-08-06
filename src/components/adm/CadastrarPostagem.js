@@ -73,14 +73,14 @@ const CadastrarPostagem = () => {
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Anexo(OPCIONAL):</label><br/>
-                        <input type="file" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
+                    <div class="custom-file col-sm-6 col-xs-12">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
+                        <label class="custom-file-label" for="inputGroupFile01">{!formData.anexo ? 'Anexe algo' : formData.anexo.name }</label>
                     </div>
                 
-            
+                    <br/>
                     
-                    <button onClick={Cadastrar} type="submit" class="btn btn-success">Publicar</button>
+                    <button onClick={Cadastrar} style={{marginTop:"2%"}} type="submit" class="btn btn-success">Publicar</button>
                 </form>
             </div>
         </div>
