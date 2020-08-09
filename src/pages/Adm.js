@@ -56,8 +56,6 @@ const Adm=()=>{
         <div class="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
         <label class="nav-link text-white" onClick={()=> setWhatis('cp')}>Cadastrar Postagem</label>
         <label class="nav-link text-white" onClick={()=> setWhatis('pf')}>Painel Financeiro</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('feed')}>Feed de Postagens</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('convenios')}>Convenios de sócios</label>
         <label class="nav-link text-white" onClick={()=> setWhatis('gastos')}>Gastos</label>
         </div>
         </li>

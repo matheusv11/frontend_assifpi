@@ -41,7 +41,7 @@ const Feed=()=>{
     return(
     <div id="page-feed" >
 
-        {!token && !admToken && <Navbar/>}
+        <Navbar/>
 
         <h2 style={{ width: '80%', margin: '0 auto'}}>Eventos e Avisos </h2>
             {eventos.map(evento=>(

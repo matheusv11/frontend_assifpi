@@ -38,16 +38,6 @@ const Acesso= ()=>{
                         <label class="nav-link text-white" onClick={()=> setLogin('login-adm')}>Login Administrador</label>
                 </li>
 
-                <li class="nav-item">
-                        <label class="nav-link text-white" onClick={()=> setLogin('feed')}>Feed de Postagens</label>
-                </li>
-
-                <li class="nav-item">
-                        <label class="nav-link text-white" onClick={()=> setLogin('convenios')}>Convenios de sócios</label>
-                </li>
-
-
-
                 </ul>
                 
                 </div>

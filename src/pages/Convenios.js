@@ -70,7 +70,7 @@ const Convenios=()=>{
     return (
     <div id="page-convenios">
         
-        {!token && !admToken && <Navbar/>}
+        <Navbar/>
         
         <h2>Convenios para os assóciados!</h2>
 

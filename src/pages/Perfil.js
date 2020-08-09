@@ -53,14 +53,6 @@ const Perfil=()=>{
         </li>
 
         <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('feed')}>Feed de Postagens</label>
-        </li>
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={()=> setWhatis('convenios')}>Convenios de socios</label>
-        </li>
-
-        <li class="nav-item">
                 <label class="nav-link text-white" onClick={Logout}>Sair</label>
         </li>
 
