@@ -36,35 +36,35 @@ const CadastrarAdm=()=>{
         <div id='componente-cadastrar-adm' style={{margin:"0 auto",width:"80%"}}>
             <h2 >Cadastre um administrador</h2>
     
-            <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
-                <div class="card-body">
+            <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
+                <div className="card-body">
                     <form onSubmit={Cadastrar}>
-                        <div class="form-group">
+                        <div className="form-group">
                         <label>Email:</label>
-                        <input onChange={e=> setEmail(e.target.value)} type="email" class="form-control" id="" required/>
+                        <input onChange={e=> setEmail(e.target.value)} type="email" className="form-control" id="" required/>
                         </div>
                 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Nome Completo:</label>
-                            <input onChange={e=> setNome(e.target.value)} type="text" class="form-control" id="" required/>
+                            <input onChange={e=> setNome(e.target.value)} type="text" className="form-control" id="" required/>
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-6 col-xs-12">
+                        <div className="row">
+                            <div className="form-group col-sm-6 col-xs-12">
                             <label>Senha:</label>
-                            <input onChange={e=> setSenha(e.target.value)} type="password" class="form-control" id="" required/>
+                            <input onChange={e=> setSenha(e.target.value)} type="password" className="form-control" id="" required/>
                             </div>
                     
-                            <div class="form-group col-sm-6 col-xs-12">
+                            <div className="form-group col-sm-6 col-xs-12">
                                 <label>Confirmar Senha:</label>
-                                <input onChange={e=> setRepeat(e.target.value)} type="password" class="form-control" id="" required/>
+                                <input onChange={e=> setRepeat(e.target.value)} type="password" className="form-control" id="" required/>
                             </div>
                         </div>
                         
                         {senha===repeat && <span>Senhas iguais</span>}
                         {senha!==repeat && <span>Senhas diferentes</span>}
                         <br/>
-                        <button onClick={Cadastrar} type="submit" class="btn btn-success">Cadastrar</button>
+                        <button onClick={Cadastrar} type="submit" className="btn btn-success">Cadastrar</button>
                     </form>
                 </div>
             </div>

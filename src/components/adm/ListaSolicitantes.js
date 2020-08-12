@@ -23,6 +23,7 @@ const ListaSolicitantes=()=>{
             setLoading(false)
             alert(err.message);
         })
+        // eslint-disable-next-line
     },[cpf]);
 
     const ConfirmarCarteiraSocio= (id)=>{
@@ -61,29 +62,29 @@ const ListaSolicitantes=()=>{
     return (
     <div id='componente-lista-solicitantes' style={{width:"90%",margin:"0 auto"}}>
         <h2>Lista de solicitantes</h2>
-        <div id="lista" class="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
-        <input type="number" class="form-control" id=""  placeholder='Pesquisar por cpf' />
-            <div id="lista-socios" class="col" >
+        <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
+        <input type="number" className="form-control" id=""  onChange={e=> setCpf(e.target.value)} placeholder='Pesquisar por cpf' />
+            <div id="lista-socios" className="col" >
                 {socio_data.map(dados=>(
                     <div key={dados.id} >
-                    <p><b>Nome: </b> {dados.nome} <span class="badge badge-pill badge-success">Sócio</span></p> 
+                    <p><b>Nome: </b> {dados.nome} <span className="badge badge-pill badge-success">Sócio</span></p> 
                     <p><b>Email: </b>{dados.email}</p>
                     <p><b>CPF: </b>{dados.cpf}</p>
                     <p><b>RG: </b>{dados.rg}</p>
-                    <p><button onClick={()=> ConfirmarCarteiraSocio(dados.id)} type="button" class="btn btn-warning">Confirmar confeccionamento</button></p>
+                    <p><button onClick={()=> ConfirmarCarteiraSocio(dados.id)} type="button" className="btn btn-warning">Confirmar confeccionamento</button></p>
                     </div>
                 ))}
 
             </div>
 
-            <div id="lista-dependentes" class="col" >
+            <div id="lista-dependentes" className="col" >
                     {dependente_data.map(dados=>(
                         <div key={dados.id} >
-                        <p><b>Nome: </b> {dados.nome} <span class="badge badge-info">Dependente</span></p> 
+                        <p><b>Nome: </b> {dados.nome} <span className="badge badge-info">Dependente</span></p> 
                         <p><b>Email: </b>{dados.email}</p>
                         <p><b>CPF: </b>{dados.cpf}</p>
                         <p><b>RG: </b>{dados.rg}</p>
-                        <button onClick={()=> ConfirmarCarteiraDependente(dados.id)} type="button" class="btn btn-warning">Confirmar confeccionamento</button>
+                        <button onClick={()=> ConfirmarCarteiraDependente(dados.id)} type="button" className="btn btn-warning">Confirmar confeccionamento</button>
                         </div>
                     ))}
                     

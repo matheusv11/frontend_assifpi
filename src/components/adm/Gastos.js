@@ -22,6 +22,7 @@ const Gastos=()=>{
         }).catch((err)=>{
             alert(err.message);
         })
+          // eslint-disable-next-line     
     },[]);
     
     const Cadastrar= (e)=>{
@@ -69,7 +70,7 @@ const Gastos=()=>{
                 <div className="card-body">
                     
                     <button className="btn btn-success" style={{margin:"0 auto",marginBottom:"2%"}} 
-                    type="button"  className="btn btn-success" 
+                    type="button" 
                     data-toggle="collapse" data-target="#collapseExample" 
                     aria-expanded="false" aria-controls="collapseExample">Cadastrar novo gasto</button>
 

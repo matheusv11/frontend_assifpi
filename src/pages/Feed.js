@@ -8,7 +8,7 @@ import Navbar from '../components/NavBar'
 
 const Feed=()=>{
 
-    const {token,admToken}= useAuth();
+    // const {token,admToken}= useAuth();
     // const [participa,setParticipa]=useState(false);
     // Talvez usar query na url //Ex site de rotas com hooks
     const {setLoading}= useAuth();
@@ -36,6 +36,7 @@ const Feed=()=>{
             alert(err)
             setLoading(false)
         })
+        // eslint-disable-next-line
     },[page]);
 
     return(
@@ -50,10 +51,10 @@ const Feed=()=>{
             ))}
 
         <nav style={{width: '80%', margin: '10px auto', justifyContent:'center', display: 'flex'}} aria-label="...">
-    <ul class="pagination">
+    <ul className="pagination">
 
         <li className={`page-item ${pagination[0]=== page && "disabled"}`} >
-        <button onClick={()=> setPage(page-1)} class="page-link"> {"<"} </button>
+        <button onClick={()=> setPage(page-1)} className="page-link"> {"<"} </button>
         </li>
 
         {pagination.map(pagina => (
@@ -62,12 +63,12 @@ const Feed=()=>{
             onClick={()=> setPage(pagina)}
 
           >
-              <button class="page-link">{pagina}</button>
+              <button className="page-link">{pagina}</button>
           </li>
         ))}
         <li className={`page-item ${pagination.reverse()[0]=== page && "disabled"}`} >
 
-        <button onClick={()=> setPage(page+1)} class="page-link" >{">"}</button>
+        <button onClick={()=> setPage(page+1)} className="page-link" >{">"}</button>
 
         </li>
     </ul>

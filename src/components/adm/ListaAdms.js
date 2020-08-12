@@ -6,7 +6,6 @@ const ListaAdms=()=>{
     
     const {admToken,setLoading}=useAuth();
     const[adm_data,setAdm]=useState([]);
-
     useEffect(()=>{
         setLoading(true)
         connection.get('/adm', {
@@ -20,22 +19,23 @@ const ListaAdms=()=>{
             setLoading(false)
             alert(err.message)
         })
+// eslint-disable-next-line 
     },[])
 
     return (
         <div id='componente-lista-adms' style={{margin:"0 auto",width:"80%"}}>
             <h2>Lista de administradores</h2>
             
-            <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
+            <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
                 
 
-                <div class="card-body">
+                <div className="card-body">
                     
-                    <div class="list-group">
+                    <div className="list-group">
                     
                     {adm_data.map(dados=>(
 
-                    <a href="/" class="list-group-item list-group-item-action">{dados.nome}-{dados.email}</a>
+                    <a href="/" className="list-group-item list-group-item-action">{dados.nome}-{dados.email}</a>
 
                     ))}
                     

@@ -27,7 +27,7 @@ const LoginSocio= ()=>{
     }
 
     return(
-        <div id="page-login-socio"  class="col-sm-6 col-xs-12" style={{margin:"0 auto"}}>
+        <div id="page-login-socio"  className="col-sm-6 col-xs-12" style={{margin:"0 auto"}}>
              
     <h2>Login de sócio</h2>
     

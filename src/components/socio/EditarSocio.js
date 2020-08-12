@@ -24,6 +24,7 @@ const EditarSocio=()=>{
             setLoading(false);
             alert(err.response.data.message);
         })
+        // eslint-disable-next-line
     },[token]);
 
     const Alterar=(e)=>{
@@ -48,27 +49,27 @@ const EditarSocio=()=>{
         <div id='editar-socio' style={{margin:"0 auto",width:"80%"}}>
             <h2 >Mudar informações</h2>
             
-            <div class="card" style={{ borderWidth: '5px',borderColor:"green"}}>
-                <div class="card-body">
+            <div className="card" style={{ borderWidth: '5px',borderColor:"green"}}>
+                <div className="card-body">
                     <form onSubmit={Alterar}>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Endereço:</label>
-                            <input onChange={e=> setEndereco(e.target.value)} defaultValue={endereco} type="text" class="form-control"  required/>
+                            <input onChange={e=> setEndereco(e.target.value)} defaultValue={endereco} type="text" className="form-control"  required/>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Telefones:</label>
-                            <input onChange={e=> setTelefone(e.target.value)} defaultValue={telefones} type="text" class="form-control"  required/>
+                            <input onChange={e=> setTelefone(e.target.value)} defaultValue={telefones} type="text" className="form-control"  required/>
                         </div>
                 
-                        <div class="form-group">
+                        <div className="form-group">
                          <label>Senha:</label>
-                         <input onChange={e=> setSenha(e.target.value)} type="password" class="form-control"  required/>
+                         <input onChange={e=> setSenha(e.target.value)} type="password" className="form-control"  required/>
                         </div>
                 
                         <span>Coloque sua senha para confirmar as alteracoes</span><br/>
-                        <button onClick={Alterar} type="submit" class="btn btn-success">Entrar</button>
+                        <button onClick={Alterar} type="submit" className="btn btn-success">Entrar</button>
                     </form>
                 </div>
             </div>

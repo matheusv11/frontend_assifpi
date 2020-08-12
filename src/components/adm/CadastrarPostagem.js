@@ -41,46 +41,46 @@ const CadastrarPostagem = () => {
     <div id='componente-cadastrar-postagem' style={{margin:"0 auto",width:"80%"}}>
         <h2>Criar Postagem</h2>
     
-        <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
-            <div class="card-body">
+        <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
+            <div className="card-body">
                 <form onSubmit={Cadastrar}>
                 
-                    <div class="form-group">
+                    <div className="form-group">
                     <label>Título:</label>
-                    <input onChange={e=> setData({...formData, titulo: e.target.value})} type="text" class="form-control" id="" required/>
+                    <input onChange={e=> setData({...formData, titulo: e.target.value})} type="text" className="form-control" id="" required/>
                     </div>
             
             
-                    <div class="form-group">
+                    <div className="form-group">
                     <label>Descrição:</label>
-                    <textarea onChange={e=> setData({...formData, descricao: e.target.value})} class="form-control" required></textarea>
+                    <textarea onChange={e=> setData({...formData, descricao: e.target.value})} className="form-control" required></textarea>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-4 col-xs-12">
+                    <div className="row">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Local:</label>
-                            <input onChange={e=> setData({...formData, local: e.target.value})} type="" class="form-control" id="" />
+                            <input onChange={e=> setData({...formData, local: e.target.value})} type="" className="form-control" id="" />
                         </div>
 
-                        <div class="form-group col-sm-4 col-xs-12">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Data:</label>
-                            <input type="date" onChange={e=> setData({...formData, data: e.target.value})} type="date" class="form-control" id="" />
+                            <input type="date" onChange={e=> setData({...formData, data: e.target.value})} className="form-control" id="" />
                         </div>
 
-                        <div class="form-group col-sm-4 col-xs-12">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Hora:</label>
-                            <input onChange={e=> setData({...formData, hora: e.target.value})} type="time" class="form-control" id="" />
+                            <input onChange={e=> setData({...formData, hora: e.target.value})} type="time" className="form-control" id="" />
                         </div>
                     </div>
 
-                    <div class="custom-file col-sm-6 col-xs-12">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
-                        <label class="custom-file-label" for="inputGroupFile01">{!formData.anexo ? 'Anexe algo' : formData.anexo.name }</label>
+                    <div className="custom-file col-sm-6 col-xs-12">
+                        <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
+                        <label className="custom-file-label" for="inputGroupFile01">{!formData.anexo ? 'Anexe algo' : formData.anexo.name }</label>
                     </div>
                 
                     <br/>
                     
-                    <button onClick={Cadastrar} style={{marginTop:"2%"}} type="submit" class="btn btn-success">Publicar</button>
+                    <button onClick={Cadastrar} style={{marginTop:"2%"}} type="submit" className="btn btn-success">Publicar</button>
                 </form>
             </div>
         </div>

@@ -52,99 +52,99 @@ const CadastroSocio= ()=>{
     }
 
     return (
-        <div id='componente-cadastro-socio' class="col-sm-10 col-xs-12" style={{margin:"0 auto"}}>
+        <div id='componente-cadastro-socio' className="col-sm-10 col-xs-12" style={{margin:"0 auto"}}>
         
         <h2>Cadastre-se como Sócio</h2>
     
-        <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
-            <div class="card-body">
+        <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
+            <div className="card-body">
                 <form onSubmit={Registrar}>
-                    <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12">
+                    <div className="row">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>Nome Completo:</label>
-                            <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                         
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>Email:</label>
-                            <input onChange={e=> setData({...formData, email: e.target.value})} type="email" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, email: e.target.value})} type="email" className="form-control" id="" required/>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12">
+                    <div className="row">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>CPF:</label>
-                            <input onChange={e=> setData({...formData, cpf: e.target.value})} type="number" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, cpf: e.target.value})} type="number" className="form-control" id="" required/>
                         </div>
                 
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>RG:</label>
-                            <input onChange={e=> setData({...formData, rg: e.target.value})} type="number" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, rg: e.target.value})} type="number" className="form-control" id="" required/>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-4 col-xs-12">
+                    <div className="row">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Cidade:</label>
-                            <input onChange={e=> setData({...formData, cidade: e.target.value})} type="text" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, cidade: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                 
-                        <div class="form-group col-sm-4 col-xs-12">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Bairro:</label>
-                            <input onChange={e=> setData({...formData, bairro: e.target.value})} type="text" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, bairro: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                 
-                        <div class="form-group col-sm-4 col-xs-12">
+                        <div className="form-group col-sm-4 col-xs-12">
                             <label>Rua e número:</label>
-                            <input onChange={e=> setData({...formData, rua: e.target.value})} type="text" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, rua: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Telefones:</label>
-                        <textarea onChange={e=> setData({...formData, telefones: e.target.value})} class="form-control" required></textarea>
+                        <textarea onChange={e=> setData({...formData, telefones: e.target.value})} className="form-control" required></textarea>
                     </div>
                     
-                    <div class="row">
-                        <div class="form-group col-sm-6 col-xs-12">
+                    <div className="row">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>Senha:</label>
-                            <input onChange={e=> setData({...formData, senha: e.target.value})} type="password" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, senha: e.target.value})} type="password" className="form-control" id="" required/>
                         </div>
                 
-                        <div class="form-group col-sm-6 col-xs-12">
+                        <div className="form-group col-sm-6 col-xs-12">
                             <label>Confirmar Senha:</label>
-                            <input onChange={e=> setData({...formData, repeat: e.target.value})} type="password" class="form-control" id="" required/>
+                            <input onChange={e=> setData({...formData, repeat: e.target.value})} type="password" className="form-control" id="" required/>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="custom-file col-sm-4 col-xs-12">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                    <div className="row">
+                        <div className="custom-file col-sm-4 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
                             onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                            <label class="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG' : formData.imagem_rg.name }</label>
+                            <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG' : formData.imagem_rg.name }</label>
                         </div>
 
 
-                        <div class="custom-file col-sm-4 col-xs-12">
-                            <input type="file" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon01" 
+                        <div className="custom-file col-sm-4 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon01" 
                             onChange={e=> setData({...formData, imagem_cpf: e.target.files[0]})} required/>
-                            <label class="custom-file-label" for="inputGroupFile02">{!formData.imagem_cpf ? 'Imagem CPF' : formData.imagem_cpf.name }</label>
+                            <label className="custom-file-label" for="inputGroupFile02">{!formData.imagem_cpf ? 'Imagem CPF' : formData.imagem_cpf.name }</label>
                         </div>
 
-                        <div class="custom-file col-sm-4 col-xs-12">
-                            <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon01" 
+                        <div className="custom-file col-sm-4 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon01" 
                             onChange={e=> setData({...formData, comprovante: e.target.files[0]})} required/>
-                            <label class="custom-file-label" for="inputGroupFile03">{!formData.comprovante ? 'Compovante Residencia' : formData.comprovante.name }</label>
+                            <label className="custom-file-label" for="inputGroupFile03">{!formData.comprovante ? 'Compovante Residencia' : formData.comprovante.name }</label>
                         </div>
                     </div>
                     
-                    <div class="form-group form-check" style={{marginTop:"2%"}} >
-                        <input type="radio" class="form-check-input" onChange={e=>setAccept(e.target.value)} />
-                        <label class="form-check-label" for="exampleCheck1">Ao me cadastrar eu concordo com os <Link to="/termosdeuso" style={{color:"blue"}}>Termos e Condições de uso</Link></label>
+                    <div className="form-group form-check" style={{marginTop:"2%"}} >
+                        <input type="radio" className="form-check-input" onChange={e=>setAccept(e.target.value)} />
+                        <label className="form-check-label" for="exampleCheck1">Ao me cadastrar eu concordo com os <Link to="/termosdeuso" style={{color:"blue"}}>Termos e Condições de uso</Link></label>
                     </div>
 
-                    {!accept && <button onClick={Registrar} type="submit" class="btn btn-success" disabled>Cadastrar</button>}
-                    {accept=='on' && <button onClick={Registrar} type="submit" class="btn btn-success">Cadastrar</button>}
+                    {!accept && <button onClick={Registrar} type="submit" className="btn btn-success" disabled>Cadastrar</button>}
+                    {accept==='on' && <button onClick={Registrar} type="submit" className="btn btn-success">Cadastrar</button>}
                 </form>
             </div>
         </div>

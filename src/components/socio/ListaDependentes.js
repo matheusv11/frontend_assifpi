@@ -21,7 +21,7 @@ const ListaDependentes=()=>{
             setLoading(false)
             alert(err);
         })
-        
+        // eslint-disable-next-line     
     }, [token]);   
 
     const Deletar= (id)=>{
@@ -60,10 +60,10 @@ const ListaDependentes=()=>{
             <h2>Página de Dependenetes</h2>
             
             {dependente_data.map((dados)=>(
-                <div class="card"  style={{ borderWidth: '5px',borderColor:"green",marginTop:"2%"}}>
-                    <div class="card-body">
+                <div className="card"  style={{ borderWidth: '5px',borderColor:"green",marginTop:"2%"}}>
+                    <div className="card-body">
                     
-                    <p><b>Nome: </b> {dados.nome} <span class="badge badge-info">Dependente</span></p> 
+                    <p><b>Nome: </b> {dados.nome} <span className="badge badge-info">Dependente</span></p> 
                     
                     <p><b>Email: </b>{dados.email}</p>
 
@@ -79,7 +79,7 @@ const ListaDependentes=()=>{
                     {dados.status==='solicitada' && <b style={{marginLeft: '80px'}}>Carteira Solicitada</b>}
                     {dados.status==='confeccionada' && <b style={{marginLeft: '80px'}}>Carteira Confeccionada</b>}
 
-                    <button onClick={()=> Deletar(dados.id)} type="button" class="btn btn-outline-danger">Deletar este Dependente</button>
+                    <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-outline-danger">Deletar este Dependente</button>
 
                     </div>
             

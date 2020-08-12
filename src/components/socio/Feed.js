@@ -6,8 +6,8 @@ const Feed=()=>{
         <div id='componente-feed'>
             <h1  style={{marginLeft: '20%'}}>Eventos e Avisos </h1>
     
-            <div class="card"  style={{width: '800px', marginLeft: '20%', marginTop: '10px', borderWidth: '15px'}}>
-                <div class="card-body">
+            <div className="card"  style={{width: '800px', marginLeft: '20%', marginTop: '10px', borderWidth: '15px'}}>
+                <div className="card-body">
             
                 <h3><b>Palestra sobre EAD</b></h3>
                 
@@ -23,16 +23,16 @@ const Feed=()=>{
 
                 <p><b>Local: </b>IFPI-Teresina central predio C</p>
 
-                <button type="button" class="btn btn-outline-primary">Confirmar presença</button>
-                <button type="button" class="btn btn-outline-danger">Tirar presença</button>
-                <button type="button" class="btn btn-outline-warning">Vizualizar Confirmados</button>
+                <button type="button" className="btn btn-outline-primary">Confirmar presença</button>
+                <button type="button" className="btn btn-outline-danger">Tirar presença</button>
+                <button type="button" className="btn btn-outline-warning">Vizualizar Confirmados</button>
 
                 </div>
 
             </div>
 
-            <div class="card"  style={{width: '800px', marginLeft: '20%', marginTop: '10px', borderWidth: '15px'}}>
-                <div class="card-body">
+            <div className="card"  style={{width: '800px', marginLeft: '20%', marginTop: '10px', borderWidth: '15px'}}>
+                <div className="card-body">
             
                 <h3><b>AVISO SAUDE PUBLICA</b></h3>
                 
@@ -59,12 +59,12 @@ const Feed=()=>{
 
 
             <nav style={{marginLeft: '20%'}}>
-                <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="/">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="/">1</a></li>
-                <li class="page-item"><a class="page-link" href="/">2</a></li>
-                <li class="page-item"><a class="page-link" href="/">3</a></li>
-                <li class="page-item"><a class="page-link" href="/">Next</a></li>
+                <ul className="pagination">
+                <li className="page-item"><a className="page-link" href="/">Previous</a></li>
+                <li className="page-item"><a className="page-link" href="/">1</a></li>
+                <li className="page-item"><a className="page-link" href="/">2</a></li>
+                <li className="page-item"><a className="page-link" href="/">3</a></li>
+                <li className="page-item"><a className="page-link" href="/">Next</a></li>
                 </ul>
             </nav>
         </div>

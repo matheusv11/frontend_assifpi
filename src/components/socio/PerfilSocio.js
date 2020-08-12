@@ -41,8 +41,8 @@ const PerfilSocio=()=>{
           localStorage.removeItem('token');
           alert(err.message)
         });
-
-    },[token,setToken]);
+        // eslint-disable-next-line
+    },[]);
     
     
     useEffect(()=>{

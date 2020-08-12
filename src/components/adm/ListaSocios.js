@@ -24,6 +24,7 @@ const ListaSocios=()=>{
             localStorage.removeItem('admToken');
             alert(err.message);
         });
+        // eslint-disable-next-line
     },[cpf]);//Fazer busca via query ainda
     
     useEffect(()=>{
@@ -38,6 +39,7 @@ const ListaSocios=()=>{
             localStorage.removeItem('admToken');
             alert(err.message);
         });
+        // eslint-disable-next-line
     },[cpf]);
     
     const ConfirmarSocio= (id,index)=>{
@@ -120,13 +122,13 @@ const ListaSocios=()=>{
         <div id='componente-lista-socios' style={{margin:"0 auto",width:"90%"}}>
             <h2>Lista de sócios e dependentes</h2>
             
-            <div id="lista" class="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
+            <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
             
-            <input type="number" onChange={e=> setCpf(e.target.value)} class="form-control" id=""  placeholder='Pesquisar por cpf' />
-                <div id="lista-socios" class="col" style={{borderColor:"green"}}>
+            <input type="number" onChange={e=> setCpf(e.target.value)} className="form-control" id=""  placeholder='Pesquisar por cpf' />
+                <div id="lista-socios" className="col" style={{borderColor:"green"}}>
                     
-                <div class="list-group">
-                <h6 class="card-title">Lista de Sócios</h6>
+                <div className="list-group">
+                <h6 className="card-title">Lista de Sócios</h6>
                     {socio_data.map((dados,index)=>(
 
                     <div>
@@ -138,8 +140,8 @@ const ListaSocios=()=>{
 
                         </div>
                         
-                        <div class="collapse" id={`collapse-${dados.id}`}>
-                            <div class="card card-body">
+                        <div className="collapse" id={`collapse-${dados.id}`}>
+                            <div className="card card-body">
 
                                 <p><b>Nome: </b> {dados.nome}</p>
 
@@ -153,14 +155,14 @@ const ListaSocios=()=>{
 
                                 <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank">Ver rg</a>
-                                <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank">Ver cpf</a>
-                                <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
+                                <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank" rel="noopener noreferrer">Ver rg</a>
+                                <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank" rel="noopener noreferrer">Ver cpf</a>
+                                <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank" rel="noopener noreferrer">Ver comprovante</a>
                                 
                                 
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} class="btn btn-success">Autenticar Sócio</button>}
+                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button>}
 
-                                <button onClick={()=> DeletarSocio(dados.socio_id)} class="btn btn-danger">Deletar Sócio</button>
+                                <button onClick={()=> DeletarSocio(dados.socio_id)} className="btn btn-danger">Deletar Sócio</button>
                             
                             </div>
                         </div>
@@ -175,10 +177,10 @@ const ListaSocios=()=>{
 
                 </div>
 
-                <div id="lista-dependentes" class="col" style={{borderColor:"red"}}>
+                <div id="lista-dependentes" className="col" style={{borderColor:"red"}}>
                     
-                    <div class="list-group">
-                        <h6 class="card-title">Lista de Dependentes</h6>
+                    <div className="list-group">
+                        <h6 className="card-title">Lista de Dependentes</h6>
                         {dependente_data.map((dados,index)=>(
 
                             <div>
@@ -190,8 +192,8 @@ const ListaSocios=()=>{
 
                                 </div>
                                 
-                                <div class="collapse" id={`collapse-${dados.id}`}>
-                                    <div class="card card-body">
+                                <div className="collapse" id={`collapse-${dados.id}`}>
+                                    <div className="card card-body">
 
                                         <p><b>Nome: </b> {dados.nome}</p>
 
@@ -205,13 +207,13 @@ const ListaSocios=()=>{
 
                                         <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                        <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank">Ver rg</a>
-                                        <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank">Ver cpf</a>
-                                        <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank">Ver comprovante</a>
+                                        <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank" rel="noopener noreferrer">Ver rg</a>
+                                        <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank" rel="noopener noreferrer">Ver cpf</a>
+                                        <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank" rel="noopener noreferrer">Ver comprovante</a>
                                         
                                         
-                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} class="btn btn-success">Autenticar Dependente</button>}
-                                        <button onClick={()=> DeletarDependente(dados.dependente_id)} class="btn btn-danger">Deletar Dependente</button>
+                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} className="btn btn-success">Autenticar Dependente</button>}
+                                        <button onClick={()=> DeletarDependente(dados.dependente_id)} className="btn btn-danger">Deletar Dependente</button>
                                     </div>
                                 </div>
 

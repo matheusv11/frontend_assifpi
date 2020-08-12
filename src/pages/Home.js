@@ -91,16 +91,16 @@ const Home= ()=>{
             <div className="text-center footer-basic">
                 <footer>
                 <div className="social">
-                    <a href="#">
+                    <a href="/#">
                     <i className="icon ion-social-instagram" />
                     </a>
-                    <a href="#">
+                    <a href="/#">
                     <i className="icon ion-social-snapchat" />
                     </a>
-                    <a href="#">
+                    <a href="/#">
                     <i className="icon ion-social-twitter" />
                     </a>
-                    <a href="https://pt-br.facebook.com/assifpi/">
+                    <a href="https://pt-br.facebook.com/assifpi/" target="blank">
                     <i className="icon ion-social-facebook" />
                     </a>
                 </div>

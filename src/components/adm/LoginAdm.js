@@ -23,27 +23,27 @@ const LoginAdm = ()=>{
     }
 
     return(
-        <div id='componente-login-adm' class="col-sm-6 col-xs-12" style={{margin:"0 auto"}}>
+        <div id='componente-login-adm' className="col-sm-6 col-xs-12" style={{margin:"0 auto"}}>
 
         <h2>Login de administrador</h2>
     
-        <div class="card" style={{ borderWidth: '5px',borderColor:"green"}}>
-            <div class="card-body">
+        <div className="card" style={{ borderWidth: '5px',borderColor:"green"}}>
+            <div className="card-body">
                 <form onSubmit={Login}>
     
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Email:</label>
-                        <input onChange={e=> setEmail(e.target.value)} type="email" class="form-control" id="" required/>
+                        <input onChange={e=> setEmail(e.target.value)} type="email" className="form-control" id="" required/>
                     </div>
             
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <label>Senha:</label>
-                        <input onChange={e=> setSenha(e.target.value)} type="password" class="form-control" id="" required/>
+                        <input onChange={e=> setSenha(e.target.value)} type="password" className="form-control" id="" required/>
                     </div>
             
                     
-                    <button onClick={Login} type="submit" class="btn btn-success">Entrar</button>
+                    <button onClick={Login} type="submit" className="btn btn-success">Entrar</button>
                 </form>
             </div>
             </div>

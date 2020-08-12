@@ -7,8 +7,8 @@ const Termos=()=>{
     return(
     <div id='termosdeuso' style={{margin:"0 auto",width:"70%"}}>
         <h2>Termos de condições e de uso</h2>
-        <div class="card" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
-            <div class="card-body">
+        <div className="card" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
+            <div className="card-body">
                 <p>Ao se cadastrar você concorda estar ciente de que:</p>
                 <p>1.O sistema guardará informações fornecidas por você atravês dos formulários em seus bancos de dados.</p>
                 <p>2.Para sua segurança sua senha será criptografada em nosso banco de dados o que implica que ela não poderá ser recuperada em caso de esquecimento por sua parte!</p>

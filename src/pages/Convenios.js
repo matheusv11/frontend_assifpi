@@ -6,7 +6,7 @@ import Navbar from '../components/NavBar';
 
 const Convenios=()=>{
     
-    const {token,admToken,setLoading}=useAuth();
+    const {admToken,setLoading}=useAuth();
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
@@ -22,6 +22,7 @@ const Convenios=()=>{
             alert(err.message);
             setLoading(false)
         })
+        // eslint-disable-next-line
     },[]);
 
     const Criar= (e)=>{
@@ -62,9 +63,7 @@ const Convenios=()=>{
             setLoading(false);
             alert(err.message)
         })
-        
         //setDepedente(dependente_data.filter(dependentes=> dependentes.id !==id))
-
     }
 
     return (
@@ -76,35 +75,35 @@ const Convenios=()=>{
 
         {admToken && 
         <div id="cadastrar-convenio">
-            <button type="button"  class="btn btn-success" 
+            <button type="button"  className="btn btn-success" 
             data-toggle="collapse" data-target="#collapseExample" 
             aria-expanded="false" aria-controls="collapseExample">Cadastrar novo Covenio</button>
 
 
-            <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
+            <div className="collapse" id="collapseExample">
+                    <div className="card card-body">
                     <form onSubmit={Criar}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label>Título:</label>
-                            <input onChange={e=> setTitulo(e.target.value)}  class="form-control"/>
+                            <input onChange={e=> setTitulo(e.target.value)}  className="form-control"/>
                             
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label >Descrição:</label>
-                            <textarea onChange={e=> setDescricao(e.target.value)} class="form-control" />
+                            <textarea onChange={e=> setDescricao(e.target.value)} className="form-control" />
                         </div>
-                        <div class="row">
-                            <div class="form-group form-check col-sm-6 col-xs-12">
+                        <div className="row">
+                            <div className="form-group form-check col-sm-6 col-xs-12">
                                 <label>Imagem:</label><br/>
                                 <input onChange={e=> setImagem(e.target.files[0])} type="file"/>
                             </div>
 
-                            <div class="form-group form-check col-sm-6 col-xs-12">
+                            <div className="form-group form-check col-sm-6 col-xs-12">
                                 <label>Anexo:</label><br/>
                                 <input type="file" onChange={e=> setAnexo(e.target.files[0])}/>
                             </div>
                         </div>
-                        <button onClick={Criar} type="submit" class="btn btn-success">Publicar</button>
+                        <button onClick={Criar} type="submit" className="btn btn-success">Publicar</button>
                     </form>
                     </div>
             </div>
@@ -114,13 +113,13 @@ const Convenios=()=>{
  
         <div style={{borderColor:"black",width:"100%"}}>
             {convenios.map(dados=>(
-                <div class="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%"}}>
-                {dados.imagem && <img src={`http://localhost:3030/files/${dados.imagem}`} style={{height:"50%"}} class="card-img-top" />}
-                <div class="card-body">
-                    <h5 class="card-title">{dados.titulo}</h5>
-                    <p class="card-text">{dados.descricao}</p> 
-                    <p><b>Anexo:<a target="_blank" href={`http://localhost:3030/files/${dados.anexo}`}>Documento</a></b></p> 
-                        {admToken && <button onClick={()=> Deletar(dados.id)} type="button" class="btn btn-danger">Deletar este convenio</button>}
+                <div className="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%"}}>
+                {dados.imagem && <img src={`http://localhost:3030/files/${dados.imagem}`} style={{height:"50%"}} alt="" className="card-img-top" />}
+                <div className="card-body">
+                    <h5 className="card-title">{dados.titulo}</h5>
+                    <p className="card-text">{dados.descricao}</p> 
+                    <p><b>Anexo:<a target="blank" href={`http://localhost:3030/files/${dados.anexo}`}>Documento</a></b></p> 
+                        {admToken && <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-danger">Deletar este convenio</button>}
                         
                 </div>
                 </div>

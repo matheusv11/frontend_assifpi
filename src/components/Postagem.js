@@ -24,7 +24,7 @@ const Postagem=({evento})=>{
         // .catch((err)=>{
         //     alert(err)
         // })
-
+        // eslint-disable-next-line
     },[]);
 
 
@@ -100,8 +100,8 @@ const Postagem=({evento})=>{
     <div id='componente-postagem'>
 
 
-        <div class="card"  style={{width: '80%', margin: '0 auto', marginTop: '2%', borderWidth: '5px',borderColor:"green"}}>
-                    <div class="card-body">
+        <div className="card"  style={{width: '80%', margin: '0 auto', marginTop: '2%', borderWidth: '5px',borderColor:"green"}}>
+                    <div className="card-body">
     
                         <h3><b>{evento.titulo}</b></h3>
                         
@@ -113,19 +113,19 @@ const Postagem=({evento})=>{
 
                         <p><b>Local: </b>{evento.local}</p>
 
-                        { evento.anexo && <p><b>Anexo: </b><a target="_blank" href={`http://localhost:3030/files/${evento.anexo}`}>Documento</a></p>}
+                        { evento.anexo && <p><b>Anexo: </b><a target="_blank" href={`http://localhost:3030/files/${evento.anexo}`} rel="noopener noreferrer">Documento</a></p>}
                         
-                        {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" class="btn btn-outline-success">Confirmar presença</button>):
-                        (<button onClick={Remover} type="button" class="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
+                        {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" className="btn btn-outline-success">Confirmar presença</button>):
+                        (<button onClick={Remover} type="button" className="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
                         
-                        {admToken && <div><button onClick={Visualizar} type="button"  class="btn btn-success" data-toggle="collapse" data-target={`#collapseExample${evento.id}`} 
-                        aria-expanded="false" aria-controls="collapseExample">Vizualizar Confirmados</button> <button onClick={()=> Deletar(evento.id)} type="button" class="btn btn-danger">Deletar</button></div>}
+                        {admToken && <div><button onClick={Visualizar} type="button"  className="btn btn-success" data-toggle="collapse" data-target={`#collapseExample${evento.id}`} 
+                        aria-expanded="false" aria-controls="collapseExample">Vizualizar Confirmados</button> <button onClick={()=> Deletar(evento.id)} type="button" className="btn btn-danger">Deletar</button></div>}
 
                     
 
                     </div>
-                        <div class="collapse" id={`collapseExample${evento.id}`}>
-                            <div class="card card-body">
+                        <div className="collapse" id={`collapseExample${evento.id}`}>
+                            <div className="card card-body">
                                 <h3>Lista de participantes</h3>
                             {show && <div>{participantes.map(participantes=>(
                             <div key={participantes.id}>{participantes.nome}</div>

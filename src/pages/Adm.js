@@ -25,46 +25,44 @@ const Adm=()=>{
     return(
         <div id='page-adm'>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <nav className="navbar navbar-expand-lg navbar-light bg-danger">
         <Link to="/" className="navbar-brand text-white">
-                <img src="assets/sobre/img/logocolor.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"/>
+                <img src="assets/sobre/img/logocolor.png" width="30" height="30" className="d-inline-block align-top" alt="" loading="lazy"/>
                         ASSIFPI
         </Link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
 
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle text-white" href="/#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Pessoas
         </a>
-        <div class="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label class="nav-link text-white" onClick={()=> setWhatis('ca')}>Cadastrar Administrador</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('la')}>Lista Administradores</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('ls')}>Lista Socios e Dependentes</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('lc')}>Lista Solicitantes de Carteira</label>
+        <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('ca')}>Cadastrar Administrador</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('la')}>Lista Administradores</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('ls')}>Lista Socios e Dependentes</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('lc')}>Lista Solicitantes de Carteira</label>
         </div>
         </li>
 
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle text-white" href="/#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sistema
         </a>
-        <div class="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label class="nav-link text-white" onClick={()=> setWhatis('cp')}>Cadastrar Postagem</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('pf')}>Painel Financeiro</label>
-        <label class="nav-link text-white" onClick={()=> setWhatis('gastos')}>Gastos</label>
+        <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('cp')}>Cadastrar Postagem</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('pf')}>Painel Financeiro</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('gastos')}>Gastos</label>
         </div>
         </li>
 
-
-        <li class="nav-item">
-                <label class="nav-link text-white" onClick={Logout} >Sair</label>
+        <li className="nav-item">
+                <label role="button" className="nav-link text-white" onClick={Logout} >Sair</label>
         </li>
-
 
         </ul>
         
@@ -77,9 +75,9 @@ const Adm=()=>{
             {whatis==='ls' && <ListaSocios/>}
             {whatis==='lc' && <ListaSolicitantes/>}
             {whatis==='pf' && <PainelFinanceiro/>}
-            {whatis=='feed' && <Feed/>}
-            {whatis=='convenios' && <Convenios/>}
-            {whatis=='gastos' && <Gastos/>}
+            {whatis==='feed' && <Feed/>}
+            {whatis==='convenios' && <Convenios/>}
+            {whatis==='gastos' && <Gastos/>}
 
 
         </div>

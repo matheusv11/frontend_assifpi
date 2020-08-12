@@ -27,7 +27,7 @@ const PainelFinanceiro=()=>{
             setLoading(false)
             alert(err.message)
         })
-
+        // eslint-disable-next-line
     },[selected_date])
 
     useEffect(()=>{
@@ -40,6 +40,7 @@ const PainelFinanceiro=()=>{
         }).catch((err)=>{
             alert(err)
         })
+        // eslint-disable-next-line
     },[]);
     const intersection= dados.ganhos.concat(dados.gastos);
     
@@ -58,7 +59,7 @@ const PainelFinanceiro=()=>{
         return object_name
     })
     const filter_array = array.filter((item, pos, self)=> {
-        return self.indexOf(item) == pos;
+        return self.indexOf(item) === pos;
     })
 
     const labels= filter_array.map((dados, index)=>{ //Talvez o index serva depois
@@ -72,22 +73,22 @@ const PainelFinanceiro=()=>{
     <div id='componente-painel-financeiro' style={{margin:"0 auto",width:"80%"}}>
         <h2>Painel Financeiro</h2>
     
-        <div class="card" style={{borderWidth: '5px',borderColor:"green"}}>
-            <div class="card-body">
-                <button type="button"  class="btn btn-success" 
+        <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
+            <div className="card-body">
+                <button type="button"  className="btn btn-success" 
                 data-toggle="collapse" data-target="#collapseExample" 
                 aria-expanded="false" aria-controls="collapseExample">VIZUALIZAR PENDENTES</button>
                 
-                <select onChange={e=> setDate(e.target.value)} style={{marginLeft: '20px', borderRadius: '6px'}} class="btn btn-primary dropdown-toggle">
+                <select onChange={e=> setDate(e.target.value)} style={{marginLeft: '20px', borderRadius: '6px'}} className="btn btn-primary dropdown-toggle">
                   {dados.anos.map(anos=>(
                         <option>{anos.ano}</option>
                   ))}
                 </select>
 
-                <div class="collapse" id="collapseExample">
-                    <ul class="list-group">
+                <div className="collapse" id="collapseExample">
+                    <ul className="list-group">
                         {pendentes.map(dados=>(
-                            <li class="list-group-item list-group-item-danger">Nome:{dados.nome}  CPF:{dados.cpf}</li>   
+                            <li className="list-group-item list-group-item-danger">Nome:{dados.nome}  CPF:{dados.cpf}</li>   
                         ))}
                     </ul>              
                 </div>
@@ -111,12 +112,13 @@ const PainelFinanceiro=()=>{
                             while(increment<filter_array.length){
                                 let pos= filter_array.indexOf(object_ganhos[increment])
                                 
-                                if(index==pos){
+                                if(index===pos){
                                     // console.log(`Igual na posicao ${index} + ${increment}`)
                                     return filtered
                                 }
                                 increment++
                             }
+                            return null
                         }),
                     },
 
@@ -135,12 +137,13 @@ const PainelFinanceiro=()=>{
                             while(increment<filter_array.length){
                                 let pos= filter_array.indexOf(object_gastos[increment])
                                 
-                                if(index==pos){
+                                if(index===pos){
                                     // console.log(`Igual na posicao ${index} + ${increment}`)
                                     return filtered
                                 }
                                 increment++
                             }
+                            return null
                         }))
                     }]
                         }} options={{title:{
