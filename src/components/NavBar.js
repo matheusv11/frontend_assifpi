@@ -5,7 +5,6 @@ const NavBar= ()=>{
     
     return(
         
-
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <Link to="/" className="navbar-brand text-white">
                         <img src="assets/sobre/img/logocolor.png" width="30" height="30" className="d-inline-block align-top" alt="" loading="lazy"/>
@@ -47,8 +46,6 @@ const NavBar= ()=>{
                             Área do associado
                         </Link>
                 </li>
-
-
 
                 </ul>
                 

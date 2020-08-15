@@ -7,7 +7,7 @@ const Home= ()=>{
         <div id="home" 
         //style={{width:"90%",margin:"0 auto"}}
         >
-            <NavBar/>            
+            <NavBar/>
             <header
                 className="masthead"
                 style={{
