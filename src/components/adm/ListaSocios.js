@@ -133,7 +133,7 @@ const ListaSocios=()=>{
 
                     <div>
                         
-                        <div data-toggle="collapse" data-target={`#collapse-${dados.id}`} 
+                        <div role="button" data-toggle="collapse" data-target={`#collapse-${dados.id}`} 
                         aria-expanded="false" aria-controls="collapseExample">
 
                             {dados.nome}-{dados.confirmado}
@@ -155,9 +155,9 @@ const ListaSocios=()=>{
 
                                 <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank" rel="noopener noreferrer">Ver rg</a>
-                                <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank" rel="noopener noreferrer">Ver cpf</a>
-                                <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank" rel="noopener noreferrer">Ver comprovante</a>
+                                <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="blank" >Ver rg</a>
+                                <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="blank" >Ver cpf</a>
+                                <a href={`http://localhost:3030/files/${dados.comprovante}`} target="blank" >Ver comprovante</a>
                                 
                                 
                                 {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button>}
@@ -185,7 +185,7 @@ const ListaSocios=()=>{
 
                             <div>
                                 
-                                <div data-toggle="collapse" data-target={`#collapse-${dados.id}`} 
+                                <div role="button" data-toggle="collapse" data-target={`#collapse-${dados.id}`} 
                                 aria-expanded="false" aria-controls="collapseExample">
 
                                     {dados.nome}-{dados.confirmado}

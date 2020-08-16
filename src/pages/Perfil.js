@@ -6,14 +6,14 @@ import PerfilSocio from '../components/socio/PerfilSocio';
 import ListaDependentes from '../components/socio/ListaDependentes';
 import CadastrarDependentes from '../components/socio/CadastrarDependentes';
 import EditarSocio from '../components/socio/EditarSocio';
-import Feed from './Feed';
-import Convenios from './Convenios'
 import Pagamentos from '../components/socio/Pagamanetos'
 
 
 const Perfil=()=>{
       
         const [whatis,setWhatis]=useState(<PerfilSocio/>);
+        const[color,setColor]=useState('lb1') 
+
         const {setToken}=useAuth();
 
         const Logout= ()=>{
@@ -41,15 +41,15 @@ const Perfil=()=>{
                 Pessoal
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<PerfilSocio/>)}>Meu Perfil</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaDependentes/>)}>Perfil de Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarDependentes/>)}>Cadastrar Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<EditarSocio/>)}>Editar informações</label>
+        <label role="button" className={`nav-link text-${color==="lb1" ? "success" : "white"}`} onClick={()=> {setColor('lb1');setWhatis(<PerfilSocio/>)}}>Meu Perfil</label>
+        <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaDependentes/>)}}>Perfil de Dependentes</label>
+        <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<CadastrarDependentes/>)}}>Cadastrar Dependentes</label>
+        <label role="button" className={`nav-link text-${color==="lb4" ? "success" : "white"}`} onClick={()=> {setColor('lb4');setWhatis(<EditarSocio/>)}}>Editar informações</label>
         </div>
         </li>
 
         <li className="nav-item">
-                <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<Pagamentos/>)}>Pagamentos</label>
+                <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Pagamentos/>)}}>Pagamentos</label>
         </li>
 
         <li className="nav-item">

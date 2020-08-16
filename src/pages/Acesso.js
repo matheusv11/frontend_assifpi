@@ -8,6 +8,7 @@ import LoginAdm from '../components/adm/LoginAdm';
 const Acesso= ()=>{
 
     const[isLogin,setLogin]=useState(<LoginSocio/>);
+    const[color,setColor]=useState('lb1') 
 
     return( 
        <div id="page-acess" >
@@ -25,15 +26,18 @@ const Acesso= ()=>{
                 <ul className="navbar-nav mr-auto">
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<LoginSocio/>)}>Login Sócio</label>
+                        <label role="button" className={`nav-link text-${color==="lb1" ? "success" : "white"}`}
+                        id="lb1" onClick={()=> {setColor('lb1');setLogin(<LoginSocio/>)}}>Login Sócio</label>
                 </li>
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<CadastroSocio/>)}>Cadastro de Sócio</label>
+                        <label href="#" role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`}
+                         id="lb2" onClick={()=> {setColor('lb2');setLogin(<CadastroSocio/>)}}>Cadastro de Sócio</label>
                 </li>
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<LoginAdm/>)}>Login Administrador</label>
+                        <label href="#" role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`}
+                         id="lb3" onClick={()=> {setColor('lb3');setLogin(<LoginAdm/>)}}>Login Administrador</label>
                 </li>
 
                 </ul>

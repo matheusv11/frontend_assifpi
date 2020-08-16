@@ -15,11 +15,12 @@ const Adm=()=>{
 
         const {setAdm}= useAuth();
         const[whatis,setWhatis]=useState(<ListaSocios/>);
+        const[color,setColor]=useState('lb1') 
 
         const Logout= ()=>{
                 setAdm(null);
                 localStorage.removeItem('admToken');
-        }
+                }
 
     return(
         <div id='page-adm'>
@@ -41,10 +42,10 @@ const Adm=()=>{
                 Pessoas
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarAdm/>)}>Cadastrar Administrador</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaAdms/>)}>Lista Administradores</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaSocios/>)}>Lista Socios e Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaSolicitantes/>)}>Lista Solicitantes de Carteira</label>
+        <label role="button" className={`nav-link text-${color==="lb1" ? "success" : "white"}`} onClick={()=> {setColor('lb1');setWhatis(<CadastrarAdm/>)}}>Cadastrar Administrador</label>
+        <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaAdms/>)}}>Lista Administradores</label>
+        <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<ListaSocios/>)}}>Lista Socios e Dependentes</label>
+        <label role="button" className={`nav-link text-${color==="lb4" ? "success" : "white"}`} onClick={()=> {setColor('lb4');setWhatis(<ListaSolicitantes/>)}}>Lista Solicitantes de Carteira</label>
         </div>
         </li>
 
@@ -53,9 +54,9 @@ const Adm=()=>{
                 Sistema
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarPostagem/>)}>Cadastrar Postagem</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<PainelFinanceiro/>)}>Painel Financeiro</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<Gastos/>)}>Gastos</label>
+        <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<CadastrarPostagem/>)}}>Cadastrar Postagem</label>
+        <label role="button" className={`nav-link text-${color==="lb6" ? "success" : "white"}`} onClick={()=> {setColor('lb6');setWhatis(<PainelFinanceiro/>)}}>Painel Financeiro</label>
+        <label role="button" className={`nav-link text-${color==="lb7" ? "success" : "white"}`} onClick={()=> {setColor('lb7');setWhatis(<Gastos/>)}}>Gastos</label>
         </div>
         </li>
 
