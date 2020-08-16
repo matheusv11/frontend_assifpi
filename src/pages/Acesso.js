@@ -4,12 +4,10 @@ import {Link} from 'react-router-dom';
 import LoginSocio from '../components/socio/LoginSocio';
 import CadastroSocio from '../components/socio/CadastroSocio';
 import LoginAdm from '../components/adm/LoginAdm';
-import Feed from './Feed';
-import Convenios from './Convenios'
 
 const Acesso= ()=>{
 
-    const[isLogin,setLogin]=useState('login-socio');
+    const[isLogin,setLogin]=useState(<LoginSocio/>);
 
     return( 
        <div id="page-acess" >
@@ -27,28 +25,23 @@ const Acesso= ()=>{
                 <ul className="navbar-nav mr-auto">
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin('login-socio')}>Login Sócio</label>
+                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<LoginSocio/>)}>Login Sócio</label>
                 </li>
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin('cadastro')}>Cadastro de Sócio</label>
+                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<CadastroSocio/>)}>Cadastro de Sócio</label>
                 </li>
 
                 <li className="nav-item">
-                        <label role="button" className="nav-link text-white" onClick={()=> setLogin('login-adm')}>Login Administrador</label>
+                        <label role="button" className="nav-link text-white" onClick={()=> setLogin(<LoginAdm/>)}>Login Administrador</label>
                 </li>
 
                 </ul>
                 
                 </div>
         </nav>
-
-          
-          {isLogin==='login-socio' && <LoginSocio/>}
-          {isLogin==='cadastro' && <CadastroSocio/>}
-          {isLogin==='login-adm' && <LoginAdm/>}
-          {isLogin==='feed' && <Feed/>}
-          {isLogin==='convenios' && <Convenios/>}
+        {isLogin}
+       
        </div>
     )
 }

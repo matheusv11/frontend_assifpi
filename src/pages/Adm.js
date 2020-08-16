@@ -8,14 +8,13 @@ import ListaAdms from '../components/adm/ListaAdms'
 import ListaSocios from '../components/adm/ListaSocios'
 import ListaSolicitantes from '../components/adm/ListaSolicitantes'
 import PainelFinanceiro from '../components/adm/PainelFinanceiro'
-import Feed from './Feed';
-import Convenios from './Convenios'
 import Gastos from '../components/adm/Gastos'
+
 
 const Adm=()=>{
 
         const {setAdm}= useAuth();
-        const[whatis,setWhatis]=useState('ls');
+        const[whatis,setWhatis]=useState(<ListaSocios/>);
 
         const Logout= ()=>{
                 setAdm(null);
@@ -42,10 +41,10 @@ const Adm=()=>{
                 Pessoas
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('ca')}>Cadastrar Administrador</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('la')}>Lista Administradores</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('ls')}>Lista Socios e Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('lc')}>Lista Solicitantes de Carteira</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarAdm/>)}>Cadastrar Administrador</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaAdms/>)}>Lista Administradores</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaSocios/>)}>Lista Socios e Dependentes</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaSolicitantes/>)}>Lista Solicitantes de Carteira</label>
         </div>
         </li>
 
@@ -54,9 +53,9 @@ const Adm=()=>{
                 Sistema
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('cp')}>Cadastrar Postagem</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('pf')}>Painel Financeiro</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('gastos')}>Gastos</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarPostagem/>)}>Cadastrar Postagem</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<PainelFinanceiro/>)}>Painel Financeiro</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<Gastos/>)}>Gastos</label>
         </div>
         </li>
 
@@ -69,15 +68,7 @@ const Adm=()=>{
         </div>
         </nav>
 
-            {whatis==='ca' && <CadastrarAdm/>}
-            {whatis==='cp' && <CadastrarPostagem/>}
-            {whatis==='la' && <ListaAdms/>}
-            {whatis==='ls' && <ListaSocios/>}
-            {whatis==='lc' && <ListaSolicitantes/>}
-            {whatis==='pf' && <PainelFinanceiro/>}
-            {whatis==='feed' && <Feed/>}
-            {whatis==='convenios' && <Convenios/>}
-            {whatis==='gastos' && <Gastos/>}
+            {whatis}
 
 
         </div>

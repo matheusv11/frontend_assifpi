@@ -13,7 +13,7 @@ import Pagamentos from '../components/socio/Pagamanetos'
 
 const Perfil=()=>{
       
-        const [whatis,setWhatis]=useState('perfil');
+        const [whatis,setWhatis]=useState(<PerfilSocio/>);
         const {setToken}=useAuth();
 
         const Logout= ()=>{
@@ -41,15 +41,15 @@ const Perfil=()=>{
                 Pessoal
         </a>
         <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('perfil')}>Meu Perfil</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('dependentes')}>Perfil de Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('cd')}>Cadastrar Dependentes</label>
-        <label role="button" className="nav-link text-white" onClick={()=> setWhatis('ei')}>Editar informações</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<PerfilSocio/>)}>Meu Perfil</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<ListaDependentes/>)}>Perfil de Dependentes</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<CadastrarDependentes/>)}>Cadastrar Dependentes</label>
+        <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<EditarSocio/>)}>Editar informações</label>
         </div>
         </li>
 
         <li className="nav-item">
-                <label role="button" className="nav-link text-white" onClick={()=> setWhatis('pagamentos')}>Pagamentos</label>
+                <label role="button" className="nav-link text-white" onClick={()=> setWhatis(<Pagamentos/>)}>Pagamentos</label>
         </li>
 
         <li className="nav-item">
@@ -62,13 +62,8 @@ const Perfil=()=>{
         </nav>
 
 
-        {whatis==='perfil' && <PerfilSocio/> }
-        {whatis==='dependentes' && <ListaDependentes/>}
-        {whatis==='cd' && <CadastrarDependentes/>}    
-        {whatis==='ei' && <EditarSocio/>}
-        {whatis==='feed' && <Feed/>}
-        {whatis==='convenios' && <Convenios/>}
-        {whatis==='pagamentos' && <Pagamentos/>}
+        {whatis}
+       
         
     </div>
     )
