@@ -107,7 +107,7 @@ const Postagem=({evento})=>{
                         
                         <p>{evento.descricao}</p>
 
-                        <p><b>Data: </b>{evento.data==='undefined' && <></>}</p>
+                        <p><b>Data: </b> {(evento.data==='undefined')? <></> : <>{evento.data}</>} </p>
 
                         <p><b>Hora: </b>{evento.hora}</p>
 

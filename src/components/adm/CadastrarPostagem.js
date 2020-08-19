@@ -64,7 +64,7 @@ const CadastrarPostagem = () => {
 
                         <div className="form-group col-sm-4 col-xs-12">
                             <label>Data:</label>
-                            <input type="date" onChange={e=> setData({...formData, data: e.target.value})} className="form-control" id="" />
+                            <input onChange={e=> setData({...formData, data: e.target.value})} type="date" className="form-control" id="" />
                         </div>
 
                         <div className="form-group col-sm-4 col-xs-12">
