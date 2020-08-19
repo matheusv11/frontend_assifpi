@@ -6,7 +6,7 @@ import Navbar from '../components/NavBar';
 
 const Convenios=()=>{
     
-    const {admToken,setLoading}=useAuth();
+    const {admToken,setLoading,doc_url}=useAuth();
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
@@ -114,11 +114,11 @@ const Convenios=()=>{
         <div style={{borderColor:"black",width:"100%"}}>
             {convenios.map(dados=>(
                 <div className="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%"}}>
-                {dados.imagem && <img src={`http://localhost:3030/files/${dados.imagem}`} style={{height:"50%"}} alt="" className="card-img-top" />}
+                {dados.imagem && <img src={`${doc_url}/${dados.imagem}`} style={{height:"50%"}} alt="" className="card-img-top" />}
                 <div className="card-body">
                     <h5 className="card-title">{dados.titulo}</h5>
                     <p className="card-text">{dados.descricao}</p> 
-                    <p><b>Anexo:<a target="blank" href={`http://localhost:3030/files/${dados.anexo}`}>Documento</a></b></p> 
+                    <p><b>Anexo:<a target="blank" href={`${doc_url}/${dados.anexo}`}>Documento</a></b></p> 
                         {admToken && <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-danger">Deletar este convenio</button>}
                         
                 </div>

@@ -4,7 +4,7 @@ import connection from '../../services/connection';
 
 const ListaSocios=()=>{
 
-    const {admToken, setAdm, setLoading}= useAuth();
+    const {admToken, setAdm, setLoading, doc_url}= useAuth();
     const[cpf,setCpf]=useState('');
     const[socio_data,setData]=useState([]);
     const[dependente_data,setDependentes]=useState([]);
@@ -155,9 +155,9 @@ const ListaSocios=()=>{
 
                                 <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="blank" >Ver rg</a>
-                                <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="blank" >Ver cpf</a>
-                                <a href={`http://localhost:3030/files/${dados.comprovante}`} target="blank" >Ver comprovante</a>
+                                <a href={`${doc_url}/${dados.imagem_rg}`} target="blank" >Ver rg</a>
+                                <a href={`${doc_url}/${dados.imagem_cpf}`} target="blank" >Ver cpf</a>
+                                <a href={`${doc_url}/${dados.comprovante}`} target="blank" >Ver comprovante</a>
                                 
                                 
                                 {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button>}
@@ -207,9 +207,9 @@ const ListaSocios=()=>{
 
                                         <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                        <a href={`http://localhost:3030/files/${dados.imagem_rg}`} target="_blank" rel="noopener noreferrer">Ver rg</a>
-                                        <a href={`http://localhost:3030/files/${dados.imagem_cpf}`} target="_blank" rel="noopener noreferrer">Ver cpf</a>
-                                        <a href={`http://localhost:3030/files/${dados.comprovante}`} target="_blank" rel="noopener noreferrer">Ver comprovante</a>
+                                        <a href={`${doc_url}/${dados.imagem_rg}`} target="blank">Ver rg</a>
+                                        <a href={`${doc_url}/${dados.imagem_cpf}`} target="blank">Ver cpf</a>
+                                        <a href={`${doc_url}/${dados.comprovante}`} target="blank">Ver comprovante</a>
                                         
                                         
                                         {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} className="btn btn-success">Autenticar Dependente</button>}

@@ -7,6 +7,7 @@ export const AuthProvider= ({children})=>{
     const [token,setToken]=useState(null);
     const [admToken,setAdm]=useState(null);
     const [loading,setLoading]=useState(false);
+    const doc_url= process.env.REACT_APP_DOC_URL || 'http://localhost:3030/files';
 
     useEffect(()=>{
         const token= localStorage.getItem('token');
@@ -25,7 +26,7 @@ export const AuthProvider= ({children})=>{
     
 
     return(
-        <AuthContext.Provider value={{token, setToken, admToken, setAdm, setLoading, loading}}>
+        <AuthContext.Provider value={{token, setToken, admToken, setAdm, setLoading, loading, doc_url}}>
         {/* <AuthContext.Provider value={{token, setToken, admToken, setAdm, loading}}> */}
             {children}
         </AuthContext.Provider>

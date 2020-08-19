@@ -5,10 +5,10 @@ import connection from '../services/connection';
 
 const Postagem=({evento})=>{
 
+    const {token,admToken,setLoading, doc_url}= useAuth();
     const [participa,setParticipa]=useState(false);
     const [show,setShow]=useState(false);
     const [participantes,setParticipante]=useState([]);
-    const {token,admToken,setLoading}= useAuth();
 
     useEffect(()=>{
         //If token pega dados 
@@ -113,7 +113,7 @@ const Postagem=({evento})=>{
 
                         <p><b>Local: </b>{evento.local}</p>
 
-                        { evento.anexo && <p><b>Anexo: </b><a target="_blank" href={`http://localhost:3030/files/${evento.anexo}`} rel="noopener noreferrer">Documento</a></p>}
+                        { evento.anexo && <p><b>Anexo: </b><a target="blank" href={`${doc_url}/${evento.anexo}`}>Documento</a></p>}
                         
                         {evento.hora && <>{token && <>{!participa ? (<button onClick={Participar} type="button" className="btn btn-outline-success">Confirmar presença</button>):
                         (<button onClick={Remover} type="button" className="btn btn-outline-danger">Tirar presença</button>)}</>}</>}
