@@ -118,7 +118,7 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return null
+                            return 0
                         }),
                     },
 
@@ -143,10 +143,11 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return null
+                            return 0
                         }))
                     }]
-                        }} options={{title:{
+                        }} options={{
+                            title:{
                             display:true,
                             fontSize:30,
                             text: "Arrecadamentos e dispesas"}}}/>
