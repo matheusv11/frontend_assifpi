@@ -48,25 +48,18 @@ const PainelFinanceiro=()=>{
         const [object_name]= Object.getOwnPropertyNames(item)
         return object_name
     })
+
+    const filter_array = [...new Set(array)];
+
     const object_gastos= dados.gastos.map((item)=>{
         const [object_name]= Object.getOwnPropertyNames(item)
-        // const [valor]=Object.values(item);
         return object_name
-    })
-    const object_ganhos= dados.ganhos.map((item)=>{
-        const [object_name]= Object.getOwnPropertyNames(item)
-        // const [valor]=Object.values(item);
-        return object_name
-    })
-    const filter_array = array.filter((item, pos, self)=> {
-        return self.indexOf(item) === pos;
     })
 
     const labels= filter_array.map((dados, index)=>{ //Talvez o index serva depois
         const ok= dados.split('/') //Talvez o index serveria se nao fosse pela quebra do array
         const labels= meses[ok[0]-1]
         return labels
-        
     })
 
     return (
@@ -101,25 +94,22 @@ const PainelFinanceiro=()=>{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: filter_array.map((meses,index)=>{
-                            let increment= 0;
-                            let element= object_ganhos.indexOf(meses);
-                            let filtered= null;
-                            if(element>-1){
-                                [filtered]= Object.values(dados.ganhos[element])
+                        data: filter_array.map((tudo,index)=>{
+                            let increment= 0
+                            if(!dados.ganhos[index]){
+                                return null
                             }
-                            
                             while(increment<filter_array.length){
-                                let pos= filter_array.indexOf(object_ganhos[increment])
-                                
+                                let [objeto]= Object.getOwnPropertyNames(dados.ganhos[index])
+                                let pos= filter_array.indexOf(objeto)
                                 if(index===pos){
-                                    // console.log(`Igual na posicao ${index} + ${increment}`)
-                                    return filtered
+                                    let [ok]=Object.values(dados.ganhos[index])
+                                    return ok
                                 }
                                 increment++
                             }
                             return 0
-                        }),
+                        })
                     },
 
                     {
