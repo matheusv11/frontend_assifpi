@@ -85,7 +85,7 @@ const PainelFinanceiro=()=>{
 
                 <div>
 
-                    <Line  data= {{
+                    <Line data= {{
                     labels: labels, //Ou indexOf para condicao ficar dentro da labels
                     datasets: [{
                         label: 'Arrecadamentos',
@@ -105,7 +105,7 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return 0
+                            return null
                         })
                     },
 
@@ -130,14 +130,21 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return 0
+                            return null
                         }))
                     }]
                         }} options={{
                             title:{
                             display:true,
                             fontSize:30,
-                            text: "Arrecadamentos e dispesas"}}}/>
+                            text: "Arrecadamentos e dispesas"
+                            },
+                            spanGaps: true,
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                              },
+                            }}/>
 
                      <Doughnut data={{
                         datasets:[{
