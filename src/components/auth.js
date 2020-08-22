@@ -20,10 +20,7 @@ export const AuthProvider= ({children})=>{
             setAdm(admToken);
         }
         // setLoading(false); //Por esta sendo montado direto no render ele ja carrega isso direto, nao precisando fazer loading
-
     },[]);
-
-    
 
     return(
         <AuthContext.Provider value={{token, setToken, admToken, setAdm, setLoading, loading, doc_url}}>

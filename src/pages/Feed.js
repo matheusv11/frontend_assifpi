@@ -5,7 +5,6 @@ import Postagem from '../components/Postagem'
 import createPagination from '../helpers/createPagination';
 import Navbar from '../components/NavBar'
 
-
 const Feed=()=>{
 
     // const {token,admToken}= useAuth();
