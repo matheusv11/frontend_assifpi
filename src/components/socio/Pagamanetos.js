@@ -6,27 +6,23 @@ import connection from '../../services/connection';
 
 const Pagamentos=()=>{
 
-    const {token, setLoading}=useAuth();
+    const {token}=useAuth();
     const[pagamentos,setPagamentos]=useState([]);
     
     useEffect(()=>{ 
-        setLoading(true);
         connection.get('/index_socio_fatura', {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false)
             setPagamentos(dados.data);
         }).catch((err)=>{
-            setLoading(false)
             alert(err);
         })
         // eslint-disable-next-line  
     },[])
 
     const Pagar= (id)=>{
-        setLoading(true);     
         connection.post(`/faturas/${id}`, '', {
             headers:{
                 authorization: `Bearer ${token}`
@@ -35,7 +31,6 @@ const Pagamentos=()=>{
             window.location.replace(dados.data.body.init_point);
         }).catch((err)=>{
             alert(err)
-            setLoading(false)
         })
     }
     

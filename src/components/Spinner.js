@@ -1,15 +1,9 @@
 import React from 'react';
-import {useAuth} from './auth';
 
-const Spinner= ({children})=>{
-
-    const {loading}=useAuth(); 
+const Spinner= ()=>{
 
     return(
         <>
-        {children}
-        
-        {loading &&
             <div style={{
                 position: 'fixed',
                 overflow: 'visible',
@@ -27,12 +21,8 @@ const Spinner= ({children})=>{
               <span className="sr-only">Loading...</span>
             </div>
           </div>
-
-    }
-
         </>
     )
-
 }
 
 export default Spinner;

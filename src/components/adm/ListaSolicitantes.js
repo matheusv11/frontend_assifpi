@@ -4,57 +4,47 @@ import connection from '../../services/connection';
 
 const ListaSolicitantes=()=>{
 
-    const {admToken,setLoading}=useAuth();
+    const {admToken}=useAuth();
     const[cpf,setCpf]=useState('');
     const[socio_data,setSocio]=useState([]);
     const[dependente_data,setDependente]=useState([]);
 
     useEffect(()=>{
-        setLoading(true);
         connection.get(`/carteira?cpf=${cpf}`,{
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             setSocio(dados.data.socios)
             setDependente(dados.data.dependentes)
-        }).catch((err)=>{
-            setLoading(false)
+        }).catch((err)=>{   
             alert(err.message);
         })
         // eslint-disable-next-line
     },[cpf]);
 
     const ConfirmarCarteiraSocio= (id)=>{
-        setLoading(true);
         connection.post(`/change_carteira_socio/${id}`, '', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
             setSocio(socio_data.filter(socios=> socios.id !==id))
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message)
         })
     }  
 
     const ConfirmarCarteiraDependente= (id)=>{
-        setLoading(true)
         connection.post(`/change_carteira_dependente/${id}`, '', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
             setDependente(dependente_data.filter(dependente=> dependente.id !==id))
-
         }).catch((err)=>{
-            setLoading(false);
             alert(err.message)
         })
     }

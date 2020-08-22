@@ -4,7 +4,7 @@ import connection from '../../services/connection';
 
 const CadastrarDependentes=()=>{
     
-    const {token, setLoading}= useAuth();
+    const {token}= useAuth();
 
     const[formData,setData]=useState({
         nome:'', email:'', cpf:'', rg:'', cidade:'',
@@ -27,16 +27,14 @@ const CadastrarDependentes=()=>{
         format.append('rg', rg);
         format.append('endereco', `${cidade},${bairro},${rua}`);
         format.append('telefones', telefones);
-        setLoading(true);
+
         connection.post('/dependente', format, {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
         }).catch((err)=>{
-            setLoading(false)
             alert(err.response.data.message);
         });
         

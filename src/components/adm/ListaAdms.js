@@ -4,19 +4,17 @@ import connection from '../../services/connection';
 
 const ListaAdms=()=>{
     
-    const {admToken,setLoading}=useAuth();
+    const {admToken}=useAuth();
     const[adm_data,setAdm]=useState([]);
+    
     useEffect(()=>{
-        setLoading(true)
         connection.get('/adm', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             setAdm(dados.data)
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message)
         })
 // eslint-disable-next-line 

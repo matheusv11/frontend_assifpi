@@ -4,24 +4,21 @@ import connection from '../../services/connection';
 
 const EditarSocio=()=>{
 
-    const {token, setLoading}= useAuth();
+    const {token}= useAuth();
 
     const[endereco,setEndereco]= useState('');
     const[telefones,setTelefone]=useState('');
     const[senha,setSenha]=useState('');
 
     useEffect(()=>{
-        setLoading(true);
         connection.get('/socio', {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false);
             setEndereco(dados.data.endereco);
             setTelefone(dados.data.telefones);
         }).catch((err)=>{
-            setLoading(false);
             alert(err.response.data.message);
         })
         // eslint-disable-next-line
@@ -31,16 +28,13 @@ const EditarSocio=()=>{
         e.preventDefault();
         const data= {endereco,telefones, senha};
 
-        setLoading(true)
         connection.put('/socio', data, {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
         }).catch((err)=>{
-            setLoading(false);
             alert(err.response.data.message);
         })
     }

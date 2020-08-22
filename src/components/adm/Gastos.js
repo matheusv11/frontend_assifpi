@@ -4,20 +4,19 @@ import connection from '../../services/connection';
 
 const Gastos=()=>{
 
-    const {admToken,setLoading}=useAuth();
+    const {admToken}=useAuth();
     const [gastos,setGasto]=useState([]);
     const [descricao,setDescricao]=useState('');
     const [valor,setValor]=useState('');
     const [data,setData]=useState('');
 
     useEffect(()=>{
-        setLoading(true);
         connection.get('/gastos', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false);
+            
             setGasto(dados.data);
         }).catch((err)=>{
             alert(err.message);
@@ -30,17 +29,14 @@ const Gastos=()=>{
         const format_data= data.split('-') //No back tava com o date now
         const formulario= {descricao,valor,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`}
 
-        setLoading(true);
         connection.post('/gastos', formulario,{
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false);
             alert(dados.data.message);
             setGasto([...gastos,formulario])
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message);            
         })
         // setDependentes(dependente_data.filter(dependentes=> dependentes.dependente_id !==id))
@@ -48,17 +44,14 @@ const Gastos=()=>{
     }
 
     const Deletar= (id)=>{
-        setLoading(true);
         connection.delete(`/gastos/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
-            alert(dados.data.message)
+             alert(dados.data.message)
             setGasto(gastos.filter(gastos=> gastos.id !==id))
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message)
         })
     }

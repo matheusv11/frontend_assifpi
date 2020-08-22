@@ -5,26 +5,23 @@ import { Line,Doughnut } from 'react-chartjs-2';
 
 const PainelFinanceiro=()=>{
 
-    const {admToken,setLoading}= useAuth();
+    const {admToken}= useAuth();
     const meses= ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro','Outubro','Novembro', 'Dezembro']
     const[pendentes,setPendente]=useState([]);
     const[selected_date,setDate]=useState('2019');
     const[dados,setDados]=useState({anos: [], ganhos:[], gastos:[], doughnut:[]})
 
     useEffect(()=>{ 
-        setLoading(true)
         connection.get(`index_pagamentos?ano=${selected_date}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             setDados({
                 anos: dados.data.anos, ganhos: dados.data.soma_ganhos,
                 gastos: dados.data.soma_gastos, doughnut: dados.data.doughnut
             })
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message)
         })
         // eslint-disable-next-line

@@ -1,4 +1,6 @@
 import React,{createContext,useContext, useState, useEffect} from 'react'
+import Spinner from './Spinner';
+import connection from '../services/connection';
 
 const AuthContext= createContext();
 
@@ -22,16 +24,37 @@ export const AuthProvider= ({children})=>{
         // setLoading(false); //Por esta sendo montado direto no render ele ja carrega isso direto, nao precisando fazer loading
     },[]);
 
+    connection.interceptors.request.use((config) => {
+        console.info("✉️ ", config)
+        setLoading(true);
+        return config;
+    }, (error) => {
+        console.error("✉️ ERROR ", error);
+        setLoading(false); 
+        return Promise.reject(error);
+    });
+    
+    connection.interceptors.response.use((response)=>{
+        console.error("✉️ Resposta ", response); //Apesar de retornar varios dados Acho que so roda uma vez entao o set nao fica mal otimizado
+        setLoading(false);
+        return response;
+      },(error)=>{
+        console.error("✉️ ERROR ", error); 
+        setLoading(false);
+        return Promise.reject(error);
+      });
+    //   console.log('Componente montado')
+    // connection.interceptors.request.eject(Interceptor);
     return(
-        <AuthContext.Provider value={{token, setToken, admToken, setAdm, setLoading, loading, doc_url}}>
-        {/* <AuthContext.Provider value={{token, setToken, admToken, setAdm, loading}}> */}
+        <AuthContext.Provider value={{token, setToken, admToken, setAdm, doc_url}}>
             {children}
+            {loading && <Spinner/>}
+
         </AuthContext.Provider>
     )
 }
 
 export const useAuth= ()=>{
     const context= useContext(AuthContext);
-
     return context
 }

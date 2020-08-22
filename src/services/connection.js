@@ -5,14 +5,4 @@ const connection= axios.create({
     // baseURL: 'https://backend-assifpi.herokuapp.com'
 });
 
-// const Interceptor= connection.interceptors.request.use((config) => {
-//     console.info("✉️ ", config)
-//     return config;
-// }, (error) => {
-//     console.error("✉️ ERROR ", error); 
-//     return Promise.reject(error);
-// });
-
-// connection.interceptors.request.eject(Interceptor);
-
 export default connection;

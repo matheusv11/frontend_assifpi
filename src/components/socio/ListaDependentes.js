@@ -4,53 +4,44 @@ import connection from '../../services/connection';
 
 const ListaDependentes=()=>{
     
-    const {token,setLoading}=useAuth();
+    const {token}=useAuth();
     
     const[dependente_data, setDepedente]= useState([]);
 
     useEffect(()=>{
-        setLoading(true);
         connection.get('/dependente', {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false);
             setDepedente(dados.data);
         }).catch((err)=>{
-            setLoading(false)
             alert(err);
         })
         // eslint-disable-next-line     
     }, [token]);   
 
     const Deletar= (id)=>{
-        setLoading(true);
         connection.delete(`/dependente/${id}`, {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
             setDepedente(dependente_data.filter(dependentes=> dependentes.id !==id))
         }).catch((err)=>{
-            setLoading(false)
             alert(err.message)
         });
     }
 
     const Solicitar= (id)=>{
-        setLoading(true)
         connection.post(`/carteira/${id}`, '', {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
         }).catch((err)=>{
-            setLoading(false)
             alert(err.response.data.message)
         })
     }
@@ -85,12 +76,6 @@ const ListaDependentes=()=>{
             
                 </div>
             ))}
-
-
-
-
-
-
 
         </div>
     )

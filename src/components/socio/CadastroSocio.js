@@ -1,29 +1,21 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import connection from '../../services/connection';
-import {useAuth} from '../auth';
 
 const CadastroSocio= ()=>{
 
     const [accept,setAccept]=useState();
-
-    
-
-    const {setLoading}= useAuth();
-
     const[formData,setData]=useState({
         email:'',nome:'',cpf:'',rg:'',cidade:'',
         bairro:'',rua:'',telefones:'',senha:'',
         repeat:'',imagem_rg:'',imagem_cpf:'',comprovante:''
     })
 
-
     const Registrar=(e)=>{
         e.preventDefault();
         const {email,nome,cpf,rg,cidade,bairro,rua,telefones,senha,repeat, imagem_rg, imagem_cpf, comprovante} =formData;
         // const data={email,nome,cpf,rg,endereco: `${cidade},${bairro},${rua}`,telefones,senha}
         const format= new FormData();
-
         // Object.keys(arquivos).map((itens)=>{
         //     format.append('files', arquivos[itens]);
         // });
@@ -41,12 +33,10 @@ const CadastroSocio= ()=>{
         if(senha !== repeat){
             return alert('Senhas nao compativeis');
         }
-        setLoading(true)
+        
         connection.post('/socio', format).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
         }).catch((err)=>{
-            setLoading(false)
             alert(err.response.data.message);
         });
     }

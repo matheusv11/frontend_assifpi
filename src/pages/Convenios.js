@@ -6,7 +6,7 @@ import Navbar from '../components/NavBar';
 
 const Convenios=()=>{
     
-    const {admToken,setLoading,doc_url}=useAuth();
+    const {admToken,doc_url}=useAuth();
     const[titulo,setTitulo]=useState('');
     const[descricao,setDescricao]=useState('');
     const[imagem,setImagem]=useState('');
@@ -14,13 +14,10 @@ const Convenios=()=>{
     const[convenios,setConvenios]=useState([]);
 
     useEffect(()=>{
-        setLoading(true)
         connection.get('/convenios').then((dados)=>{
             setConvenios(dados.data);
-            setLoading(false)
         }).catch((err)=>{
             alert(err.message);
-            setLoading(false)
         })
         // eslint-disable-next-line
     },[]);
@@ -32,35 +29,29 @@ const Convenios=()=>{
         format.append('file', anexo);
         format.append('titulo', titulo);
         format.append('descricao', descricao);
-        setLoading(true);
-        
+
         connection.post('/convenios',format, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false);
             alert(dados.data.message);
             setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem, anexo: dados.data.anexo}]) 
             //Resolver problema de url de imagem //Melhorar isso //ConvenioController
         }).catch((err)=>{
-            setLoading(false);
             alert(err.response.data.message)
         })
     }
 
     const Deletar= (id)=>{
-        setLoading(true);
         connection.delete(`/convenios/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false)
             alert(dados.data.message);
             setConvenios(convenios.filter(convenios=> convenios.id !==id))
         }).catch((err)=>{
-            setLoading(false);
             alert(err.message)
         })
         //setDepedente(dependente_data.filter(dependentes=> dependentes.id !==id))

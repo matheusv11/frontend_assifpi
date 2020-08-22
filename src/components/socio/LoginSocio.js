@@ -4,7 +4,7 @@ import {useAuth} from '../auth.js';
 
 const LoginSocio= ()=>{
 
-    const {setToken, setLoading}= useAuth();
+    const {setToken}= useAuth();
     const[email,setEmail]=useState('');
     const[senha,setSenha]=useState('');
 
@@ -12,17 +12,13 @@ const LoginSocio= ()=>{
       
       e.preventDefault()
       const data= {email,senha};
-      setLoading(true);
+
       connection.post('auth_socio', data).then((dados)=>{
-        setLoading(false)  
         setToken(dados.data.token);
         localStorage.setItem('token',dados.data.token)
       }).catch((err)=>{
-        setLoading(false)
         alert(err.response.data.message);
-
       });
-          
 
     }
 

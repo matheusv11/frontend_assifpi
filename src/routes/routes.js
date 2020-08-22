@@ -12,7 +12,6 @@ import Adm from '../pages/Adm';
 import Feed from '../pages/Feed'
 import Convenios from '../pages/Convenios'
 import Sobre from '../pages/Sobre'
-import Spinner from '../components/Spinner';
 import Termos from '../pages/Termos'
 // const Home= lazy(()=> import('../pages/Home'))
 // const Acesso= lazy(()=> import('../pages/Acesso'))
@@ -23,8 +22,6 @@ const Routes= ()=>{
         <BrowserRouter>
                 <Switch>
                 
-                    <Spinner>
-
                     <Route path="/" exact component={Home}/>
                     <PrivateSocioRoute path="/perfil" component={Perfil}/>
                     <PrivateAdmRoute path="/administracao" component={Adm}/>
@@ -34,8 +31,6 @@ const Routes= ()=>{
                     <Route path="/convenios" component={Convenios}/>
                     <Route path="/sobre" component={Sobre}/>
                     <Route path="/termosdeuso" component={Termos}/>
-
-                    </Spinner>  
 
                 </Switch>
 

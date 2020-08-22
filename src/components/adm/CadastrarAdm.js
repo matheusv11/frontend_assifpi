@@ -4,7 +4,7 @@ import connection from '../../services/connection';
 
 const CadastrarAdm=()=>{
 
-    const {admToken, setLoading}= useAuth();    
+    const {admToken}= useAuth();    
     
     const [nome,setNome]=useState('');
     const [email,setEmail]=useState('');
@@ -18,16 +18,14 @@ const CadastrarAdm=()=>{
         if(senha!==repeat){
            return alert('Senhas diferentes') //Pode ser pelo back ou pelo html mesmo
         }
-        setLoading(true);
+        
         connection.post('/adm', data, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            setLoading(false);;
             alert(dados.data.message);
         }).catch((err)=>{
-            setLoading(false)
             alert(err.response.data.message)
         })
     }
