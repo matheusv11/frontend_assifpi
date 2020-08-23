@@ -46,7 +46,12 @@ const PainelFinanceiro=()=>{
         return object_name
     })
 
-    const filter_array = [...new Set(array)];
+    const filter_array = [...new Set(array)].sort();
+
+    const object_ganhos= dados.ganhos.map((item)=>{
+        const [object_name]= Object.getOwnPropertyNames(item)
+        return object_name
+    })
 
     const object_gastos= dados.gastos.map((item)=>{
         const [object_name]= Object.getOwnPropertyNames(item)
@@ -91,17 +96,20 @@ const PainelFinanceiro=()=>{
                         label: 'Arrecadamentos',
                         backgroundColor: 'transparent',
                         borderColor: 'green',
-                        data: filter_array.map((tudo,index)=>{
-                            let increment= 0
-                            if(!dados.ganhos[index]){
-                                return null
+                        data: filter_array.map((meses,index)=>{
+                            let increment= 0;
+                            let element= object_ganhos.indexOf(meses);
+                            let filtered= null;
+                            if(element>-1){
+                                [filtered]= Object.values(dados.ganhos[element])
                             }
+                            
                             while(increment<filter_array.length){
-                                let [objeto]= Object.getOwnPropertyNames(dados.ganhos[index])
-                                let pos= filter_array.indexOf(objeto)
+                                let pos= filter_array.indexOf(object_ganhos[increment])
+                                
                                 if(index===pos){
-                                    let [ok]=Object.values(dados.ganhos[index])
-                                    return ok
+                                    // console.log(`Igual na posicao ${index} + ${increment}`)
+                                    return filtered
                                 }
                                 increment++
                             }
