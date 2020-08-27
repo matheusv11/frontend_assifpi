@@ -94,6 +94,8 @@ const CadastrarDependentes=()=>{
                             <textarea onChange={e=> setData({...formData, telefones: e.target.value})} className="form-control" required></textarea>
                         </div>
 
+                        {/* Old input files
+
                         <div className="row">
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Foto RG:</label>
@@ -106,8 +108,37 @@ const CadastrarDependentes=()=>{
                             </div>
 
                             <div className="form-group col-sm-4 col-xs-12">
-                                <label>Foto Comprovante de Endereço:</label>
+                                <label>Foto Comprovante de Parentesco:</label>
                                 <input onChange={e=> setData({...formData, comprovante: e.target.files[0]})} type='file'/>
+                            </div>
+                        </div>
+                        
+                        */}
+                        
+
+                        <div className="row" style={{margin:"1%"}}>
+                            <div className="custom-file col-sm-6 col-xs-12">
+                                <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                                onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
+                                <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG ou CNH (frente)' : formData.imagem_rg.name }</label>
+                            </div>
+
+                            <div className="custom-file col-sm-6 col-xs-12">
+                                <input type="file" className="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                                onChange={e=> setData()}  required/>
+                                <label className="custom-file-label" for="inputGroupFile04">{!formData.imagem_rg ? 'Imagem RG ou CNH (verso)' : formData.imagem_rg.name }</label>
+                            </div>
+                        </div>
+                        <div className="row" style={{margin:"1%"}}>
+                            <div className="custom-file col-sm-6 col-xs-12">
+                                <input type="file" className="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                                onChange={e=> setData({...formData, imagem_cpf: e.target.files[0]})}  required/>
+                                <label className="custom-file-label" for="inputGroupFile04">{!formData.imagem_cpf ? 'Imagem CPF' : formData.imagem_rg.name }</label>
+                            </div>
+                            <div className="custom-file col-sm-6 col-xs-12">
+                                <input type="file" className="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                                onChange={e=> setData({...formData, comprovante: e.target.files[0]})}  required/>
+                                <label className="custom-file-label" for="inputGroupFile04">{!formData.comprovante ? 'Imagem comprovante de parentesco' : formData.imagem_rg.name }</label>
                             </div>
                         </div>
                         

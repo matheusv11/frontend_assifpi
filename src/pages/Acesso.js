@@ -13,7 +13,7 @@ const Acesso= ()=>{
     return( 
        <div id="page-acess" >
 
-        <nav className="navbar navbar-expand-lg navbar-light bg-danger">
+        <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <Link to="/" className="navbar-brand text-white">
                         <img src="assets/sobre/img/logocolor.png" width="30" height="30" className="d-inline-block align-top" alt="" loading="lazy"/>
                                 ASSIFPI

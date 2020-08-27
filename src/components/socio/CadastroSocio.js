@@ -107,25 +107,60 @@ const CadastroSocio= ()=>{
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="custom-file col-sm-4 col-xs-12">
+                    <h5>Identificação:</h5>
+                    <button className="btn btn-link">Mudar CNH/RG</button>
+                    <div className="row" style={{margin:"1%"}}>
+                        <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
                             onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                            <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG' : formData.imagem_rg.name }</label>
+                            <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG ou CNH (frente)' : formData.imagem_rg.name }</label>
                         </div>
 
+                        <div className="custom-file col-sm-6 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
+                            <label className="custom-file-label" for="inputGroupFile04">{!formData.imagem_rg ? 'Imagem RG ou CNH (verso)' : formData.imagem_rg.name }</label>
+                        </div>
 
-                        <div className="custom-file col-sm-4 col-xs-12">
+                        
+                    </div>
+
+                    <div className="row" style={{margin:"1%"}}>
+                        <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon01" 
                             onChange={e=> setData({...formData, imagem_cpf: e.target.files[0]})} required/>
                             <label className="custom-file-label" for="inputGroupFile02">{!formData.imagem_cpf ? 'Imagem CPF' : formData.imagem_cpf.name }</label>
                         </div>
 
-                        <div className="custom-file col-sm-4 col-xs-12">
+                        <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon01" 
                             onChange={e=> setData({...formData, comprovante: e.target.files[0]})} required/>
                             <label className="custom-file-label" for="inputGroupFile03">{!formData.comprovante ? 'Compovante Residencia' : formData.comprovante.name }</label>
                         </div>
+                    </div>
+
+                    <h5>Documentos para débito automatico:</h5>
+                    <div className="row" style={{margin:"1%"}}>
+                        <div className="custom-file col-sm-6 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
+                            <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Autorização Banco do Brasil ou Caixa' : formData.imagem_rg.name }</label>
+                        </div>
+                        <div className="custom-file col-sm-6 col-xs-12">
+                            <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
+                            <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Filição de sócio Banco do Brasil ou Caixa' : formData.imagem_rg.name }</label>
+                        </div>
+                    </div>
+                    
+                    <div className="form-group">
+                        <label>Links para download de documentos a serem preenchidos:</label>
+                        <ul>
+                            <li>Autorização Banco do Brasil</li>
+                            <li>Autorização Caixa Economica Federal</li>
+                            <li>Filiação Banco do Brasil</li>
+                            <li>Filiação Caixa Economica Federal</li>
+                        </ul>
                     </div>
                     
                     <div className="form-group form-check" style={{marginTop:"2%"}} >

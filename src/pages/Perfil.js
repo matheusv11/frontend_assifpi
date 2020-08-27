@@ -24,7 +24,7 @@ const Perfil=()=>{
     return(
     <div id="page-perfil">
 
-<nav className="navbar navbar-expand-lg navbar-light bg-danger">
+<nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <Link to="/" className="navbar-brand text-white">
                 <img src="assets/sobre/img/logocolor.png" width="30" height="30" className="d-inline-block align-top" alt="" loading="lazy"/>
                         ASSIFPI
@@ -40,7 +40,7 @@ const Perfil=()=>{
         <a className="nav-link dropdown-toggle text-white" href="/#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Pessoal
         </a>
-        <div className="dropdown-menu bg-danger" aria-labelledby="navbarDropdownMenuLink">
+        <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
         <label role="button" className={`nav-link text-${color==="lb1" ? "success" : "white"}`} onClick={()=> {setColor('lb1');setWhatis(<PerfilSocio/>)}}>Meu Perfil</label>
         <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaDependentes/>)}}>Perfil de Dependentes</label>
         <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<CadastrarDependentes/>)}}>Cadastrar Dependentes</label>

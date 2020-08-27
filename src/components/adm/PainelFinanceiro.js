@@ -156,13 +156,12 @@ const PainelFinanceiro=()=>{
 
                      <Doughnut data={{
                         datasets:[{
-                            backgroundColor: ['green','yellow','blue'],
+                            backgroundColor: ['green','yellow'],
                             data: dados.doughnut,
                         }],
                         labels: [
                             'Em dia',
                             'Pendentes',
-                            'Usuarios totais',
                         ],}} options={{title:{
                             display:true,
                             fontSize:30,
