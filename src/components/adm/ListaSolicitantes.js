@@ -24,7 +24,9 @@ const ListaSolicitantes=()=>{
     },[cpf]);
 
     const ConfirmarCarteiraSocio= (id)=>{
-        connection.post(`/change_carteira_socio/${id}`, '', {
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
+        connection.put(`/change_carteira_socio/${id}`, '', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -37,7 +39,9 @@ const ListaSolicitantes=()=>{
     }  
 
     const ConfirmarCarteiraDependente= (id)=>{
-        connection.post(`/change_carteira_dependente/${id}`, '', {
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+        
+        connection.put(`/change_carteira_dependente/${id}`, '', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }

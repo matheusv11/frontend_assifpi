@@ -19,7 +19,7 @@ const Feed=()=>{
         articlesPerPage: 5, //Ou eventos.length
         numberOfButtons: 5,
         currentPage: page
-      });
+    });
 
     useEffect(()=>{
         connection.get(`/evento?page=${page}`).then((dados)=>{

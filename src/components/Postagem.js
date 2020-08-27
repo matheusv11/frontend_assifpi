@@ -42,7 +42,7 @@ const Postagem=({evento})=>{
     }
 
     const Remover= ()=>{
-                connection.delete(`/socio_evento/${evento.id}`, {
+        connection.delete(`/socio_evento/${evento.id}`, {
             headers:{
                 authorization: `Bearer ${token}`
             }
@@ -56,7 +56,7 @@ const Postagem=({evento})=>{
     }
 
     const Visualizar= ()=>{
-                connection.get(`/socio_evento/${evento.id}`, {
+        connection.get(`/socio_evento/${evento.id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -69,6 +69,7 @@ const Postagem=({evento})=>{
     }
 
     const Deletar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
         connection.delete(`/evento/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`

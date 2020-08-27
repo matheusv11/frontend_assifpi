@@ -22,6 +22,8 @@ const ListaDependentes=()=>{
     }, [token]);   
 
     const Deletar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.delete(`/dependente/${id}`, {
             headers:{
                 authorization: `Bearer ${token}`
@@ -35,6 +37,8 @@ const ListaDependentes=()=>{
     }
 
     const Solicitar= (id)=>{
+        if(window.confirm("Você quer solicitar a carteira deste dependete? Caso sim sua solicitacao será enviada."))
+        
         connection.post(`/carteira/${id}`, '', {
             headers:{
                 authorization: `Bearer ${token}`
@@ -69,7 +73,6 @@ const ListaDependentes=()=>{
                     {!dados.status && <button onClick={()=> Solicitar(dados.id)} type="button" className="btn btn-dark" style={{marginLeft: '80px'}}>Solicitar Carteira</button>} 
                     {dados.status==='solicitada' && <b style={{marginLeft: '80px'}}>Carteira Solicitada</b>}
                     {dados.status==='confeccionada' && <b style={{marginLeft: '80px'}}>Carteira Confeccionada</b>}
-
                     <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-outline-danger">Deletar este Dependente</button>
 
                     </div>

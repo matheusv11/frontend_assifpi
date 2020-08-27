@@ -9,6 +9,7 @@ const PerfilSocio=()=>{
     const [statusCarteira,setStatusCarteira]=useState('');
 
     const Solicitar= ()=>{
+      if(window.confirm("Você realmente deseja solicitar? Caso sim irá ser requisitada sua carteira."))
       connection.post('/carteira', '',{
         headers:{
           authorization: `Bearer ${token}`

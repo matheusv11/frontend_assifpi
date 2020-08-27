@@ -44,6 +44,8 @@ const Gastos=()=>{
     }
 
     const Deletar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.delete(`/gastos/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`

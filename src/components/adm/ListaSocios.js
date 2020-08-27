@@ -40,6 +40,8 @@ const ListaSocios=()=>{
     },[cpf]);
     
     const ConfirmarSocio= (id,index)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.put(`/confirm_socio/${id}`,'', {
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -57,6 +59,8 @@ const ListaSocios=()=>{
 
         
     const ConfirmarDependente= (id,index)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.post(`/confirm_dependente/${id}`,'', { //Update to put
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -73,6 +77,8 @@ const ListaSocios=()=>{
 
 
     const DeletarSocio= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.delete(`/socio/${id}`, {
             headers:{
                 authorization:  `Bearer ${admToken}`
@@ -86,6 +92,8 @@ const ListaSocios=()=>{
     }
 
     const DeletarDependente= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+        
         connection.delete(`/delete_dependente/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`

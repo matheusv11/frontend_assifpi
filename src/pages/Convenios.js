@@ -44,6 +44,8 @@ const Convenios=()=>{
     }
 
     const Deletar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+        
         connection.delete(`/convenios/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
