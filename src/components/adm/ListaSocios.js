@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import createPagination from '../../helpers/createPagination';
+
 
 const ListaSocios=()=>{
 
@@ -8,36 +10,51 @@ const ListaSocios=()=>{
     const[cpf,setCpf]=useState('');
     const[socio_data,setData]=useState([]);
     const[dependente_data,setDependentes]=useState([]);
+    const[total,setTotal]=useState(0);
+    const[page,setPage]=useState(1);
+    
+    const {pagination}= createPagination({
+        numberOfArticles: total,
+        articlesPerPage: 10, //Ou eventos.length
+        numberOfButtons: 5,
+        currentPage: page
+    })
 
     useEffect(()=>{
-        connection.get(`/index_socios?cpf=${cpf}`, {
+        connection.get(`/index_socios?page=${page}&cpf=${cpf}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
             setData(dados.data);
+            setTotal(prevState=>{
+                return prevState+parseInt(dados.headers['total-count'])
+            })
         }).catch((err)=>{
             setAdm(null);
             localStorage.removeItem('admToken');
             alert(err.message);
         });
         // eslint-disable-next-line
-    },[cpf]);//Fazer busca via query ainda
-    
+    },[cpf,page]);//Fazer busca via query ainda
+
     useEffect(()=>{
-        connection.get(`/index_dependentes?cpf=${cpf}`, {
+        connection.get(`/index_dependentes?page=${page}&cpf=${cpf}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
             setDependentes(dados.data);
+            setTotal(prevState=>{
+                return prevState+parseInt(dados.headers['total-count'])
+            })
         }).catch((err)=>{
             setAdm(null);
             localStorage.removeItem('admToken');
             alert(err.message);
         });
         // eslint-disable-next-line
-    },[cpf]);
+    },[cpf,page]);
     
     const ConfirmarSocio= (id,index)=>{
         if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
@@ -106,11 +123,11 @@ const ListaSocios=()=>{
         })
 
     }
-
+    
     return( 
         <div id='componente-lista-socios' style={{margin:"0 auto",width:"90%"}}>
             <h2>Lista de sócios e dependentes</h2>
-            
+
             <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
             
             <input type="number" onChange={e=> setCpf(e.target.value)} className="form-control" id=""  placeholder='Pesquisar por cpf' />
@@ -215,6 +232,29 @@ const ListaSocios=()=>{
                 </div>
             </div>      
 
+            <nav style={{width: '80%', margin: '10px auto', justifyContent:'center', display: 'flex'}} aria-label="...">
+    <ul className="pagination">
+
+        <li className={`page-item ${pagination[0]=== page && "disabled"}`} >
+        <button onClick={()=> setPage(page-1)} className="page-link"> {"<"} </button>
+        </li>
+
+        {pagination.map(pagina => (
+          <li
+            className={`page-item ${page === pagina && "active"}`}
+            onClick={()=> setPage(pagina)}
+
+          >
+              <button className="page-link">{pagina}</button>
+          </li>
+        ))}
+        <li className={`page-item ${pagination.reverse()[0]=== page && "disabled"}`} >
+
+        <button onClick={()=> setPage(page+1)} className="page-link" >{">"}</button>
+
+        </li>
+    </ul>
+    </nav>                
         </div>
     );
 }
