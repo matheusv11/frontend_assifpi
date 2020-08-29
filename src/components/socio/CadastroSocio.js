@@ -9,7 +9,8 @@ const CadastroSocio= ()=>{
     const[formData,setData]=useState({
         email:'',nome:'',cpf:'',rg:'',cidade:'',
         bairro:'',rua:'',telefones:'',senha:'',
-        repeat:'',imagem_rg:'',imagem_cpf:'',comprovante:''
+        repeat:'',imagem_rg_frente:'',imagem_rg_verso:'',
+        cnh:'',imagem_cpf:'',comprovante:''
     })
 
     const ChangeIsrg=(isrg)=>{
@@ -19,15 +20,18 @@ const CadastroSocio= ()=>{
 
     const Registrar=(e)=>{
         e.preventDefault();
-        const {email,nome,cpf,rg,cidade,bairro,rua,telefones,senha,repeat, imagem_rg, imagem_cpf, comprovante} =formData;
+        const {email,nome,cpf,rg,cidade,bairro,rua,telefones,senha,repeat, imagem_rg_frente,imagem_rg_verso,cnh, imagem_cpf, comprovante} =formData;
         // const data={email,nome,cpf,rg,endereco: `${cidade},${bairro},${rua}`,telefones,senha}
         const format= new FormData();
         // Object.keys(arquivos).map((itens)=>{
         //     format.append('files', arquivos[itens]);
         // });
-        format.append('files', imagem_rg);
-        format.append('files', imagem_cpf);
-        format.append('files', comprovante);
+
+        format.append('files', cnh);                //0
+        format.append('files', imagem_rg_frente);   //0   
+        format.append('files', imagem_rg_verso);    //1
+        format.append('files', imagem_cpf);         //2 
+        format.append('files', comprovante);        //3 
         format.append('email', email);
         format.append('nome', nome);
         format.append('cpf', cpf);
@@ -114,29 +118,29 @@ const CadastroSocio= ()=>{
                     </div>
 
                     <h5>Identificação:</h5>
-                    <button className="btn btn-link" onClick={e=>ChangeIsrg(isrg)}>Mudar CNH/RG</button>
+                    <button type="button" className="btn btn-link" onClick={e=>ChangeIsrg(isrg)}>Mudar CNH/RG</button>
                     <div className="row" style={{margin:"1%"}}>
 
                         {isrg ? 
                         <>
                         <div className="custom-file col-sm-6 col-xs-12">
                         <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
-                        onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                        <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg ? 'Imagem RG (frente)' : formData.imagem_rg.name }</label>
+                        onChange={e=> setData({...formData, imagem_rg_frente: e.target.files[0], cnh: ''})}  required/>
+                        <label className="custom-file-label" for="inputGroupFile01">{!formData.imagem_rg_frente ? 'Imagem RG (frente)' : formData.imagem_rg_frente.name }</label>
                         </div>
 
                         <div className="custom-file col-sm-6 col-xs-12">
                         <input type="file" className="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon04"
-                        onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                        <label className="custom-file-label" for="inputGroupFile02">{!formData.imagem_rg ? 'Imagem RG (verso)' : formData.imagem_rg.name }</label>
+                        onChange={e=> setData({...formData, imagem_rg_verso: e.target.files[0], cnh: ''})}  required/>
+                        <label className="custom-file-label" for="inputGroupFile02">{!formData.imagem_rg_verso ? 'Imagem RG (verso)' : formData.imagem_rg_verso.name }</label>
                         </div>
                         </>
                         :
                         <>
                         <div className="custom-file col-sm-12 col-xs-12">
                         <input type="file" className="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon04"
-                        onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                        <label className="custom-file-label" for="inputGroupFile03">{!formData.imagem_rg ? 'Imagem do CNH (frente)' : formData.imagem_rg.name }</label>
+                        onChange={e=> setData({...formData, cnh: e.target.files[0], imagem_rg_frente:'', imagem_rg_verso:''})}  required/>
+                        <label className="custom-file-label" for="inputGroupFile03">{!formData.cnh ? 'Imagem do CNH (frente)' : formData.cnh.name }</label>
                         </div>
                         </> 
                         }
@@ -158,7 +162,7 @@ const CadastroSocio= ()=>{
                         </div>
                     </div>
 
-                    <h5>Documentos para débito automatico:</h5>
+                    {/* <h5>Documentos para débito automatico:</h5>
                     <div className="row" style={{margin:"1%"}}>
                         <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile06" aria-describedby="inputGroupFileAddon01"
@@ -180,7 +184,7 @@ const CadastroSocio= ()=>{
                             <li>Filiação Banco do Brasil</li>
                             <li>Filiação Caixa Economica Federal</li>
                         </ul>
-                    </div>
+                    </div> */}
                     
                     <div className="form-group form-check" style={{marginTop:"2%"}} >
                         <input type="radio" className="form-check-input" onChange={e=>setAccept(e.target.value)} />
