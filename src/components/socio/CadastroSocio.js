@@ -9,6 +9,7 @@ const CadastroSocio= ()=>{
     const[formData,setData]=useState({
         email:'',nome:'',cpf:'',rg:'',cidade:'',
         bairro:'',rua:'',telefones:'',senha:'',
+        filiacao:'', autorizacao:'',
         repeat:'',imagem_rg_frente:'',imagem_rg_verso:'',
         cnh:'',imagem_cpf:'',comprovante:''
     })
@@ -20,18 +21,20 @@ const CadastroSocio= ()=>{
 
     const Registrar=(e)=>{
         e.preventDefault();
-        const {email,nome,cpf,rg,cidade,bairro,rua,telefones,senha,repeat, imagem_rg_frente,imagem_rg_verso,cnh, imagem_cpf, comprovante} =formData;
+        const {email,nome,cpf,rg,cidade,bairro,rua,filiacao,autorizacao, telefones,senha,repeat, imagem_rg_frente,imagem_rg_verso,cnh, imagem_cpf, comprovante} =formData;
         // const data={email,nome,cpf,rg,endereco: `${cidade},${bairro},${rua}`,telefones,senha}
         const format= new FormData();
         // Object.keys(arquivos).map((itens)=>{
         //     format.append('files', arquivos[itens]);
         // });
 
-        format.append('files', cnh);                //0
-        format.append('files', imagem_rg_frente);   //0   
-        format.append('files', imagem_rg_verso);    //1
-        format.append('files', imagem_cpf);         //2 
-        format.append('files', comprovante);        //3 
+        format.append('cnh', cnh);
+        format.append('rg', imagem_rg_frente);
+        format.append('rg', imagem_rg_verso);
+        format.append('cpf_comprovante', imagem_cpf);
+        format.append('cpf_comprovante', comprovante);  
+        format.append('autorizacao_filiacao', autorizacao);  
+        format.append('autorizacao_filiacao', filiacao);  
         format.append('email', email);
         format.append('nome', nome);
         format.append('cpf', cpf);
@@ -54,7 +57,11 @@ const CadastroSocio= ()=>{
     return (
         <div id='componente-cadastro-socio' className="col-sm-10 col-xs-12" style={{margin:"0 auto"}}>
         
-        <h2>Cadastre-se como Sócio</h2>
+        <h2>Cadastre-se como Sócio
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+        </svg>
+        </h2>
     
         <div className="card" style={{borderWidth: '5px',borderColor:"green"}}>
             <div className="card-body">
@@ -162,17 +169,17 @@ const CadastroSocio= ()=>{
                         </div>
                     </div>
 
-                    {/* <h5>Documentos para débito automatico:</h5>
+                    <h5>Documentos para débito automatico:</h5>
                     <div className="row" style={{margin:"1%"}}>
                         <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile06" aria-describedby="inputGroupFileAddon01"
-                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                            <label className="custom-file-label" for="inputGroupFile06">{!formData.imagem_rg ? 'Autorização Banco do Brasil ou Caixa' : formData.imagem_rg.name }</label>
-                        </div>
+                            onChange={e=> setData({...formData, autorizacao: e.target.files[0]})}  required/>
+                            <label className="custom-file-label" for="inputGroupFile06">{!formData.autorizacao ? 'Autorização Banco do Brasil ou Caixa' : formData.autorizacao.name }</label>
+                        </div>   
                         <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile07" aria-describedby="inputGroupFileAddon01"
-                            onChange={e=> setData({...formData, imagem_rg: e.target.files[0]})}  required/>
-                            <label className="custom-file-label" for="inputGroupFile07">{!formData.imagem_rg ? 'Filição de sócio Banco do Brasil ou Caixa' : formData.imagem_rg.name }</label>
+                            onChange={e=> setData({...formData, filiacao: e.target.files[0]})}  required/>
+                            <label className="custom-file-label" for="inputGroupFile07">{!formData.filiacao ? 'Filição de sócio Banco do Brasil ou Caixa' : formData.filiacao.name }</label>
                         </div>
                     </div>
                     
@@ -184,7 +191,7 @@ const CadastroSocio= ()=>{
                             <li>Filiação Banco do Brasil</li>
                             <li>Filiação Caixa Economica Federal</li>
                         </ul>
-                    </div> */}
+                    </div>
                     
                     <div className="form-group form-check" style={{marginTop:"2%"}} >
                         <input type="radio" className="form-check-input" onChange={e=>setAccept(e.target.value)} />

@@ -12,7 +12,8 @@ const ListaSocios=()=>{
     const[dependente_data,setDependentes]=useState([]);
     const[total,setTotal]=useState(0);
     const[page,setPage]=useState(1);
-    
+    const[presencial,setPresencial]=useState(true);
+
     const {pagination}= createPagination({
         numberOfArticles: total,
         articlesPerPage: 10, //Ou eventos.length
@@ -59,7 +60,7 @@ const ListaSocios=()=>{
     const ConfirmarSocio= (id,index)=>{
         if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
 
-        connection.put(`/confirm_socio/${id}`,'', {
+        connection.put(`/confirm_socio/${id}?presencial=${presencial}`,'', {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -160,14 +161,32 @@ const ListaSocios=()=>{
                                 <p><b>Endereço: </b>{dados.endereco}</p>
 
                                 <p><b>Telefones: </b>{dados.telefones}</p>
+                                {dados.rg_frente && <a href={`${doc_url}/${dados.rg_frente}`} target="blank" >Ver rg_frente</a>}
+                                {dados.rg_verso && <a href={`${doc_url}/${dados.rg_verso}`} target="blank" >Ver rg_verso</a>}
+                                {dados.cnh && <a href={`${doc_url}/${dados.cnh}`} target="blank" >Ver CNH</a>}
+                                {dados.autorizacao && <a href={`${doc_url}/${dados.autorizacao}`} target="blank" >Ver autorizacao</a>}
+                                {dados.filiacao && <a href={`${doc_url}/${dados.filiacao}`} target="blank" >Ver filiação</a>}
 
-                                <a href={`${doc_url}/${dados.imagem_rg}`} target="blank" >Ver rg</a>
                                 <a href={`${doc_url}/${dados.imagem_cpf}`} target="blank" >Ver cpf</a>
                                 <a href={`${doc_url}/${dados.comprovante}`} target="blank" >Ver comprovante</a>
                                 
-                                
-                                {!dados.confirmado && <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button>}
 
+
+                                {!dados.confirmado &&
+                                
+                                <>
+                                
+                                <div className="form-group form-check" style={{marginTop:"2%"}} >
+                                    <form>
+                                    <input type="radio" id="male" name="gender" value="male" onClick={e=>setPresencial(true)}/>
+                                    <label for="male">Debito</label><br/>
+                                    <input type="radio" id="female" name="gender" value="female" onClick={e=>setPresencial(false)}/>
+                                    <label for="female">mercdopago</label><br/>
+                                    </form>
+                                    
+                                </div>
+                                
+                                <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button></>}
                                 <button onClick={()=> DeletarSocio(dados.socio_id)} className="btn btn-danger">Deletar Sócio</button>
                             
                             </div>
@@ -213,10 +232,7 @@ const ListaSocios=()=>{
 
                                         <p><b>Telefones: </b>{dados.telefones}</p>
 
-                                        <a href={`${doc_url}/${dados.imagem_rg}`} target="blank">Ver rg</a>
-                                        <a href={`${doc_url}/${dados.imagem_cpf}`} target="blank">Ver cpf</a>
-                                        <a href={`${doc_url}/${dados.comprovante}`} target="blank">Ver comprovante</a>
-                                        
+                                        <a href={`${doc_url}/${dados.comprovante_parentesco}`} target="blank">Ver comprovante de comprovante de parentesco</a>
                                         
                                         {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} className="btn btn-success">Autenticar Dependente</button>}
                                         <button onClick={()=> DeletarDependente(dados.dependente_id)} className="btn btn-danger">Deletar Dependente</button>
