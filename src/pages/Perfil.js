@@ -6,7 +6,8 @@ import PerfilSocio from '../components/socio/PerfilSocio';
 import ListaDependentes from '../components/socio/ListaDependentes';
 import CadastrarDependentes from '../components/socio/CadastrarDependentes';
 import EditarSocio from '../components/socio/EditarSocio';
-import Pagamentos from '../components/socio/Pagamanetos'
+import Pagamentos from '../components/socio/Pagamentos'
+import Agenda from '../components/Agenda';
 
 
 const Perfil=()=>{
@@ -45,6 +46,8 @@ const Perfil=()=>{
         <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaDependentes/>)}}>Perfil de Dependentes</label>
         <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<CadastrarDependentes/>)}}>Cadastrar Dependentes</label>
         <label role="button" className={`nav-link text-${color==="lb4" ? "success" : "white"}`} onClick={()=> {setColor('lb4');setWhatis(<EditarSocio/>)}}>Editar informações</label>
+        <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Agenda/>)}}>Agenda de eventos</label>
+
         </div>
         </li>
 

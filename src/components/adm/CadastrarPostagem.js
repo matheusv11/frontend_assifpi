@@ -6,16 +6,21 @@ const CadastrarPostagem = () => {
     const {admToken}= useAuth();
 
     const [formData, setData]= useState({
-        titulo:'', descricao:'', local:'', data:'', hora:'', anexo:''
+        titulo:'', descricao:'', local:'', data:'', hora:'', anexo:'', imagens:''
     });
 
     const Cadastrar= (e)=>{
         e.preventDefault();
-        const {titulo,descricao,local, data, hora,anexo}= formData;
+        const {titulo,descricao,local, data, hora, anexo, imagens}= formData;
         // const {...rest}= formData;
         const format= new FormData();
         const format_data= data.split('-') //No back tava com o date now
-        format.append('file', anexo)
+        format.append('anexo', anexo)
+
+        Object.keys(imagens).map((itens)=>{
+            format.append('imagens', imagens[itens]);
+        });
+
         format.append('titulo', titulo)
         format.append('descricao',descricao)
         format.append('local',local)
@@ -76,6 +81,11 @@ const CadastrarPostagem = () => {
                     <div className="custom-file col-sm-6 col-xs-12">
                         <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onChange={e=> setData({...formData, anexo: e.target.files[0]})}  required/>
                         <label className="custom-file-label" for="inputGroupFile01">{!formData.anexo ? 'Anexe algo' : formData.anexo.name }</label>
+                    </div>
+
+                    <div className="custom-file col-sm-6 col-xs-12">
+                        <input type="file" className="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" onChange={e=> setData({...formData, imagens: e.target.files})} multiple required/>
+                        <label className="custom-file-label" for="inputGroupFile01">{!formData.imagens[0] ? 'Coloque imagens' : formData.imagens[0].name }</label>
                     </div>
                 
                     <br/>
