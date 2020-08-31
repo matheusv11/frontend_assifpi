@@ -52,7 +52,7 @@ const Perfil=()=>{
         </li>
 
         <li className="nav-item">
-                <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Pagamentos/>)}}>Pagamentos</label>
+                <label role="button" className={`nav-link text-${color==="lb6" ? "success" : "white"}`} onClick={()=> {setColor('lb6');setWhatis(<Pagamentos/>)}}>Pagamentos</label>
         </li>
 
         <li className="nav-item">
