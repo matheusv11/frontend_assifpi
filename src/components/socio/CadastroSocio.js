@@ -187,12 +187,12 @@ const CadastroSocio= ()=>{
                     </div>
                     
                     <div className="form-group">
-                        <label>Links para download de documentos a serem preenchidos:</label>
+                        <label>Links para download de documentos a serem preenchidos: </label>
                         <ul>
-                            <li>Autorização Banco do Brasil</li>
-                            <li>Autorização Caixa Economica Federal</li>
-                            <li>Filiação Banco do Brasil</li>
-                            <li>Filiação Caixa Economica Federal</li>
+                            <li><a href="http://localhost:3030/download/auth_bancobrasil.docx">Autorização Banco do Brasil</a></li>
+                            <li><a href="http://localhost:3030/download/auth_caixa.docx">Autorização Caixa Economica Federal</a></li>
+                            <li><a href="http://localhost:3030/download/affi_bancobrasil.docx">Filiação Banco do Brasil</a></li>
+                            <li><a href="http://localhost:3030/download/affi_caixa.docx">Filiação Caixa Economica Federal</a></li>
                         </ul>
                     </div>
                     
