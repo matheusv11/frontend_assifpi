@@ -9,10 +9,11 @@ import Home from '../pages/Home';
 import Acesso from '../pages/Acesso';
 import Perfil from '../pages/Perfil';
 import Adm from '../pages/Adm';
-import Feed from '../pages/Feed'
-import Convenios from '../pages/Convenios'
-import Sobre from '../pages/Sobre'
-import Termos from '../pages/Termos'
+import Feed from '../pages/Feed';
+import Convenios from '../pages/Convenios';
+import Sobre from '../pages/Sobre';
+import Recuperar from '../pages/Recuperar';
+import Page404 from '../pages/Page404';
 // const Home= lazy(()=> import('../pages/Home'))
 // const Acesso= lazy(()=> import('../pages/Acesso'))
 
@@ -30,8 +31,8 @@ const Routes= ()=>{
                     <Route path="/feed" component={Feed} />
                     <Route path="/convenios" component={Convenios}/>
                     <Route path="/sobre" component={Sobre}/>
-                    <Route path="/termosdeuso" component={Termos}/>
-
+                    <Route path="/recuperar/:token" component={Recuperar}/>
+                    <Route path="*" component={Page404}/>
                 </Switch>
 
         </BrowserRouter>
