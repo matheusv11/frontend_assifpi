@@ -47,7 +47,7 @@ const Adm=()=>{
         <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaAdms/>)}}>Lista Administradores</label>
         <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<ListaSocios/>)}}>Lista Socios e Dependentes</label>
         <label role="button" className={`nav-link text-${color==="lb4" ? "success" : "white"}`} onClick={()=> {setColor('lb4');setWhatis(<ListaSolicitantes/>)}}>Lista Solicitantes de Carteira</label>
-        <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Agenda/>)}}>Agenda de eventos</label>
+
         </div>
         </li>
 
@@ -56,6 +56,7 @@ const Adm=()=>{
                 Sistema
         </a>
         <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+        <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Agenda/>)}}>Agenda de eventos</label>
         <label role="button" className={`nav-link text-${color==="lb6" ? "success" : "white"}`} onClick={()=> {setColor('lb6');setWhatis(<CadastrarPostagem/>)}}>Cadastrar Postagem</label>
         <label role="button" className={`nav-link text-${color==="lb7" ? "success" : "white"}`} onClick={()=> {setColor('lb7');setWhatis(<PainelFinanceiro/>)}}>Painel Financeiro</label>
         <label role="button" className={`nav-link text-${color==="lb8" ? "success" : "white"}`} onClick={()=> {setColor('lb8');setWhatis(<Gastos/>)}}>Gastos</label>

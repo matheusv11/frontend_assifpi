@@ -63,9 +63,17 @@ const LoginSocio= ()=>{
                 <button onClick={Login} type="submit" className="btn btn-success">Entrar</button>
             </form>
 
-            <form>
-              <input type="email" onChange={e=> setRecover(e.target.value)} className="form-control" id="" required/>
-              <button type="submit" onClick={Recuperar}>Enviar email</button>
+            <button type="button"  className="btn btn-link" 
+            data-toggle="collapse" data-target="#collapseExample" 
+            aria-expanded="false" aria-controls="collapseExample">Esqueci minha senha</button>
+
+            <form className="collapse" id="collapseExample">
+            <div className="form-group" >
+              <label>Email:</label>
+              <input onChange={e=> setRecover(e.target.value)} type="email" className="form-control" id="" required/>
+            </div>
+            <button type="submit" className="btn btn-success" onClick={Recuperar}>Enviar email</button>
+              
             </form>
         </div>
       </div>

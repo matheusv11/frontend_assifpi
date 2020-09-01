@@ -34,13 +34,26 @@ const Recuperar= ()=>{
     }
 
     return(
-        <div id="page-recuperar">
-            <h2>Recuperação</h2>
-            <form>
-                <input onChange={e=> setSenha(e.target.value)} type="password" placeholder="Nova senha"/><br/>
-                <input onChange={e=> setRepetida(e.target.value)} type="password" placeholder="Repetir senha"/><br/>
-                <button onClick={Recuperar} type="submit">Alterar senha</button>
-            </form>
+        <div id="page-recuperar" style={{margin:"0 auto",width:"80%"}}>
+            <h2>Recuperação de senha</h2>
+            <div className="card" style={{ borderWidth: '5px',borderColor:"green"}}>
+                <div className="card-body">
+                    <form>
+                    <div className="form-group">
+                        <label>Senha:</label>
+                        <input onChange={e=> setSenha(e.target.value)}  type="password" className="form-control"  required/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Repetir Senha:</label>
+                        <input onChange={e=> setRepetida(e.target.value)}  type="password" className="form-control"  required/>
+                    </div>
+                   
+                    <button onClick={Recuperar} className="btn btn-success"type="submit">Alterar senha</button>
+                    </form>
+                </div>
+            </div>
+            
         </div>
     )
 }

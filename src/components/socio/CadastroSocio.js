@@ -173,6 +173,10 @@ const CadastroSocio= ()=>{
                     </div>
 
                     <h5>Documentos para débito automatico:</h5>
+                    <label style={{color:"red"}}><b>*Caso não tenha conta nesses bancos,deixe 
+                        os campos em branco.Se seu registro for aprovado será disponibilizado 
+                        um campo para pagamento online</b></label>
+                        
                     <div className="row" style={{margin:"1%"}}>
                         <div className="custom-file col-sm-6 col-xs-12">
                             <input type="file" className="custom-file-input" id="inputGroupFile06" aria-describedby="inputGroupFileAddon01"
