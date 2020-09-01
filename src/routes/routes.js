@@ -28,10 +28,10 @@ const Routes= ()=>{
                     <PrivateAdmRoute path="/administracao" component={Adm}/>
                     {/* <Route path="/acesso" component={Acesso}/> */}
                     <PublicRoute path="/acesso" component={Acesso}/>
+                    <PublicRoute path="/recuperar/:token" component={Recuperar}/>
                     <Route path="/feed" component={Feed} />
                     <Route path="/convenios" component={Convenios}/>
                     <Route path="/sobre" component={Sobre}/>
-                    <Route path="/recuperar/:token" component={Recuperar}/>
                     <Route path="*" component={Page404}/>
                 </Switch>
 

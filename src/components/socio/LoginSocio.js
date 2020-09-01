@@ -7,6 +7,7 @@ const LoginSocio= ()=>{
     const {setToken}= useAuth();
     const[email,setEmail]=useState('');
     const[senha,setSenha]=useState('');
+    const[recover_email,setRecover]=useState('');
 
     const Login= (e)=>{
       
@@ -20,6 +21,16 @@ const LoginSocio= ()=>{
         alert(err.response.data.message);
       });
 
+    }
+
+    const Recuperar= (e)=>{
+      e.preventDefault();
+
+      connection.post('/request',{email: recover_email}).then((dados)=>{
+        alert(dados.data.message);
+      }).catch((err)=>{
+        alert(err.response.data.message);
+      })
     }
 
     return(
@@ -50,6 +61,11 @@ const LoginSocio= ()=>{
         
                 
                 <button onClick={Login} type="submit" className="btn btn-success">Entrar</button>
+            </form>
+
+            <form>
+              <input type="email" onChange={e=> setRecover(e.target.value)} className="form-control" id="" required/>
+              <button type="submit" onClick={Recuperar}>Enviar email</button>
             </form>
         </div>
       </div>
