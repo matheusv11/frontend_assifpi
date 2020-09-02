@@ -29,8 +29,8 @@ const CadastroSocio= ()=>{
         // });
 
         format.append('cnh', cnh);
-        format.append('rg', imagem_rg_frente);
-        format.append('rg', imagem_rg_verso);
+        format.append('rg_file', imagem_rg_frente);
+        format.append('rg_file', imagem_rg_verso);
         format.append('cpf_comprovante', imagem_cpf);
         format.append('cpf_comprovante', comprovante);  
         format.append('autorizacao_filiacao', autorizacao);  
