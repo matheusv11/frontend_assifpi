@@ -8,7 +8,6 @@ import CadastrarDependentes from '../components/socio/CadastrarDependentes';
 import EditarSocio from '../components/socio/EditarSocio';
 import Pagamentos from '../components/socio/Pagamentos'
 import Agenda from '../components/Agenda';
-import Recuperar from './Recuperar';
 
 const Perfil=()=>{
       
@@ -49,10 +48,6 @@ const Perfil=()=>{
        
 
         </div>
-        </li>
-
-        <li className="nav-item">
-                <label role="button" className={`nav-link text-${color==="lb5" ? "success" : "white"}`} onClick={()=> {setColor('lb5');setWhatis(<Recuperar/>)}}>Recuperar senha</label>
         </li>
 
         <li className="nav-item">

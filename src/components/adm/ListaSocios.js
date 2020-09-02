@@ -12,7 +12,7 @@ const ListaSocios=()=>{
     const[dependente_data,setDependentes]=useState([]);
     const[total,setTotal]=useState(0);
     const[page,setPage]=useState(1);
-    const[presencial,setPresencial]=useState(true);
+    const[presencial,setPresencial]=useState('mercadopago');
 
     const {pagination}= createPagination({
         numberOfArticles: total,
@@ -59,7 +59,10 @@ const ListaSocios=()=>{
     
     const ConfirmarSocio= (id,index)=>{
         if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
-
+        
+        // if(!presencial){
+        //     return alert('Informe o meio de pagamento')
+        // }
         connection.put(`/confirm_socio/${id}?presencial=${presencial}`,'', {
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -165,11 +168,15 @@ const ListaSocios=()=>{
                                 <p><b>Endereço: </b>{dados.endereco}</p>
 
                                 <p><b>Telefones: </b>{dados.telefones}</p>
+
+                                <p><b>Pagamento: </b>{dados.pagamento}</p>
+
                                 {dados.rg_frente && <a href={`${doc_url}/${dados.rg_frente}`} target="blank" >Ver rg_frente</a>}
                                 {dados.rg_verso && <a href={`${doc_url}/${dados.rg_verso}`} target="blank" >Ver rg_verso</a>}
                                 {dados.cnh && <a href={`${doc_url}/${dados.cnh}`} target="blank" >Ver CNH</a>}
                                 {dados.autorizacao && <a href={`${doc_url}/${dados.autorizacao}`} target="blank" >Ver autorizacao</a>}
                                 {dados.filiacao && <a href={`${doc_url}/${dados.filiacao}`} target="blank" >Ver filiação</a>}
+                                
 
                                 <a href={`${doc_url}/${dados.imagem_cpf}`} target="blank" >Ver cpf</a>
                                 <a href={`${doc_url}/${dados.comprovante}`} target="blank" >Ver comprovante</a>
@@ -182,9 +189,9 @@ const ListaSocios=()=>{
                                 
                                 <div className="form-group form-check" style={{marginTop:"2%"}} >
                                     <form>
-                                    <input type="radio" id="male" name="gender" value="male" onClick={e=>setPresencial(true)}/>
+                                    <input type="radio" id="male" name="gender" value="male" onClick={e=>setPresencial('presencial')}/>
                                     <label for="male">Debito</label><br/>
-                                    <input type="radio" id="female" name="gender" value="female" onClick={e=>setPresencial(false)}/>
+                                    <input type="radio" id="female" name="gender" value="female" onClick={e=>setPresencial('mercadopago')}/>
                                     <label for="female">mercdopago</label><br/>
                                     </form>
                                     
