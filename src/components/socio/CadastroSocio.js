@@ -172,7 +172,7 @@ const CadastroSocio= ()=>{
                         </div>
                     </div>
 
-                    <h5>Documentos para débito automatico:</h5>
+                    <h5>Documentos para débito automático:</h5>
                     <label style={{color:"red"}}><b>*Caso não tenha conta nesses bancos,deixe 
                         os campos em branco.Se seu registro for aprovado será disponibilizado 
                         um campo para pagamento online</b></label>
@@ -194,9 +194,9 @@ const CadastroSocio= ()=>{
                         <label>Links para download de documentos a serem preenchidos: </label>
                         <ul>
                             <li><a href="http://localhost:3030/download/auth_bancobrasil.docx">Autorização Banco do Brasil</a></li>
-                            <li><a href="http://localhost:3030/download/auth_caixa.docx">Autorização Caixa Economica Federal</a></li>
+                            <li><a href="http://localhost:3030/download/auth_caixa.docx">Autorização Caixa Econômica Federal</a></li>
                             <li><a href="http://localhost:3030/download/affi_bancobrasil.docx">Filiação Banco do Brasil</a></li>
-                            <li><a href="http://localhost:3030/download/affi_caixa.docx">Filiação Caixa Economica Federal</a></li>
+                            <li><a href="http://localhost:3030/download/affi_caixa.docx">Filiação Caixa Econômica Federal</a></li>
                         </ul>
                     </div>
                     

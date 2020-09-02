@@ -45,7 +45,7 @@ const Adm=()=>{
         <div className="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
         <label role="button" className={`nav-link text-${color==="lb1" ? "success" : "white"}`} onClick={()=> {setColor('lb1');setWhatis(<CadastrarAdm/>)}}>Cadastrar Administrador</label>
         <label role="button" className={`nav-link text-${color==="lb2" ? "success" : "white"}`} onClick={()=> {setColor('lb2');setWhatis(<ListaAdms/>)}}>Lista Administradores</label>
-        <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<ListaSocios/>)}}>Lista Socios e Dependentes</label>
+        <label role="button" className={`nav-link text-${color==="lb3" ? "success" : "white"}`} onClick={()=> {setColor('lb3');setWhatis(<ListaSocios/>)}}>Lista Sócios e Dependentes</label>
         <label role="button" className={`nav-link text-${color==="lb4" ? "success" : "white"}`} onClick={()=> {setColor('lb4');setWhatis(<ListaSolicitantes/>)}}>Lista Solicitantes de Carteira</label>
 
         </div>
