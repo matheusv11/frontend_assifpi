@@ -25,21 +25,21 @@ export const AuthProvider= ({children})=>{
     },[]);
 
     connection.interceptors.request.use((config) => {
-        console.info("✉️ ", config)
+        // console.info("✉️ ", config)
         setLoading(true);
         return config;
     }, (error) => {
-        console.error("✉️ ERROR ", error);
+        // console.error("✉️ ERROR ", error);
         setLoading(false); 
         return Promise.reject(error);
     });
     
     connection.interceptors.response.use((response)=>{
-        console.error("✉️ Resposta ", response); //Apesar de retornar varios dados Acho que so roda uma vez entao o set nao fica mal otimizado
+        // console.error("✉️ Resposta ", response); //Apesar de retornar varios dados Acho que so roda uma vez entao o set nao fica mal otimizado
         setLoading(false);
         return response;
       },(error)=>{
-        console.error("✉️ ERROR ", error); 
+        // console.error("✉️ ERROR ", error); 
         setLoading(false);
         return Promise.reject(error);
       });

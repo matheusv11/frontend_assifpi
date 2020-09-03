@@ -79,9 +79,9 @@ const PerfilSocio=()=>{
 
                 <p><b>Telefones: </b>{socio_data.telefones}</p>
 
-                {!statusCarteira && <button onClick={Solicitar} type="button" className="btn btn-dark" style={{marginLeft: '80px'}}>Solicitar Carteira</button>} 
-                {statusCarteira==='solicitada' && <b style={{marginLeft: '80px'}}>Carteira Solicitada</b>}
-                {statusCarteira==='confeccionada' && <b style={{marginLeft: '80px'}}>Carteira Confeccionada</b>}
+                {!statusCarteira && <button onClick={Solicitar} type="button" className="btn btn-dark" style={{margin:"0 auto"}}>Solicitar Carteira</button>} 
+                {statusCarteira==='solicitada' && <b style={{margin:"0 auto"}}>Carteira Solicitada</b>}
+                {statusCarteira==='confeccionada' && <b style={{margin:"0 auto"}}>Carteira Confeccionada</b>}
                 </div>
             </div>
         </div>

@@ -9,8 +9,12 @@ const Agenda=()=>{
         local:'',participantes:'', data:'', hora_inicio:'', hora_fim:''
     });
     const[agenda,setAgenda]=useState([]);
+    const[id_session,setId]=useState('');
 
     useEffect(()=>{
+        
+        token && setId(JSON.parse(atob(token.split('.')[1])));
+
         connection.get('/agenda').then((dados)=>{
             setAgenda(dados.data);
         }).catch((err)=>{
@@ -35,7 +39,7 @@ const Agenda=()=>{
     }
 
     const Confirmar= (id, index)=>{
-        connection.put(`/agenda/${id}`,'',{
+        connection.put(`/agenda_update/${id}`,'',{
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -49,8 +53,8 @@ const Agenda=()=>{
         })
     }
 
-    const Deletar= (id)=>{
-        connection.delete(`/agenda/${id}`, {
+    const Recusar= (id)=>{
+        connection.delete(`/agenda_reject/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
@@ -62,6 +66,18 @@ const Agenda=()=>{
         })
     }
 
+    const Deletar= (id)=>{
+        connection.delete(`/agenda/${id}`,{
+            headers:{
+                authorization: `Bearer ${token}`
+            }
+        }).then((dados)=>{
+            alert(dados.data.message);
+            setAgenda(agenda.filter(agenda=> agenda.id !==id))
+        }).catch((err)=>{
+            alert(err.response.data.message);
+        })
+    }
 
     return(
     <div id="pagina-agenda" style={{margin:"0 auto",width:"80%"}}>
@@ -124,8 +140,10 @@ const Agenda=()=>{
                                 <li>{participantes}</li>
                             ))}
                         </ul>
-                        {admToken && <button onClick={()=> Confirmar(evento.id,index)} type="button" class="btn btn-success" style={{margin:"1%"}}>Aprovar</button>}
-                        {admToken && <button onClick={()=> Deletar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Excluir</button>}
+                        {admToken && evento.status=='esperando' && <button onClick={()=> Confirmar(evento.id,index)} type="button" class="btn btn-success" style={{margin:"1%"}}>Aprovar</button>}
+                        {admToken && evento.status=='esperando' && <button onClick={()=> Recusar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Recusar</button>}
+                        {id_session.id===evento.socio_id && <button onClick={()=> Deletar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Deletar</button>}
+                        
                     </li>
                 ))}
             </ul>

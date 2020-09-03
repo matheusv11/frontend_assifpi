@@ -74,8 +74,8 @@ const ListaDependentes=()=>{
                     <p><b>Telefones: </b>{dados.telefones}</p>
 
                     {!dados.status && <button onClick={()=> Solicitar(dados.id)} type="button" className="btn btn-dark" style={{marginLeft: '80px'}}>Solicitar Carteira</button>} 
-                    {dados.status==='solicitada' && <b style={{marginLeft: '80px'}}>Carteira Solicitada</b>}
-                    {dados.status==='confeccionada' && <b style={{marginLeft: '80px'}}>Carteira Confeccionada</b>}
+                    {dados.status==='solicitada' && <b style={{margin: '20%'}}>Carteira Solicitada</b>}
+                    {dados.status==='confeccionada' && <b style={{margin: '20%'}}>Carteira Confeccionada</b>}
                     <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-outline-danger">Deletar este Dependente</button>
 
                     </div>
