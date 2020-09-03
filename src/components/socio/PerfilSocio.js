@@ -2,7 +2,6 @@ import React,{useState, useEffect} from 'react';
 import connection from '../../services/connection';
 import {useAuth} from '../auth';
 
-
 const PerfilSocio=()=>{
 
     const {token, setToken}= useAuth();
@@ -64,8 +63,8 @@ const PerfilSocio=()=>{
             <div className="card" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
                 <div className="card-body">
             
-                <h5 className="card-title">Sócio</h5>
-
+                <img src="assets/profilepic.png" alt="..." class="img-thumbnail"></img>
+                {/* https://www.freepngimg.com/thumb/youtube/62644-profile-account-google-icons-computer-user-iconfinder-thumb.png */}
                 <p><b>Nome: </b> {socio_data.nome} <span className="badge badge-pill badge-success">Sócio</span> </p>
 
 

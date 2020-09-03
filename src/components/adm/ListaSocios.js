@@ -197,8 +197,8 @@ const ListaSocios=()=>{
                                     
                                 </div>
                                 
-                                <button onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button></>}
-                                <button onClick={()=> DeletarSocio(dados.socio_id)} className="btn btn-danger">Deletar Sócio</button>
+                                <button style={{margin:"1%"}} onClick={()=> ConfirmarSocio(dados.socio_id,index)} className="btn btn-success">Autenticar Sócio</button></>}
+                                <button style={{margin:"1%"}} onClick={()=> DeletarSocio(dados.socio_id)} className="btn btn-danger">Deletar Sócio</button>
                             
                             </div>
                         </div>
@@ -245,8 +245,8 @@ const ListaSocios=()=>{
 
                                         <a href={`${doc_url}/${dados.comprovante_parentesco}`} target="blank">Ver comprovante de comprovante de parentesco</a>
                                         
-                                        {!dados.confirmado && <button onClick={()=> ConfirmarDependente(dados.socio_id, index)} className="btn btn-success">Autenticar Dependente</button>}
-                                        <button onClick={()=> DeletarDependente(dados.dependente_id)} className="btn btn-danger">Deletar Dependente</button>
+                                        {!dados.confirmado && <button style={{margin:"1%"}} onClick={()=> ConfirmarDependente(dados.socio_id, index)} className="btn btn-success">Autenticar Dependente</button>}
+                                        <button style={{margin:"1%"}} onClick={()=> DeletarDependente(dados.dependente_id)} className="btn btn-danger">Deletar Dependente</button>
                                     </div>
                                 </div>
 
