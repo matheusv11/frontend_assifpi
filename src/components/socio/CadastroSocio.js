@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import connection from '../../services/connection';
+import {cpfMask, phoneMask} from '../../helpers/mask';
 
 const CadastroSocio= ()=>{
 
@@ -23,6 +24,9 @@ const CadastroSocio= ()=>{
         e.preventDefault();
         const {email,nome,cpf,rg,cidade,bairro,rua,filiacao,autorizacao, telefones,senha,repeat, imagem_rg_frente,imagem_rg_verso,cnh, imagem_cpf, comprovante} =formData;
         // const data={email,nome,cpf,rg,endereco: `${cidade},${bairro},${rua}`,telefones,senha}
+        if(senha !== repeat){
+            return alert('Senhas nao compativeis');
+        }
         const format= new FormData();
         // Object.keys(arquivos).map((itens)=>{
         //     format.append('files', arquivos[itens]);
@@ -42,10 +46,6 @@ const CadastroSocio= ()=>{
         format.append('endereco', `${cidade},${bairro},${rua}`);
         format.append('telefones', telefones);
         format.append('senha', senha);
-
-        if(senha !== repeat){
-            return alert('Senhas nao compativeis');
-        }
         
         connection.post('/socio', format).then((dados)=>{
             alert(dados.data.message);
@@ -84,7 +84,7 @@ const CadastroSocio= ()=>{
                     <div className="row">
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>CPF:</label>
-                            <input onChange={e=> setData({...formData, cpf: e.target.value})} type="number" className="form-control" id="" required/>
+                            <input value={formData.cpf} onChange={e=> setData({...formData, cpf: cpfMask(e.target.value)})} type="text" className="form-control" id="" required/>
                         </div>
                 
                         <div className="form-group col-sm-6 col-xs-12">
@@ -112,7 +112,7 @@ const CadastroSocio= ()=>{
 
                     <div className="form-group">
                         <label>Telefones:</label>
-                        <textarea onChange={e=> setData({...formData, telefones: e.target.value})} className="form-control" required></textarea>
+                        <input value={formData.telefones} onChange={e=> setData({...formData, telefones: phoneMask(e.target.value)})} className="form-control" required></input>
                     </div>
                     
                     <div className="row">
