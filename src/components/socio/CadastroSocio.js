@@ -3,17 +3,19 @@ import {Link} from 'react-router-dom'
 import connection from '../../services/connection';
 import {cpfMask, phoneMask} from '../../helpers/mask';
 
+const initialValue={
+    email:'',nome:'',cpf:'',rg:'',cidade:'',
+    bairro:'',rua:'',telefones:'',senha:'',
+    filiacao:'', autorizacao:'',
+    repeat:'',imagem_rg_frente:'',imagem_rg_verso:'',
+    cnh:'',imagem_cpf:'',comprovante:''
+}
+
 const CadastroSocio= ()=>{
 
     const [isrg,setIsrg]=useState(true);
     const [accept,setAccept]=useState();
-    const[formData,setData]=useState({
-        email:'',nome:'',cpf:'',rg:'',cidade:'',
-        bairro:'',rua:'',telefones:'',senha:'',
-        filiacao:'', autorizacao:'',
-        repeat:'',imagem_rg_frente:'',imagem_rg_verso:'',
-        cnh:'',imagem_cpf:'',comprovante:''
-    })
+    const [formData,setData]=useState(initialValue)
 
     const ChangeIsrg=(isrg)=>{
         isrg==true ? isrg=false:isrg=true;
@@ -31,7 +33,6 @@ const CadastroSocio= ()=>{
         // Object.keys(arquivos).map((itens)=>{
         //     format.append('files', arquivos[itens]);
         // });
-
         format.append('cnh', cnh);
         format.append('rg_file', imagem_rg_frente);
         format.append('rg_file', imagem_rg_verso);
@@ -49,6 +50,7 @@ const CadastroSocio= ()=>{
         
         connection.post('/socio', format).then((dados)=>{
             alert(dados.data.message);
+            setData(initialValue)
         }).catch((err)=>{
             alert(err.response.data.message);
         });
@@ -72,12 +74,12 @@ const CadastroSocio= ()=>{
                     <div className="row">
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>Nome Completo:</label>
-                            <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" className="form-control" id="" required/>
+                            <input value={formData.nome} onChange={e=> setData({...formData, nome: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                         
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>Email:</label>
-                            <input onChange={e=> setData({...formData, email: e.target.value})} type="email" className="form-control" id="" required/>
+                            <input value={formData.email} onChange={e=> setData({...formData, email: e.target.value})} type="email" className="form-control" id="" required/>
                         </div>
                     </div>
 
@@ -89,24 +91,24 @@ const CadastroSocio= ()=>{
                 
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>RG:</label>
-                            <input onChange={e=> setData({...formData, rg: e.target.value})} type="number" className="form-control" id="" required/>
+                            <input value={formData.rg} onChange={e=> setData({...formData, rg: e.target.value})} type="number" className="form-control" id="" required/>
                         </div>
                     </div>
 
                     <div className="row">
                         <div className="form-group col-sm-4 col-xs-12">
                             <label>Cidade:</label>
-                            <input onChange={e=> setData({...formData, cidade: e.target.value})} type="text" className="form-control" id="" required/>
+                            <input value={formData.cidade} onChange={e=> setData({...formData, cidade: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                 
                         <div className="form-group col-sm-4 col-xs-12">
                             <label>Bairro:</label>
-                            <input onChange={e=> setData({...formData, bairro: e.target.value})} type="text" className="form-control" id="" required/>
+                            <input value={formData.bairro} onChange={e=> setData({...formData, bairro: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                 
                         <div className="form-group col-sm-4 col-xs-12">
                             <label>Rua e número:</label>
-                            <input onChange={e=> setData({...formData, rua: e.target.value})} type="text" className="form-control" id="" required/>
+                            <input value={formData.rua} onChange={e=> setData({...formData, rua: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                     </div>
 
@@ -118,12 +120,12 @@ const CadastroSocio= ()=>{
                     <div className="row">
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>Senha:</label>
-                            <input onChange={e=> setData({...formData, senha: e.target.value})} type="password" className="form-control" id="" required/>
+                            <input value={formData.senha} onChange={e=> setData({...formData, senha: e.target.value})} type="password" className="form-control" id="" required/>
                         </div>
                 
                         <div className="form-group col-sm-6 col-xs-12">
                             <label>Confirmar Senha:</label>
-                            <input onChange={e=> setData({...formData, repeat: e.target.value})} type="password" className="form-control" id="" required/>
+                            <input value={formData.repeat} onChange={e=> setData({...formData, repeat: e.target.value})} type="password" className="form-control" id="" required/>
                         </div>
                     </div>
 
