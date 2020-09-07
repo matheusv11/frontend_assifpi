@@ -60,7 +60,7 @@ const ListaDependentes=()=>{
             {dependente_data.map((dados)=>(
                 <div className="card"  style={{ borderWidth: '5px',borderColor:"green",marginTop:"2%"}}>
                     <div className="card-body">
-                    <img src="assets/profilepic.png" alt="..." class="img-thumbnail"></img>
+                    {/* <img src="assets/profilepic.png" alt="..." class="img-thumbnail"></img> */}
                     <p><b>Nome: </b> {dados.nome} <span className="badge badge-info">Dependente</span></p> 
                     
                     <p><b>Email: </b>{dados.email}</p>
