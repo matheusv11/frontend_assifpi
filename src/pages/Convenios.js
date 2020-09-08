@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import connection from '../services/connection';
 import {useAuth} from '../components/auth';
 import Navbar from '../components/NavBar';
-
+import Footer from '../components/footer';
 
 const Convenios=()=>{
     
@@ -124,7 +124,8 @@ const Convenios=()=>{
             
         </div>
 
-        
+        <hr/>
+        <Footer/>
         
         
     </div>)

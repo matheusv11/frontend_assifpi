@@ -4,6 +4,7 @@ import connection from '../services/connection'
 import Postagem from '../components/Postagem'
 import createPagination from '../helpers/createPagination';
 import Navbar from '../components/NavBar'
+import Footer from '../components/footer';
 
 const Feed=()=>{
 
@@ -72,6 +73,8 @@ const Feed=()=>{
         </li>
     </ul>
     </nav>
+    <hr/>
+    <Footer/>
     </div>
         );
 }

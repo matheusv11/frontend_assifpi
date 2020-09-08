@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../components/NavBar';
-
+import Footer from '../components/footer';
 
 const Sobre=()=>{
 
@@ -62,46 +62,7 @@ const Sobre=()=>{
                 </div>
             </div>
             <hr />
-            <div className="text-center footer-basic">
-                <footer>
-                <div className="social">
-                    <a href="/#">
-                    <i className="icon ion-social-instagram" />
-                    </a>
-                    <a href="/#">
-                    <i className="icon ion-social-snapchat" />
-                    </a>
-                    <a href="/#">
-                    <i className="icon ion-social-twitter" />
-                    </a>
-                    <a href="https://pt-br.facebook.com/assifpi/">
-                    <i className="icon ion-social-facebook" />
-                    </a>
-                </div>
-                <ul className="list-inline">
-                    <li className="list-inline-item">
-                    <a href="index.html">Home</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="noticias.html">Notícias</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="convenios.html">Convênios</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="sobre.html">Sobre</a>
-                    </li>
-                    <li className="list-inline-item">
-                    <a href="contato.html">Contato</a>
-                    </li>
-                    <li className="list-inline-item" />
-                </ul>
-                <h1 style={{ fontSize: 20, color: "rgb(170,170,170)" }}>
-                    Rua Elizeu Martins, 1673, 64002-370, Teresina
-                </h1>
-                <p className="copyright">ASSIFPI © 2020</p>
-                </footer>
-            </div>
+            <Footer/>
             
 
     </div>
