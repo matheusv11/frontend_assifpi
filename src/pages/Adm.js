@@ -10,7 +10,7 @@ import ListaSolicitantes from '../components/adm/ListaSolicitantes'
 import PainelFinanceiro from '../components/adm/PainelFinanceiro'
 import Gastos from '../components/adm/Gastos'
 import Agenda from '../components/Agenda';
-
+import Negociamento from '../components/adm/Negociamento'
 
 const Adm=()=>{
 
@@ -61,6 +61,10 @@ const Adm=()=>{
         <label role="button" className={`nav-link text-${color==="lb7" ? "success" : "white"}`} onClick={()=> {setColor('lb7');setWhatis(<PainelFinanceiro/>)}}>Painel Financeiro</label>
         <label role="button" className={`nav-link text-${color==="lb8" ? "success" : "white"}`} onClick={()=> {setColor('lb8');setWhatis(<Gastos/>)}}>Gastos</label>
         </div>
+        </li>
+
+        <li className="nav-item">
+                <label role="button" className={`nav-link text-${color==="lb9" ? "success" : "white"}`} onClick={()=> {setColor('lb9');setWhatis(<Negociamento/>)}}>Negociamento de dívidas</label>
         </li>
 
         <li className="nav-item">
