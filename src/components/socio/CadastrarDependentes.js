@@ -98,7 +98,7 @@ const CadastrarDependentes=()=>{
 
                         <div className="form-group">
                             <label>Telefones:</label>
-                            <textarea value={formData.telefones} onChange={e=> setData({...formData, telefones: phoneMask(e.target.value)})} className="form-control" required></textarea>
+                            <input value={formData.telefones} onChange={e=> setData({...formData, telefones: phoneMask(e.target.value)})} className="form-control" required></input>
                         </div>
 
                         {/* Old input files

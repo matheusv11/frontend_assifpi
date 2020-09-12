@@ -3,8 +3,6 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/footer';
 const Home= ()=>{
 
-    console.log(process.env.PORTA);
-    
     return(
         <div id="home" 
         //style={{width:"90%",margin:"0 auto"}}
