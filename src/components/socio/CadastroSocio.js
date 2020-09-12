@@ -18,7 +18,7 @@ const CadastroSocio= ()=>{
     const [formData,setData]=useState(initialValue)
 
     const ChangeIsrg=(isrg)=>{
-        isrg==true ? isrg=false:isrg=true;
+        isrg===true ? isrg=false:isrg=true;
         setIsrg(isrg);
     }
 

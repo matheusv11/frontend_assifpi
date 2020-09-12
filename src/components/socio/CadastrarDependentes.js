@@ -1,26 +1,29 @@
 import React,{useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import {cpfMask, phoneMask} from '../../helpers/mask';
+
+const initialValue={
+    nome:'', email:'', cpf:'', rg:'', cidade:'',
+    bairro:'',rua:'', telefones:'',imagem_rg:'',
+    imagem_cpf:'',comprovante:''
+}
 
 const CadastrarDependentes=()=>{
     
     const {token}= useAuth();
 
-    const[formData,setData]=useState({
-        nome:'', email:'', cpf:'', rg:'', cidade:'',
-        bairro:'',rua:'', telefones:'',imagem_rg:'',
-        imagem_cpf:'',comprovante:''
-    })
+    const[formData,setData]=useState(initialValue)
 
     const Cadastrar= (e)=>{
         e.preventDefault();
+        //eslint-disable-next-line
         const {imagem_rg,imagem_cpf,comprovante,bairro,cidade,rua,cpf,email,nome,rg,telefones}= formData;
         
         const format= new FormData();
-
         // format.append('files', imagem_rg);
         // format.append('files', imagem_cpf);
-        format.append('files', comprovante);
+        format.append('comprovante', comprovante);
         format.append('email', email);
         format.append('nome', nome);
         format.append('cpf', cpf);
@@ -34,6 +37,7 @@ const CadastrarDependentes=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message);
+            setData(initialValue)
         }).catch((err)=>{
             alert(err.response.data.message);
         });
@@ -55,46 +59,46 @@ const CadastrarDependentes=()=>{
        
                         <div className="form-group">
                             <label>Nome Completo:</label>
-                            <input onChange={e=> setData({...formData, nome: e.target.value})} type="text" className="form-control" id="" required/>
+                            <input value={formData.nome} onChange={e=> setData({...formData, nome: e.target.value})} type="text" className="form-control" id="" required/>
                         </div>
                         
                         <div className="form-group">
                         <label>Email:</label>
-                        <input onChange={e=> setData({...formData, email: e.target.value})} type="email" className="form-control" id="" required/>
+                        <input value={formData.email} onChange={e=> setData({...formData, email: e.target.value})} type="email" className="form-control" id="" required/>
                         </div>
 
                         <div className="row">
                             <div className="form-group col-sm-6 col-xs-12">
                                 <label>CPF:</label>
-                                <input onChange={e=> setData({...formData, cpf: e.target.value})} type="number" className="form-control" id="" required/>
+                                <input value={formData.cpf} onChange={e=> setData({...formData, cpf: cpfMask(e.target.value)})} type="text" className="form-control" id="" required/>
                             </div>
                     
                             <div className="form-group col-sm-6 col-xs-12">
                                 <label>RG:</label>
-                                <input onChange={e=> setData({...formData, rg: e.target.value})} type="number" className="form-control" id="" required/>
+                                <input value={formData.rg} onChange={e=> setData({...formData, rg: e.target.value})} type="number" className="form-control" id="" required/>
                             </div>
                         </div>
                 
                         <div className="row">
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Cidade:</label>
-                                <input onChange={e=> setData({...formData, cidade: e.target.value})} type="text" className="form-control" id="" required/>
+                                <input value={formData.cidade} onChange={e=> setData({...formData, cidade: e.target.value})} type="text" className="form-control" id="" required/>
                             </div>
                     
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Bairro:</label>
-                                <input onChange={e=> setData({...formData, bairro: e.target.value})} type="text" className="form-control" id="" required/>
+                                <input value={formData.bairro} onChange={e=> setData({...formData, bairro: e.target.value})} type="text" className="form-control" id="" required/>
                             </div>
                     
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Rua e número:</label>
-                                <input onChange={e=> setData({...formData, rua: e.target.value})} type="text" className="form-control" id="" required/>
+                                <input value={formData.rua} onChange={e=> setData({...formData, rua: e.target.value})} type="text" className="form-control" id="" required/>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>Telefones:</label>
-                            <textarea onChange={e=> setData({...formData, telefones: e.target.value})} className="form-control" required></textarea>
+                            <textarea value={formData.telefones} onChange={e=> setData({...formData, telefones: phoneMask(e.target.value)})} className="form-control" required></textarea>
                         </div>
 
                         {/* Old input files

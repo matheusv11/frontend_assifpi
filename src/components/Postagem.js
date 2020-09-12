@@ -97,7 +97,7 @@ const Postagem=({evento})=>{
                         <div id="carouselExampleControls"  class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" >
                             {evento.imagens.split(',').map((img, index)=>(
-                                <div class={`carousel-item ${index==0 && 'active'}`}>
+                                <div class={`carousel-item ${index===0 && 'active'}`}>
                                     <img style={{height:"60vh"}} src={`${doc_url}/${img}`} class="d-block w-100" alt="..."/>
                                 </div>
                             ))}

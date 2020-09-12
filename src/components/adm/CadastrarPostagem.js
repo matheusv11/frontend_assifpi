@@ -18,7 +18,7 @@ const CadastrarPostagem = () => {
         format.append('anexo', anexo)
 
         Object.keys(imagens).map((itens)=>{
-            format.append('imagens', imagens[itens]);
+           return format.append('imagens', imagens[itens]);
         });
 
         format.append('titulo', titulo)

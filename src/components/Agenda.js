@@ -20,6 +20,7 @@ const Agenda=()=>{
         }).catch((err)=>{
             alert(err.message);
         })
+        // eslint-disable-next-line
     },[]);
 
     const Solicitar= (e)=>{
@@ -140,8 +141,8 @@ const Agenda=()=>{
                                 <li>{participantes}</li>
                             ))}
                         </ul>
-                        {admToken && evento.status=='esperando' && <button onClick={()=> Confirmar(evento.id,index)} type="button" class="btn btn-success" style={{margin:"1%"}}>Aprovar</button>}
-                        {admToken && evento.status=='esperando' && <button onClick={()=> Recusar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Recusar</button>}
+                        {admToken && evento.status==='esperando' && <button onClick={()=> Confirmar(evento.id,index)} type="button" class="btn btn-success" style={{margin:"1%"}}>Aprovar</button>}
+                        {admToken && evento.status==='esperando' && <button onClick={()=> Recusar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Recusar</button>}
                         {id_session.id===evento.socio_id && <button onClick={()=> Deletar(evento.id)}type="button" class="btn btn-danger" style={{margin:"1%"}}>Deletar</button>}
                         
                     </li>
