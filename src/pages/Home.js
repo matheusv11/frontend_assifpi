@@ -128,7 +128,7 @@ const Home= ()=>{
                     <div
                         className="box"
                         style={{
-                        backgroundImage: "url(assets/index/img/Apolinario.jpg)"
+                        backgroundImage: "url(assets/index/img/Apolinario.jpg"
                         }}
                     >
                         <div className="cover">
@@ -144,7 +144,7 @@ const Home= ()=>{
                     <div
                         className="box"
                         style={{
-                        backgroundImage: "url(assets/index/img/foto-perfil-padrao.png"
+                        backgroundImage: "url(assets/index/img/Ritarmartins.jpg"
                         }}
                     >
                         <div className="cover" />
