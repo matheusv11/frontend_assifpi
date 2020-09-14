@@ -73,7 +73,7 @@ const Feed=()=>{
         </li>
     </ul>
     </nav>
-    <hr/>
+  
     <Footer/>
     </div>
         );

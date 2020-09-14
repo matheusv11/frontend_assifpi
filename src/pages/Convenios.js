@@ -124,7 +124,7 @@ const Convenios=()=>{
             
         </div>
 
-        <hr/>
+        
         <Footer/>
         
         

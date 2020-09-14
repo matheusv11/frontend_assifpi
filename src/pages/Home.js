@@ -106,7 +106,7 @@ const Home= ()=>{
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <h1>Francierc Alves</h1>
-                    <h2>1° SECRETÁRIO</h2>
+                    <h2>1° Secretário</h2>
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <div
@@ -120,7 +120,7 @@ const Home= ()=>{
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <h1>Raimunda Nonata</h1>
-                    <h2>2° SECRETÁRIO</h2>
+                    <h2>2° Secretário</h2>
                     </div>
                 </div>
                 <div className="row people">
@@ -138,7 +138,7 @@ const Home= ()=>{
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <h1>Apolinário de Lima</h1>
-                    <h2>1° TESOUREIRO</h2>
+                    <h2>1° Tesoureiro</h2>
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <div
@@ -152,7 +152,7 @@ const Home= ()=>{
                     </div>
                     <div className="col-md-4 col-lg-3 item">
                     <h1>Rita Martins</h1>
-                    <h2>2° TESOUREIRO</h2>
+                    <h2>2° Tesoureiro</h2>
                     </div>
                 </div>
                 <div className="row people">
@@ -358,7 +358,7 @@ const Home= ()=>{
 
                 </div>
             </div>
-            <hr />
+            
             <Footer/>
 </div>
 

@@ -61,7 +61,6 @@ const Sobre=()=>{
                 </div>
                 </div>
             </div>
-            <hr />
             <Footer/>
             
 
