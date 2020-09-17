@@ -2,16 +2,16 @@ import React from 'react';
 
 const Footer=()=>{
     return(
-    <div className="text-center "> {/* class removed footer-basic*/}
-        <footer className="bg-dark">
-        <div className="row">
-            <div className="col">
+    <div className="text-center"> {/* class removed footer-basic*/}
+        <footer className="bg-dark footer-basic">
+        <div className="row" style={{width:"100%"}}>
+            <div className="col" >
                 <div className="text-white">
                 <h1 style={{ fontSize: 20, color: "rgb(170,170,170)" }}>
                     Rua Elizeu Martins, 1673, 64002-370, Teresina
                 </h1>
-                <a className="text-white" href="https://pt-br.facebook.com/assifpi/">Fecebook</a>
-                {/* <div className="social">
+                {/* <a className="text-white" href="https://pt-br.facebook.com/assifpi/">Fecebook</a> */}
+                <div className="social">
                     <a href="/#">
                     <i className="icon ion-social-instagram" />
                     </a>
@@ -24,7 +24,7 @@ const Footer=()=>{
                     <a href="https://pt-br.facebook.com/assifpi/" target="blank">
                     <i className="icon ion-social-facebook" />
                     </a>
-                </div> */}
+                </div>
 
                 <p className="copyright">ASSIFPI © 2020</p>
                 </div>

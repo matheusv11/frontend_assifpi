@@ -5,7 +5,7 @@ const Home= ()=>{
 
     return(
         <div id="home" 
-        //style={{width:"90%",margin:"0 auto"}}
+        // style={{width:"100%",margin:"0 auto"}}
         >
             <NavBar/>
             <header
@@ -81,7 +81,6 @@ const Home= ()=>{
                         marginBottom: "1%",
                         backgroundColor: "rgb(30, 126, 52)"
                         }}
-                        type="button"  className="btn btn-success" 
                         data-toggle="collapse" data-target="#collapseExample" 
                         aria-expanded="false" aria-controls="collapseExample"
                     >
