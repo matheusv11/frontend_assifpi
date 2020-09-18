@@ -14,7 +14,6 @@ const CadastrarPostagem = () => {
         const {titulo,descricao,local, data, hora, anexo, imagens}= formData;
         // const {...rest}= formData;
         const format= new FormData();
-        const format_data= data.split('-') //No back tava com o date now
         format.append('anexo', anexo)
 
         Object.keys(imagens).map((itens)=>{
@@ -24,7 +23,7 @@ const CadastrarPostagem = () => {
         format.append('titulo', titulo)
         format.append('descricao',descricao)
         format.append('local',local)
-        format.append('data', `${format_data[2]}/${format_data[1]}/${format_data[0]}`)
+        format.append('data', data)
         format.append('hora', hora)
 
         connection.post('/evento', format, {

@@ -26,8 +26,7 @@ const Gastos=()=>{
     
     const Cadastrar= (e)=>{
         e.preventDefault();
-        const format_data= data.split('-') //No back tava com o date now
-        const formulario= {descricao,valor,data: `${format_data[2]}/${format_data[1]}/${format_data[0]}`}
+        const formulario= {descricao,valor,data}
 
         connection.post('/gastos', formulario,{
             headers:{

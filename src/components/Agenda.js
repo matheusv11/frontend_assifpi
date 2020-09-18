@@ -132,7 +132,7 @@ const Agenda=()=>{
                         <p><b>Solicitate:</b>{evento.nome}</p>
                         {admToken && <p><b>CPF:</b>{evento.cpf}</p>}
                         <p><b>Local:</b>{evento.local}</p>
-                        <p><b>Data:</b>{evento.data}</p>
+                        <p><b>Data:</b>{evento.data.split('-').reverse().join('/')}</p>
                         <p><b>Hora:</b>{evento.hora_inicio}-{evento.hora_fim}</p>
                         <p><b>Pedido:</b>{evento.status}</p>
                         <b>Participantes:</b>
