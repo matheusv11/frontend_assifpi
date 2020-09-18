@@ -113,7 +113,7 @@ const Postagem=({evento})=>{
                         </a>
                         </div>
                     }
-                    <p><b>Data: </b> {(evento.data==='undefined' || evento.data===null) ? <></> : <>{evento.data.split('-').reverse().join('/')}</>} </p>
+                    <p><b>Data: </b> {(evento.data==='undefined' || evento.data===null) ? <></> : <>{evento.data.substr(0,10).split('-').reverse().join('/')}</>} </p>
 
                     <p><b>Hora: </b>{evento.hora}</p>
 

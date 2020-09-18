@@ -52,9 +52,9 @@ const Pagamentos=()=>{
                         <ul className="list-group">
                             <li className={`list-group-item list-group-item-${dados.status==="pending" ? 'warning' : 'success'}`}>
                                 <p><b>Status pagamento:</b> {dados.status}</p>
-                                <p><b>Data de criação:</b> {dados.data_criacao}</p>
-                                <p><b>Data de vencimento:</b> {dados.data_vencimento}</p>
-                                {dados.renovada==="1" && dados.status==="pending" ? <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>: "Nao precisa pagar"}
+                                <p><b>Data de criação:</b> {dados.data_criacao.substr(0,10).split('-').reverse().join('/')}</p>
+                                <p><b>Data de vencimento:</b> {dados.data_vencimento.substr(0,10).split('-').reverse().join('/')}</p>
+                                {dados.renovada==="1" && dados.status==="approved" ? "Pagamento já efetuado": <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>}
                             </li>
                         </ul>
                         

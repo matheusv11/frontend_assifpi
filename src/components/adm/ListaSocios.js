@@ -150,7 +150,7 @@ const ListaSocios=()=>{
                         <div role="button" data-toggle="collapse" data-target={`#collapse-${dados.id}`} 
                         aria-expanded="false" aria-controls="collapseExample">
 
-                            {dados.nome}-{dados.confirmado}
+                            {dados.nome}-{dados.confirmado? <>Autorizado</> : <>Não autorizado</>}
 
                         </div>
                         
