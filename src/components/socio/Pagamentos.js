@@ -54,7 +54,7 @@ const Pagamentos=()=>{
                                 <p><b>Status pagamento:</b> {dados.status}</p>
                                 <p><b>Data de criação:</b> {dados.data_criacao.substr(0,10).split('-').reverse().join('/')}</p>
                                 <p><b>Data de vencimento:</b> {dados.data_vencimento.substr(0,10).split('-').reverse().join('/')}</p>
-                                {dados.renovada==="1" && dados.status==="approved" ? "Pagamento já efetuado": <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>}
+                                {dados.renovada && dados.status==="approved" ? "Pagamento já efetuado": <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>}
                             </li>
                         </ul>
                         
