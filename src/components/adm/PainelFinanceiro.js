@@ -117,7 +117,7 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return null
+                            return 0
                         })
                     },
 
@@ -142,7 +142,7 @@ const PainelFinanceiro=()=>{
                                 }
                                 increment++
                             }
-                            return null
+                            return 0
                         }))
                     }]
                         }} options={{
