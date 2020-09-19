@@ -48,19 +48,9 @@ const PainelFinanceiro=()=>{
 
     const filter_array = [...new Set(array)].sort();
 
-    const object_ganhos= dados.ganhos.map((item)=>{
-        const [object_name]= Object.getOwnPropertyNames(item)
-        return object_name
-    })
-
-    const object_gastos= dados.gastos.map((item)=>{
-        const [object_name]= Object.getOwnPropertyNames(item)
-        return object_name
-    })
-
     const labels= filter_array.map((dados, index)=>{ //Talvez o index serva depois
-        const ok= dados.split('/') //Talvez o index serveria se nao fosse pela quebra do array
-        const labels= meses[ok[0]-1]
+        const ok= dados.split('-') //Talvez o index serveria se nao fosse pela quebra do array
+        const labels= meses[ok[1]-1]
         return labels
     })
 
@@ -101,23 +91,19 @@ const PainelFinanceiro=()=>{
                         backgroundColor: 'transparent',
                         borderColor: 'green',
                         data: filter_array.map((meses,index)=>{
-                            let increment= 0;
-                            let element= object_ganhos.indexOf(meses);
-                            let filtered= null;
-                            if(element>-1){
-                                [filtered]= Object.values(dados.ganhos[element])
-                            }
-                            
-                            while(increment<filter_array.length){
-                                let pos= filter_array.indexOf(object_ganhos[increment])
-                                
-                                if(index===pos){
-                                    // console.log(`Igual na posicao ${index} + ${increment}`)
-                                    return filtered
+                            let array=[];
+
+                            // eslint-disable-next-line
+                            dados.ganhos.map((dados)=>{
+                                let [objeto]= Object.getOwnPropertyNames(dados);
+                                if(objeto===meses){
+                                    let [valor]= Object.values(dados)
+                                    return array.push(valor)
                                 }
-                                increment++
-                            }
-                            return 0
+                            })
+
+                            return array[0] || 0
+
                         })
                     },
 
@@ -126,24 +112,18 @@ const PainelFinanceiro=()=>{
                         backgroundColor: 'transparent',
                         borderColor: 'red',
                         data: filter_array.map(((meses,index)=>{
-                            let increment= 0;
-                            let element= object_gastos.indexOf(meses);
-                            let filtered= null;
-                            if(element>-1){
-                                [filtered]= Object.values(dados.gastos[element])
-                            }
+                            let array=[];
                             
-                            while(increment<filter_array.length){
-                                let pos= filter_array.indexOf(object_gastos[increment])
-                                
-                                if(index===pos){
-                                    // console.log(`Igual na posicao ${index} + ${increment}`)
-                                    return filtered
+                            // eslint-disable-next-line
+                            dados.gastos.map((dados)=>{
+                                let [objeto]= Object.getOwnPropertyNames(dados);
+                                if(objeto===meses){
+                                    let [valor]= Object.values(dados)
+                                    return array.push(valor)
                                 }
-                                increment++
-                            }
-                            return 0
-                        }))
+                            })
+
+                            return array[0] || 0                        }))
                     }]
                         }} options={{
                             title:{
