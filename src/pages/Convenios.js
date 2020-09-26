@@ -116,7 +116,7 @@ const Convenios=()=>{
                     <h5 className="card-title">{dados.titulo}</h5>
                     <p className="card-text">{dados.descricao}</p> 
                     <p><b>Anexo:<a target="blank" href={`${doc_url}/${dados.anexo}`}>Documento</a></b></p> 
-                        {admToken && <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-danger">Deletar este convenio</button>}
+                        {admToken && <button onClick={()=> Deletar(dados.id)} type="button" className="btn btn-danger">Deletar este convênio</button>}
                         
                 </div>
                 </div>
@@ -124,7 +124,7 @@ const Convenios=()=>{
             
         </div>
 
-        
+
         <Footer/>
         
         

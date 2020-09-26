@@ -68,7 +68,7 @@ const EditarSocio=()=>{
                         </div>
                 
                         <span>Coloque sua senha para confirmar as alteracoes</span><br/>
-                        <button onClick={Alterar} type="submit" className="btn btn-success">Entrar</button>
+                        <button onClick={Alterar} type="submit" className="btn btn-success">Alterar</button>
                     </form>
                 </div>
             </div>
