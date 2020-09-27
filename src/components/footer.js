@@ -35,7 +35,7 @@ const Footer=()=>{
                 <h1 style={{ fontSize: 18, color: "rgb(170,170,170)" }}>
                     Crédtios de desenvolvimento
                 </h1>
-                <p style={{ fontSize: 17, color: "rgb(170,170,170)" }}>Mathes Sales Torres</p>
+                <p style={{ fontSize: 17, color: "rgb(170,170,170)" }}>Matheus Sales Torres</p>
                 <p style={{ fontSize: 17, color: "rgb(170,170,170)" }}>Alexânder Araujo Reis</p>
                 </div>  
             </div>
