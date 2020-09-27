@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
 import createPagination from '../../helpers/createPagination';
+import {cpfMask} from '../../helpers/mask';
 
 
 const ListaSocios=()=>{
@@ -138,7 +139,7 @@ const ListaSocios=()=>{
 
             <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
             
-            <input type="number" onChange={e=> setCpf(e.target.value)} className="form-control" id=""  placeholder='Pesquisar por cpf' />
+            <input type="number" value={cpf} onChange={e=> setCpf(cpfMask(e.target.value))} className="form-control" id=""  placeholder='Pesquisar por cpf' />
                 <div id="lista-socios" className="col" style={{borderColor:"green"}}>
                     
                 <div className="list-group">

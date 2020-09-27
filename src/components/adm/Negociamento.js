@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import {cpfMask} from '../../helpers/mask';
 
 //personal_fatura
 
@@ -66,7 +67,7 @@ const Negociamento=()=>{
         
         <div id="lista" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
             <div id="busca" className="row" style={{margin:"1%"}}>
-                <input type="text" onChange={e=> setCpf(e.target.value)} className="form-control col-sm-8 col-xs-12" placeholder='Pesquisar por cpf' />
+                <input value={cpf} type="text" onChange={e=> setCpf(cpfMask(e.target.value))} className="form-control col-sm-8 col-xs-12" placeholder='Pesquisar por cpf' />
                 <button  onClick={e=>handle_faturas()} className="btn btn-success col-sm-4 col-xs-12">Buscar</button>
             </div>
             
@@ -74,9 +75,6 @@ const Negociamento=()=>{
                 {faturas.map(fatura=>(
                     <li style={{margin:"1%"}} className="alert alert-danger">{fatura.data_criacao}-{fatura.data_vencimento}</li>
                 ))}
-                <li style={{margin:"1%"}} className="alert alert-danger">Dados da divida 1</li>
-                <li style={{margin:"1%"}} className="alert alert-danger">Dados da divida 2</li>
-                <li style={{margin:"1%"}} className="alert alert-danger">Dados da divida 3</li>
             </ul>
 
             <div id="boleto" className="row" style={{margin:"1%"}}>

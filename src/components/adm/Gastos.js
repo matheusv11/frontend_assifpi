@@ -104,7 +104,7 @@ const Gastos=()=>{
                             {gastos.map(gastos=>(
                               <li key={gastos.id} className="list-group-item list-group-item-warning">
                                Descricao: {gastos.descricao} <br/>
-                               Gasto de {gastos.data} <br/>
+                               Gasto de {gastos.data.substr(0,10).split('-').reverse().join('/')} <br/>
                                Valor: {gastos.valor} <br/>
                               <button onClick={()=> Deletar(gastos.id)} className="btn btn-outline-danger">Deletar</button>
                               

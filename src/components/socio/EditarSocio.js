@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import {phoneMask} from '../../helpers/mask';
+
 
 const EditarSocio=()=>{
 
@@ -59,12 +61,13 @@ const EditarSocio=()=>{
 
                         <div className="form-group">
                             <label>Telefones:</label>
-                            <input onChange={e=> setTelefone(e.target.value)} defaultValue={telefones} type="text" className="form-control"  required/>
+                            <input onChange={e=> setTelefone(phoneMask(e.target.value))} defaultValue={telefones} type="text" className="form-control"  required/>
                         </div>
                 
                         <div className="form-group">
                          <label>Senha:</label>
                          <input onChange={e=> setSenha(e.target.value)} type="password" className="form-control"  required/>
+                         <label color='red'>*Coloque uma nova senha ou repita a senha antiga para confirmar as alterações</label>
                         </div>
                 
                         <span>Coloque sua senha para confirmar as alteracoes</span><br/>

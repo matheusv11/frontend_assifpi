@@ -40,7 +40,7 @@ const CadastroSocio= ()=>{
         format.append('cpf_comprovante', comprovante);  
         format.append('autorizacao_filiacao', autorizacao);  
         format.append('autorizacao_filiacao', filiacao);  
-        format.append('email', email);
+        format.append('email', email.toLowerCase());
         format.append('nome', nome);
         format.append('cpf', cpf);
         format.append('rg', rg);

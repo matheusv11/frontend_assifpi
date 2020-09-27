@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import {cpfMask} from '../../helpers/mask';
 
 const ListaSolicitantes=()=>{
 
@@ -62,7 +63,7 @@ const ListaSolicitantes=()=>{
             </svg>
         </h2>
         <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
-        <input type="number" className="form-control" id=""  onChange={e=> setCpf(e.target.value)} placeholder='Pesquisar por cpf' />
+        <input type="number" className="form-control" value={cpf}  onChange={e=> setCpf(cpfMask(e.target.value))} placeholder='Pesquisar por cpf' />
             <div id="lista-socios" className="col" >
                 {socio_data.map(dados=>(
                     <div key={dados.id} >
