@@ -33,7 +33,7 @@ const CadastrarPostagem = () => {
         }).then((dados)=>{
             alert(dados.data.message);  
         }).catch((err)=>{
-            alert(err.message);
+            alert(err.response.data.message);
         })
     }
 

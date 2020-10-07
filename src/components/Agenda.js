@@ -2,11 +2,15 @@ import React,{useState, useEffect} from 'react';
 import connection from '../services/connection';
 import {useAuth} from './auth';
 
+const initialValue={
+    local:'',participantes:[], data:'', hora_inicio:'', hora_fim:''
+}
+
 const Agenda=()=>{
 
     const {token,admToken}=useAuth();
     const[formData,setData]=useState({
-        local:'',participantes:'', data:'', hora_inicio:'', hora_fim:''
+        local:'',participantes:[], data:'', hora_inicio:'', hora_fim:''
     });
     const[agenda,setAgenda]=useState([]);
     const[id_session,setId]=useState('');
@@ -26,13 +30,14 @@ const Agenda=()=>{
     const Solicitar= (e)=>{
         e.preventDefault();
         const {...rest}= formData;
-
+        rest.participantes= rest.participantes.toString();
         connection.post('/agenda',rest, {
             headers:{
                 authorization: `Bearer ${token}`
             }
         }).then((dados)=>{
             alert(dados.data.message);
+            setData(initialValue);
             setAgenda([...agenda, rest]);
         }).catch((err)=>{
             alert(err.response.data.message);
@@ -82,6 +87,7 @@ const Agenda=()=>{
 
     return(
     <div id="pagina-agenda" style={{margin:"0 auto",width:"80%"}}>
+
         <h2>Agenda
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
@@ -99,27 +105,39 @@ const Agenda=()=>{
                     <form>
                         <div className="form-group">
                             <label>Local:</label>
-                            <input onChange={e=> setData({...formData, local: e.target.value})}  className="form-control"/>
+                            <input value={formData.local} onChange={e=> setData({...formData, local: e.target.value})}  className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label>Participantes:</label>
-                            <textarea onChange={e=> setData({...formData, participantes: e.target.value})} className="form-control" required></textarea>
+                                <input onKeyUp={e=> setData(prevData=>{
+                                    if(e.keyCode===13){
+                                        setData({...prevData,participantes: [...prevData.participantes,e.target.value]});
+                                        e.target.value='';
+                                    }
+                                    return prevData;
+                                })} className="form-control" placeholder="Tecle ENTER para adicionar alguem"/>
+                                <div className="form-group" style={{width: '200px', height:'100px', overflowY: 'auto'}}>
+                                    {formData.participantes.map((dados,index)=>(
+                                        <li key={index}>{dados}</li>
+                                    ))}
+                                </div>
+
                         </div>
                         <div class="row">
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Data:</label>
-                                <input onChange={e=> setData({...formData, data: e.target.value})} type="date" className="form-control" id="" />
+                                <input value={formData.data} onChange={e=> setData({...formData, data: e.target.value})} type="date" className="form-control" id="" />
                             </div>
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Hora de início:</label>
-                                <input onChange={e=> setData({...formData, hora_inicio: e.target.value})} type="time" className="form-control" id="" />
+                                <input value={formData.hora_inicio} onChange={e=> setData({...formData, hora_inicio: e.target.value})} type="time" className="form-control" id="" />
                             </div>
                             <div className="form-group col-sm-4 col-xs-12">
                                 <label>Hora de finalização:</label>
-                                <input onChange={e=> setData({...formData, hora_fim: e.target.value})} type="time" className="form-control" id="" />
+                                <input value={formData.hora_fim} onChange={e=> setData({...formData, hora_fim: e.target.value})} type="time" className="form-control" id="" />
                             </div>
                         </div>
-                        <button onClick={Solicitar} type="submit" className="btn btn-success">Solicitar</button>
+                        <button onClick={Solicitar} type="button" className="btn btn-success">Solicitar</button>
                     </form>
                   </div>
             </div>
