@@ -6,7 +6,7 @@ const CadastrarPostagem = () => {
     const {admToken}= useAuth();
 
     const [formData, setData]= useState({
-        titulo:'', descricao:'', local:'', data: null, hora: null, anexo:'', imagens:''
+        titulo:'', descricao:'', local:'', data: '', hora: '', anexo:'', imagens:''
     });
 
     const Cadastrar= (e)=>{
