@@ -36,7 +36,7 @@ const Convenios=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message);
-            setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem, anexo: dados.data.anexo}]) 
+            setConvenios([...convenios, {titulo,descricao, id: dados.data.id, imagem: dados.data.imagem, anexo: dados.data.anexo}]) 
             //Resolver problema de url de imagem //Melhorar isso //ConvenioController
         }).catch((err)=>{
             alert(err.response.data.message)
