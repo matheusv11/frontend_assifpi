@@ -36,7 +36,8 @@ const Convenios=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message);
-            setConvenios([...convenios, {titulo,descricao, id: dados.data.id, imagem: dados.data.imagem, anexo: dados.data.anexo}]) 
+            setConvenios([...convenios, {titulo,descricao, imagem: dados.data.imagem, anexo: dados.data.anexo, id: dados.data.id}]) 
+            setTitulo(''); setDescricao(''); setImagem(''); setAnexo('');
             //Resolver problema de url de imagem //Melhorar isso //ConvenioController
         }).catch((err)=>{
             alert(err.response.data.message)
@@ -82,22 +83,22 @@ const Convenios=()=>{
                     <form onSubmit={Criar}>
                         <div className="form-group">
                             <label>Título:</label>
-                            <input onChange={e=> setTitulo(e.target.value)}  className="form-control"/>
+                            <input value={titulo} onChange={e=> setTitulo(e.target.value)}  className="form-control"/>
                             
                         </div>
                         <div className="form-group">
                             <label >Descrição:</label>
-                            <textarea onChange={e=> setDescricao(e.target.value)} className="form-control" />
+                            <textarea value={descricao} onChange={e=> setDescricao(e.target.value)} className="form-control" />
                         </div>
                         <div className="row">
                             <div className="form-group form-check col-sm-6 col-xs-12">
                                 <label>Imagem:</label><br/>
-                                <input onChange={e=> setImagem(e.target.files[0])} type="file"/>
+                                <input value={imagem} onChange={e=> setImagem(e.target.files[0])} type="file"/>
                             </div>
 
                             <div className="form-group form-check col-sm-6 col-xs-12">
                                 <label>Anexo:</label><br/>
-                                <input type="file" onChange={e=> setAnexo(e.target.files[0])}/>
+                                <input value={anexo} type="file" onChange={e=> setAnexo(e.target.files[0])}/>
                             </div>
                         </div>
                         <button onClick={Criar} type="submit" className="btn btn-success">Publicar</button>
