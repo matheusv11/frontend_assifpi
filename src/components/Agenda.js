@@ -38,6 +38,7 @@ const Agenda=()=>{
         }).then((dados)=>{
             alert(dados.data.message);
             setData(initialValue);
+            rest.status="esperando"; rest.nome="Você";
             setAgenda([...agenda, rest]);
         }).catch((err)=>{
             alert(err.response.data.message);
@@ -147,7 +148,7 @@ const Agenda=()=>{
             <ul className="list-group" style={{listStyle: "none"}}>
                 {agenda.map((evento,index)=>(
                     <li key={evento.id} className={`alert alert-${evento.status==="confirmado" ? 'success' : 'warning'}`} style={{margin:"1%"}}>
-                        <p><b>Solicitate:</b>{evento.nome}</p>
+                        <p><b>Solicitante:</b>{id_session.id===evento.socio_id ? "Você" : evento.nome}</p>
                         {admToken && <p><b>CPF:</b>{evento.cpf}</p>}
                         <p><b>Local:</b>{evento.local}</p>
                         <p><b>Data:</b>{evento.data.substr(0,10).split('-').reverse().join('/')}</p>

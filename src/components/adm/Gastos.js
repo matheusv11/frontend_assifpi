@@ -16,7 +16,6 @@ const Gastos=()=>{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
-            
             setGasto(dados.data);
         }).catch((err)=>{
             alert(err.message);
@@ -34,7 +33,9 @@ const Gastos=()=>{
             }
         }).then((dados)=>{
             alert(dados.data.message);
+            formulario.id=dados.data.id;
             setGasto([...gastos,formulario])
+            setDescricao(''); setValor(''); setData('');
         }).catch((err)=>{
             alert(err.message);            
         })
@@ -78,18 +79,18 @@ const Gastos=()=>{
 
                             <div className="form-group">
                                 <label>Gasto:</label>
-                                <input onChange={e=> setDescricao(e.target.value)} className="form-control" />
+                                <input value={descricao} onChange={e=> setDescricao(e.target.value)} className="form-control" />
                             </div>
                         
                             <div className="row">
                                 <div className="form-group col-sm-6 col-xs-12">
                                     <label >Valor:</label>
-                                    <input onChange={e=> setValor(e.target.value)} type="number" className="form-control" />
+                                    <input value={valor} onChange={e=> setValor(e.target.value)} type="number" className="form-control" />
                                 </div>
 
                                 <div className="form-group col-sm-6 col-xs-12">
                                     <label >Data:</label>
-                                    <input onChange={e=> setData(e.target.value)} type="date" className="form-control" />
+                                    <input value={data} onChange={e=> setData(e.target.value)} type="date" className="form-control" />
                                 </div>
 
                             </div>
