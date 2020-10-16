@@ -50,11 +50,23 @@ const Pagamentos=()=>{
                     <div key={dados.id}>
                         
                         <ul className="list-group">
-                            <li className={`list-group-item list-group-item-${dados.status==="pending" ? 'warning' : 'success'}`}>
+                            <li className={`list-group-item list-group-item-${
+                                (dados.status==="pending" && "warning") || 
+                                (dados.status==="approved" && "success") || 
+                                (dados.status==="rejected" && "danger") ||
+                                (dados.status==="in_process" && "primary")
+                                }`}>
                                 <p><b>Status pagamento:</b> {dados.status}</p>
                                 <p><b>Data de criação:</b> {dados.data_criacao.substr(0,10).split('-').reverse().join('/')}</p>
                                 <p><b>Data de vencimento:</b> {dados.data_vencimento.substr(0,10).split('-').reverse().join('/')}</p>
-                                {dados.status==="approved" ? "Pagamento já efetuado": <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>}
+                                {dados.status==="approved" ? "Pagamento já efetuado" : 
+                                 dados.status==="in_process" ? "Seu pagamento está sendo analisado" :
+                                 dados.status==="rejected" ? 
+                                 <>
+                                 Seu pagamento não foi aprovado pelo Mercado Pago. Revise seu dados e tente novamente ou entre em contato com a ASSIFPI<br/>
+                                 <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>
+                                 </>
+                                : <button className="btn btn-success"onClick={()=> Pagar(dados.id)}>Pague</button>}
                             </li>
                         </ul>
                         
