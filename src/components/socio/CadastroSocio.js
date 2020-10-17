@@ -195,10 +195,10 @@ const CadastroSocio= ()=>{
                     <div className="form-group">
                         <label>Links para download de documentos a serem preenchidos: </label>
                         <ul>
-                            <li><a href="http://localhost:3030/download/auth_bancobrasil.docx">Autorização Banco do Brasil</a></li>
-                            <li><a href="http://localhost:3030/download/auth_caixa.docx">Autorização Caixa Econômica Federal</a></li>
-                            <li><a href="http://localhost:3030/download/affi_bancobrasil.docx">Filiação Banco do Brasil</a></li>
-                            <li><a href="http://localhost:3030/download/affi_caixa.docx">Filiação Caixa Econômica Federal</a></li>
+                            <li><a href={`${process.env.REACT_APP_API_URL}/download/auth_bancobrasil.docx`}>Autorização Banco do Brasil</a></li>
+                            <li><a href={`${process.env.REACT_APP_API_URL}/download/auth_caixa.docx`}>Autorização Caixa Econômica Federal</a></li>
+                            <li><a href={`${process.env.REACT_APP_API_URL}/download/affi_bancobrasil.docx`}>Filiação Banco do Brasil</a></li>
+                            <li><a href={`${process.env.REACT_APP_API_URL}/download/affi_caixa.docx`}>Filiação Caixa Econômica Federal</a></li>
                         </ul>
                     </div>
                     

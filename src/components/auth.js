@@ -9,7 +9,7 @@ export const AuthProvider= ({children})=>{
     const [token,setToken]=useState(null);
     const [admToken,setAdm]=useState(null);
     const [loading,setLoading]=useState(false);
-    const doc_url= process.env.REACT_APP_DOC_URL || 'http://localhost:3030/files';
+    const doc_url= process.env.REACT_APP_DOC_URL || 'http://localhost:3030/files'; //Poderia so usar o env sem precisar de props
 
     useEffect(()=>{
         const token= localStorage.getItem('token');
