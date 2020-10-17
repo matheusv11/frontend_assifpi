@@ -74,7 +74,7 @@ const Feed=()=>{
     </ul>
     </nav>
   
-    <Footer/>
+    {/*<Footer/>*/}
     </div>
         );
 }
