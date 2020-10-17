@@ -63,7 +63,7 @@ const ListaSolicitantes=()=>{
             </svg>
         </h2>
         <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
-        <input type="number" className="form-control" value={cpf}  onChange={e=> setCpf(cpfMask(e.target.value))} placeholder='Pesquisar por cpf' />
+        <input type="search" className="form-control" value={cpf}  onChange={e=> setCpf(cpfMask(e.target.value))} placeholder='Pesquisar por cpf' />
             <div id="lista-socios" className="col" >
                 {socio_data.map(dados=>(
                     <div key={dados.id} >

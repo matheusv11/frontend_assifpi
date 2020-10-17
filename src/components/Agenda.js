@@ -46,6 +46,8 @@ const Agenda=()=>{
     }
 
     const Confirmar= (id, index)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.put(`/agenda_update/${id}`,'',{
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -61,6 +63,8 @@ const Agenda=()=>{
     }
 
     const Recusar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.delete(`/agenda_reject/${id}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
@@ -74,6 +78,8 @@ const Agenda=()=>{
     }
 
     const Deletar= (id)=>{
+        if(window.confirm("Você tem certeza? Está ação não poderá ser desfeita."))
+
         connection.delete(`/agenda/${id}`,{
             headers:{
                 authorization: `Bearer ${token}`

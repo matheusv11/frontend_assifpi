@@ -138,7 +138,7 @@ const ListaSocios=()=>{
 
             <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
             
-            <input type="number" value={cpf} onChange={e=> setCpf(cpfMask(e.target.value))} className="form-control" id=""  placeholder='Pesquisar por cpf' />
+            <input type="search" value={cpf} onChange={e=> setCpf(cpfMask(e.target.value))} className="form-control" id=""  placeholder='Pesquisar por cpf' />
                 <div id="lista-socios" className="col" style={{borderColor:"green"}}>
                     
                 <div className="list-group">
