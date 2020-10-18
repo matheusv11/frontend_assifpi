@@ -87,10 +87,10 @@ const Postagem=({evento})=>{
     return (
     <div id='componente-postagem'>
         {deleted ? <></> : 
-                <div className="card"  style={{width: '80%', margin: '0 auto', marginTop: '2%', borderWidth: '5px',borderColor:"green"}}>
+                <div className="card"  style={{width: '80%', margin: '0 auto', marginTop: '2%', borderWidth: '5px',borderColor:"green",backgroundColor:"#D5D8DC"}}>
                 <div className="card-body">
 
-                    <h3><b>{evento.titulo}</b></h3>
+                    <h3 style={{textAlign:"center"}}><b>{evento.titulo}</b></h3>
                     
                     <p>{evento.descricao}</p>
                     {evento.imagens && 

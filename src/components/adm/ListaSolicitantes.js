@@ -62,8 +62,11 @@ const ListaSolicitantes=()=>{
             <path fill-rule="evenodd" d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </h2>
-        <div id="lista" className="row" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
-        <input type="search" className="form-control" value={cpf}  onChange={e=> setCpf(cpfMask(e.target.value))} placeholder='Pesquisar por cpf' />
+        <div id="lista" style={{borderWidth: '5px',borderColor:"green",borderStyle:"solid"}}>
+        <input type="search" className="form-control col-sm-7 col-xs-12 mx-auto" style={{marginTop:"1%"}}  value={cpf}  onChange={e=> setCpf(cpfMask(e.target.value))} placeholder='Pesquisar por cpf' />
+
+
+            <div id="lista-socio-dependente" className="row" style={{marginTop:"2%"}}>
             <div id="lista-socios" className="col" >
                 {socio_data.map(dados=>(
                     <div key={dados.id} >
@@ -89,6 +92,7 @@ const ListaSolicitantes=()=>{
                     ))}
                     
             </div>
+        </div>
         </div>
 
     </div>)

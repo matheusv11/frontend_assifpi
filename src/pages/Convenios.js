@@ -111,7 +111,7 @@ const Convenios=()=>{
  
         <div style={{borderColor:"black",width:"100%"}}>
             {convenios.map(dados=>(
-                <div className="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%"}}>
+                <div className="card" style={{width: '16rem',float:"left",borderColor:"green" ,margin:"4%",backgroundColor:"#D5D8DC"}}>
                 {dados.imagem && <img src={`${doc_url}/${dados.imagem}`} style={{height:"50%"}} alt="" className="card-img-top" />}
                 <div className="card-body">
                     <h5 className="card-title">{dados.titulo}</h5>
