@@ -38,12 +38,16 @@ const ListaAdms=()=>{
                     
                     {adm_data.map(dados=>(
 
-                    <a href="/" className="list-group-item list-group-item-action">{dados.nome}-{dados.email}</a>
+                    <button 
+                    type="button" 
+                    className="list-group-item list-group-item-action"
+                    style={{outline: "none"}}
+                    >
+                        {dados.nome}-{dados.email}
+                    </button>
 
                     ))}
                     
-                    
-
                     </div>
                 </div>
             </div>

@@ -75,8 +75,9 @@ const Adm=()=>{
         
         </div>
         </nav>
-
-            {whatis}
+            <div className="actual-component" style={{marginTop: '0.3rem'}}>
+                {whatis}
+            </div>
 
 
         </div>

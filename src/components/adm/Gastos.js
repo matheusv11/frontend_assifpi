@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {useAuth} from '../auth';
 import connection from '../../services/connection';
+import createPagination from '../../helpers/createPagination';
 
 const Gastos=()=>{
 
@@ -9,19 +10,29 @@ const Gastos=()=>{
     const [descricao,setDescricao]=useState('');
     const [valor,setValor]=useState('');
     const [data,setData]=useState('');
+    const [page, setPage]=useState(1);
+    const [total,setTotal]=useState('');
+   
+    const { pagination } = createPagination({
+        numberOfArticles: total,
+        articlesPerPage: 5, //Ou eventos.length
+        numberOfButtons: 5,
+        currentPage: page
+    });
 
     useEffect(()=>{
-        connection.get('/gastos', {
+        connection.get(`/gastos?page=${page}`, {
             headers:{
                 authorization: `Bearer ${admToken}`
             }
         }).then((dados)=>{
             setGasto(dados.data);
+            setTotal(dados.headers['total-count'])
         }).catch((err)=>{
             alert(err.message);
         })
           // eslint-disable-next-line     
-    },[]);
+    },[page]);
     
     const Cadastrar= (e)=>{
         e.preventDefault();
@@ -114,6 +125,30 @@ const Gastos=()=>{
                             ))}
                         </ul>
                     </div>
+
+        <nav style={{width: '80%', margin: '10px auto', justifyContent:'center', display: 'flex'}} aria-label="...">
+            <ul className="pagination">
+
+                <li className={`page-item ${pagination[0]=== page && "disabled"}`} >
+                <button onClick={()=> setPage(page-1)} className="page-link"> {"<"} </button>
+                </li>
+
+                {pagination.map(pagina => (
+                <li
+                    className={`page-item ${page === pagina && "active"}`}
+                    onClick={()=> setPage(pagina)}
+
+                >
+                    <button className="page-link">{pagina}</button>
+                </li>
+                ))}
+                <li className={`page-item ${pagination.reverse()[0]=== page && "disabled"}`} >
+
+                <button onClick={()=> setPage(page+1)} className="page-link" >{">"}</button>
+
+                </li>
+            </ul>
+    </nav>
                 </div>
             </div>
         </div>
