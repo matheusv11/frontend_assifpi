@@ -195,10 +195,18 @@ const CadastroSocio= ()=>{
                     <div className="form-group">
                         <label>Links para download de documentos a serem preenchidos: </label>
                         <ul>
-                            <li><a href={`${process.env.REACT_APP_API_URL}/download/auth_bancobrasil.docx`}>Autorização Banco do Brasil</a></li>
-                            <li><a href={`${process.env.REACT_APP_API_URL}/download/auth_caixa.docx`}>Autorização Caixa Econômica Federal</a></li>
-                            <li><a href={`${process.env.REACT_APP_API_URL}/download/affi_bancobrasil.docx`}>Filiação Banco do Brasil</a></li>
-                            <li><a href={`${process.env.REACT_APP_API_URL}/download/affi_caixa.docx`}>Filiação Caixa Econômica Federal</a></li>
+                            <li><a href={`${process.env.REACT_APP_DOC_URL 
+                                ? 'https://www.dropbox.com/s/rob1j28ahz9mtlz/auth_bancobrasil.docx?raw=1' : 
+                                `${process.env.REACT_APP_API_URL}/download/auth_bancobrasil.docx`}`}>Autorização Banco do Brasil</a></li>
+                            <li><a href={`${process.env.REACT_APP_DOC_URL 
+                                ? 'https://www.dropbox.com/s/3xr6mwc2im7gays/auth_caixa.docx?raw=1' : 
+                                `${process.env.REACT_APP_API_URL}/download/auth_caixa.docx`}`}>Autorização Caixa Econômica Federal</a></li>
+                            <li><a href={`${process.env.REACT_APP_DOC_URL 
+                                ? 'https://www.dropbox.com/s/goyim543op0fkpu/affi_bancobrasil.docx?raw=1' : 
+                                `${process.env.REACT_APP_API_URL}/download/affi_bancobrasil.docx`}`}>Filiação Banco do Brasil</a></li>
+                            <li><a href={`${process.env.REACT_APP_DOC_URL 
+                                ? 'https://www.dropbox.com/s/f207w7sc8t15342/affi_caixa.docx?raw=1' : 
+                                `${process.env.REACT_APP_API_URL}/download/affi_caixa.docx`}`}>Filiação Caixa Econômica Federal</a></li>
                         </ul>
                     </div>
                     
